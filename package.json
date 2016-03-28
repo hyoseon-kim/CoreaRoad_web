@@ -1,0 +1,16 @@
+{
+  "name": "corearoad",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {},
+  "description": ""
+}

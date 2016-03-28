@@ -1,0 +1,229 @@
+.event {
+    padding: 1rem 1rem 1rem 0;
+    display: table; }
+
+.event-date {
+    width: 6rem;
+    margin: 0 auto 1rem;
+    display: table-cell;
+    width: auto; }
+.event-date .event-month {
+    margin: 0;
+    background: #eee;
+    padding: 0.5rem 2rem;
+    text-align: center; }
+.event-date .event-day {
+    margin: 0;
+    border: 1px solid #eee;
+    padding: 0 2rem;
+    text-align: center;
+    font-size: 2rem; }
+
+.event-desc {
+    padding: 0 0 0 1rem;
+    text-align: left;
+    display: table-cell;
+    vertical-align: top; }
+.event-desc .event-desc-header {
+    margin: 0 0 0.5rem 0;
+    padding: 0; }
+.event-desc .event-desc-detail {
+    margin: 0 0 0.25rem;
+    padding: 0; }
+.event-desc .event-desc-time {
+    font-weight: bold; }
+.event-desc .rsvp.button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 0; }
+
+
+._scroll {
+    z-index: 999;
+    position:fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+}
+/*
+._top_menu {
+    height: 60px;
+    padding-top: 1.5rem;
+}
+*/
+._top_menu, ._top_menu ul, .top-bar{
+    background-color:#fefefe;
+}
+
+._r_u_ready a{
+    position:absolute;
+    top:400px;
+    z-index:1000;
+    color: #ffffff;
+    font-size: 2rem;
+    letter-spacing: 5px;
+    border: 4px solid transparent;
+    background: linear-gradient(45deg, pink, skyblue);
+}
+
+._r_u_ready a:hover {
+    border-image: linear-gradient(45deg, #2ecc71, dodgerblue);
+    background: linear-gradient(45deg, #2ecc71, dodgerblue); }
+
+
+.vision, .menu_title {
+    font-family: fantasy, sans-serif;
+    color: #000;
+    padding-top: 100px;
+}
+
+.menu_title:hover, .vision:hover {
+    color: #5e5e5e;
+    text-decoration: underline;
+}
+
+@charset "UTF-8";
+.hero {
+    background: url("http://www.banksy-wallpaper.com/wallpapers/800x600/10-i-am-father.jpg") no-repeat center center;
+    background-size: cover;
+    height: 50vh;
+    overflow: hidden; }
+.hero h1, .hero h2 {
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    padding: 1rem 0 0 1rem;
+    margin: 0; }
+
+.row {
+    max-width: 1200px; }
+
+.footer {
+    background-color: #292c2f;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 4rem; }
+.footer .inline-list a {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    margin: 0 3px 0 0; }
+.footer .contact {
+    list-style-type: none;
+    margin: 0;
+    text-align: left;
+    color: #fff; }
+.footer .contact li {
+    margin-bottom: 2rem; }
+.footer .contact li p {
+    padding-left: 5rem; }
+.footer .contact i {
+    position: absolute;
+    background-color: #33383b;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 50%;
+    line-height: 1;
+    margin: 0 0 0 -4rem;
+    vertical-align: middle;
+    padding: .25em .45em; }
+.footer .copywrite {
+    color: #8f9296;
+    font-size: 0.875rem;
+    margin: 0 0 1rem 0; }
+.footer .about {
+    color: #92999f;
+    font-size: 0.875rem;
+    margin: 0 0 1rem 0; }
+.footer .footer-links a {
+    list-style: none;
+    font-weight: normal;
+    color: #fff;
+    padding: 3rem 0 2rem;
+    margin: 0;
+    font-size: 0.875rem; }
+.footer .footer-links a::after {
+    content: "?";
+    padding: 0 0.2rem 0 0.4rem; }
+.footer .footer-links a:last-child::after {
+    content: "";
+    padding: 0 0.4rem 0 0.8rem; }
+@media only screen and (min-width: 40.063em) {
+    .footer p {
+        text-align: left; }
+    .footer .social {
+        text-align: left;
+        margin: 0; }
+    .footer .contact {
+        text-align: left; }
+    .footer .contact > i {
+        margin-right: 1rem; } }
+
+.profile-card {
+    padding: 1rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    margin: 2rem 0;
+    background-color: #fff; }
+.profile-card img {
+    width: 8rem;
+    display: block;
+    margin: 2rem auto;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #888888; }
+.profile-card .profile-info {
+    padding: 1rem; }
+.profile-card .profile-info h4 {
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase; }
+.profile-card .profile-info p {
+    text-align: center; }
+.profile-card .profile-info .inline-list {
+    text-align: center;
+    margin-bottom: 1rem; }
+.profile-card .profile-info .inline-list li {
+    float: none;
+    display: inline-block; }
+.profile-card .profile-info .inline-list i.fi-social-facebook {
+    font-size: 1.5rem;
+    color: #3b5998; }
+.profile-card .profile-info .inline-list i.fi-social-facebook:hover {
+    transform: scale(1.5);
+    transition: all .5s ease-in-out; }
+.profile-card .profile-info .inline-list i.fi-social-twitter {
+    font-size: 1.5rem;
+    color: #55acee; }
+.profile-card .profile-info .inline-list i.fi-social-twitter:hover {
+    transform: scale(1.5);
+    transition: all .5s ease-in-out; }
+.profile-card .profile-info .inline-list i.fi-social-linkedin {
+    font-size: 1.5rem;
+    color: #0077b5; }
+.profile-card .profile-info .inline-list i.fi-social-linkedin:hover {
+    transform: scale(1.5);
+    transition: all .5s ease-in-out; }
+.profile-card .profile-info .inline-list i.fi-social-github {
+    font-size: 1.5rem;
+    color: #333; }
+.profile-card .profile-info .inline-list i.fi-social-github:hover {
+    transform: scale(1.5);
+    transition: all .5s ease-in-out; }
+.profile-card .profile-info .inline-list i.fi-social-youtube {
+    font-size: 1.5rem;
+    color: #cc181e; }
+.profile-card .profile-info .inline-list i.fi-social-youtube:hover {
+    transform: scale(1.5);
+    transition: all .5s ease-in-out; }
+
+
+.logo {
+    color: #fff;
+    font-size: 1.5rem; }
+.logo i {
+    margin-right: 0.5rem; }

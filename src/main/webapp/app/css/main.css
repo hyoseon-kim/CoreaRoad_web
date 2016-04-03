@@ -44,6 +44,7 @@
     left: 0px;
     top: 0px;
     width: 100%;
+    border-bottom:1px solid lightgrey;
 }
 /*
 ._top_menu {
@@ -227,3 +228,9 @@
     font-size: 1.5rem; }
 .logo i {
     margin-right: 0.5rem; }
+
+
+<!--popup layer-->    
+.layer-popup {display:none; position:absolute; left:50%; top:175px; z-index:10; padding:30px 30px 35px; margin-left:-235px; background-color:#fff; border:1px solid #000;}
+
+

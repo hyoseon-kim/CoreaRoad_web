@@ -20,7 +20,7 @@ require([
 ], function($, foundation, vision){
     $(document).foundation();
     $(document).ready(function(){
-        $('a[href^="#"]').on('click',function (e) {
+        $('.menu_title').on('click',function (e) {
             e.preventDefault();
 
             var target = this.hash;
@@ -61,16 +61,17 @@ function openLayer(targetID, options){
 	if(xpos==undefined){
 		xpos = '50%';
 		marginLeft = -(width/2);
-		console.log("ddddd");
 	}
 
 	if(!$layer.is(':visible')){
 		$layer.css({'top':ypos+'px','left':xpos,'margin-left':marginLeft})
 			.show();
+		console.log("팝업이 뜹니다.");
 	}
 
 	$close.bind('click',function(){
 		if($layer.is(':visible')){
+			console.log("없어지니?");
 			$layer.hide();
 		}
 		return false;

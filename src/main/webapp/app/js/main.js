@@ -56,7 +56,10 @@ function openLayer(targetID, options){
 	var width = $layer.outerWidth();
 	var ypos = options.top;
 	var xpos = options.left;
+	var scrollTop = $(window).scrollTop();
 	var marginLeft = 0;
+	var maskHeight = $(document).height();  
+    var maskWidth = $(window).width();
 	
 	if(xpos==undefined){
 		xpos = '50%';
@@ -64,15 +67,29 @@ function openLayer(targetID, options){
 	}
 
 	if(!$layer.is(':visible')){
-		$layer.css({'top':ypos+'px','left':xpos,'margin-left':marginLeft})
-			.show();
-		console.log("팝업이 뜹니다.");
+		$layer.css({'top':ypos+scrollTop+'px','left':xpos,'margin-left':marginLeft,'z-index':1000,'margin':'10%'}).show();	
+		$('.popup_background').css({'width':maskWidth,'height':maskHeight}).show();  
+		$(document).on("mousewheel.disableScroll DOMMouseScroll.disableScroll touchmove.disableScroll", function(e) {
+	        e.preventDefault();
+	        return;
+	    });
+	    $(document).on("keydown.disableScroll", function(e) {
+	        var eventKeyArray = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+	        for (var i = 0; i < eventKeyArray.length; i++) {
+	            if (e.keyCode === eventKeyArray [i]) {
+	                e.preventDefault();
+	                return;
+	            }
+	        }
+	    });		
+		console.log("팝업창이 뜹니다.");
 	}
 
 	$close.bind('click',function(){
 		if($layer.is(':visible')){
-			console.log("없어지니?");
 			$layer.hide();
+			$('.popup_background').hide();
+			$(document).off(".disableScroll");
 		}
 		return false;
 	});

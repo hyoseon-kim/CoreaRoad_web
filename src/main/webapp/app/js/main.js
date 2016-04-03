@@ -49,7 +49,6 @@ require([
     });
 });
 
-<!--popuplayer contents-->
 
 function openLayer(targetID, options){
 	var $layer = $('#'+targetID);

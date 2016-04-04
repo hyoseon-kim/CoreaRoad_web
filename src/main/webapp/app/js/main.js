@@ -49,7 +49,6 @@ require([
     });
 });
 
-
 function openLayer(targetID, options){
 	var $layer = $('#'+targetID);
 	var $close = $layer.find('.close');

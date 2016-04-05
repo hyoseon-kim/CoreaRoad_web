@@ -10,18 +10,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/")
 public class MainController {
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
 		return "hello";
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/test",  method = RequestMethod.GET)
 	public String ajaxTest(ModelMap model) {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("key","value");
-		return map.toString();
+		model.addAttribute("message", "test");
+		return "hello";
 	}
 }

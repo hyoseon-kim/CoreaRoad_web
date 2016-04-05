@@ -26,18 +26,16 @@ require([
             var target = this.hash;
             var $target = $(target);
 
+			if($(window).scrollTop() < 125) {
+				$('.top-bar').addClass('_scroll');
+			}
+
             $('html, body').stop().animate({
                 'scrollTop': $target.offset().top - $('.top-bar').height()
             }, 900, 'swing', function () {
                 window.location.hash = target;
             });
         });
-    });
-    $('.vision').on('click', function(we){
-        $('.menu').animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top
-        }, 500);
-        return false;
     });
 
     $(window).scroll(function(){

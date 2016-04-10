@@ -1,9 +1,11 @@
 package kr.corearoad.dao;
 
+import kr.corearoad.bean.User;
 import kr.corearoad.mapper.LoginUserInterface;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
@@ -19,8 +21,9 @@ public class LoginUserDAO implements LoginUserInterface{
     private SqlSession sqlSession;
 
     @Override
-    public void test() throws SQLException {
-        sqlSession.selectOne("query.test");
+    @Transactional
+    public User test(String email) throws SQLException {
+        return (User)sqlSession.selectOne("kr.corearoad.mapper.LoginUserInterface.getUser", email);
     }
 
 }

@@ -1,5 +1,6 @@
 package kr.corearoad.bo;
 
+import kr.corearoad.bean.User;
 import kr.corearoad.dao.LoginUserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,13 @@ public class LoginUserBO {
     @Autowired
     LoginUserDAO loginUserDAO;
 
-    public void getTest(){
+    public User getTest(){
+        User user = null;
         try {
-            loginUserDAO.test();
+            user =  loginUserDAO.test("hyos810@naver.com");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return user;
     }
 }

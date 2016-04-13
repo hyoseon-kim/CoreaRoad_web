@@ -8,15 +8,13 @@ require.config({
     shim: {
     },
     paths: {
-        jquery: 'vendor/jquery.min',
         foundation: 'vendor/foundation.min',
     }
 });
 
 require([
-    'jquery',
     'foundation'
-], function($, foundation){
+], function(foundation){
 
 	var _welLoginBtnArea = $('._login_btn'),
 		_h1UserId = $('._user_id');

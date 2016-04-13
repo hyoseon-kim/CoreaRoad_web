@@ -21,8 +21,31 @@ public class User {
     private String profilePicture;
     private String tourInitinerary;
     private String selfIntroduction;
-    private boolean chatStatus;
-    private boolean isKorean;
+    private boolean chatStatus = false;
+    private boolean isKorean = false;
+    private boolean forFakeUser = false;
+
+    public User(String email, String name, String password, String nationality, String capableLang1, String capableLang2, String capableLang3, String birthDate, String profilePicture, String tourInitinerary, String selfIntroduction, boolean chatStatus, boolean isKorean) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.nationality = nationality;
+        this.capableLang1 = capableLang1;
+        this.capableLang2 = capableLang2;
+        this.capableLang3 = capableLang3;
+        this.birthDate = birthDate;
+        this.profilePicture = profilePicture;
+        this.tourInitinerary = tourInitinerary;
+        this.selfIntroduction = selfIntroduction;
+        this.chatStatus = chatStatus;
+        this.isKorean = isKorean;
+    }
+
+    public User(boolean bfakeUser){
+        this.forFakeUser = bfakeUser;
+    }
+
+    public User() {}
 
     public String getEmail() {
         return email;
@@ -124,12 +147,27 @@ public class User {
         this.isKorean = isKorean;
     }
 
+    public String getCapableLang1() {
+        return capableLang1;
+    }
+
+    public void setKorean(boolean korean) {
+        isKorean = korean;
+    }
+
+    public boolean isForFakeUser() {
+        return forFakeUser;
+    }
+
+    public void setForFakeUser(boolean forFakeUser) {
+        this.forFakeUser = forFakeUser;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "email='" + email + '\'' +
                 ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", capableLang1='" + capableLang1 + '\'' +
                 ", capableLang2='" + capableLang2 + '\'' +

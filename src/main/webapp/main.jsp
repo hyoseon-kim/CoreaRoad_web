@@ -25,14 +25,65 @@
           <li><a href="#contact" class="menu_title" style="color:#52BCDB">CONTACT</a></li>
         </ul>
       </div>
+
+      <!-- temp login area -->
+      <div>
+        <button type="button" class="button _login_btn" data-toggle="example-dropdown">Login</button>
+      </div>
+
+      <!-- temp login area -->
     </div>
   </div>
 </div>
-</div>
 
-<c:if test="${applicationScope}">
-${sessionScope.get("loginUser")}
-</c:if>
+<!-- temp login layer -->
+<div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
+  <form action="/login.do" method="post">
+    <div class="row">
+      <div class="medium-6 columns">
+        <label>email
+          <input type="text" placeholder="Kirk, James T."name="email" class="_email">
+        </label>
+      </div>
+      <div class="medium-6 columns">
+        <label>password
+          <input type="password" class="_password" name="password">
+        </label>
+      </div>
+    </div>
+    <c:if test="${applicationScope}">
+      <button class="button _login" type="submit">Login</button>
+       <a href="#" class="button">Sign Up</a>
+    </c:if>
+  </form>
+</div>
+<!-- temp login layer -->
+
+<c:choose>
+  <c:when test="${applicationScope}">
+  ${sessionScope.get("loginUser")}
+  </c:when>
+  <c:otherwise>
+    <div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
+      <form action="/login.do" method="post">
+        <div class="row">
+          <div class="medium-6 columns">
+            <label>email
+              <input type="text" placeholder="Kirk, James T."name="email" class="_email">
+            </label>
+          </div>
+          <div class="medium-6 columns">
+            <label>password
+              <input type="password" class="_password" name="password">
+            </label>
+          </div>
+        </div>
+        <button class="button _login" type="submit">Login</button>
+        <a href="#" class="button">Sign Up</a>
+      </form>
+    </div>
+  </c:otherwise>
+</c:choose>
 
 
 <!--컨텐츠 영역-->

@@ -83,6 +83,12 @@
     text-decoration: underline;
 }
 
+._login_area {
+    position : absolute;
+    top: 5%;
+    right: 0;
+}
+
 @charset "UTF-8";
 .hero {
     background: url("http://www.banksy-wallpaper.com/wallpapers/800x600/10-i-am-father.jpg") no-repeat center center;

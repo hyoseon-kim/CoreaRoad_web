@@ -7,7 +7,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://121.254.168.77:3306/dbcorearoad"/>
+        <property name="url" value="jdbc:mysql://121.254.168.77:3306/dbcorearoad?autoReconnect=true"/>
         <property name="username" value="corearoad"/>
         <property name="password" value="cr20160323**"/>
         <property name="maxIdle" value="2"/>
@@ -19,7 +19,7 @@
         <property name="timeBetweenEvictionRunsMillis" value="30000"/>
         <property name="numTestsPerEvictionRun" value="5"/>
         <property name="minEvictableIdleTimeMillis" value="-1"/>
-        <!--<property name="validationQuery" value="SELECT 0 from db_root"/>-->
+        <property name="validationQuery" value="SELECT 1"/>
         <property name="poolPreparedStatements" value="true"/>
         <property name="maxOpenPreparedStatements" value="50"/>
     </bean>

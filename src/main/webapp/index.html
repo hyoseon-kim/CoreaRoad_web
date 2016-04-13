@@ -17,7 +17,7 @@
         <div class="_top_menu">
             <div class="row" style="max-width: 50rem">
                 <div class="small-9 small-centered large-uncentered columns">
-                    <ul class="menu">                      
+                    <ul class="menu">
                         <li><a href="#color" class="menu_title" style="color:#E9634B;">VISION</a></li>
                         <li><a href="#member" class="menu_title" style="color:#EB9039">MATE</a></li>
                         <li><img src="img/logo.png"></li>
@@ -25,11 +25,32 @@
                         <li><a href="#contact" class="menu_title" style="color:#52BCDB">CONTACT</a></li>
                     </ul>
                 </div>
+                <div>
+                    <button type="button" class="button _login_btn" data-toggle="example-dropdown">Login</button>
+                </div>
             </div>
         </div>
 </div>
-</div>
 
+
+<div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
+    <form action="/login.do" method="post">
+        <div class="row">
+            <div class="medium-6 columns">
+                <label>email
+                    <input type="text" placeholder="Kirk, James T."name="email" class="_email">
+                </label>
+            </div>
+            <div class="medium-6 columns">
+                <label>password
+                    <input type="password" class="_password" name="password">
+                </label>
+            </div>
+        </div>
+        <button class="button _login" type="submit">Login</button>
+        <a href="#" class="button">Sign Up</a>
+    </form>
+</div>
 
 <!--컨텐츠 영역-->
 <div class="content">
@@ -81,8 +102,6 @@
        </div>
     </div>    
  </div>
- 
- 
  
 <!-- pop up layer -->  
 	<div id="poster1" class="layer-popup">

@@ -17,10 +17,10 @@ public class LoginUserBO {
     @Autowired
     LoginUserDAO loginUserDAO;
 
-    public User getTest(){
+    public User getUser(String email){
         User user = null;
         try {
-            user =  loginUserDAO.test("hyos810@naver.com");
+            user =  loginUserDAO.test(email);
         } catch (SQLException e) {
             e.printStackTrace();
         }

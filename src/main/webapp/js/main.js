@@ -19,7 +19,8 @@ require([
     'vision'
 ], function($, foundation, vision){
     $(document).foundation();
-    $(document).ready(function(){
+
+	$(document).ready(function(){
         $('.menu_title').on('click',function (e) {
             e.preventDefault();
 

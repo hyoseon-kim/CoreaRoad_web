@@ -1,4 +1,4 @@
-package com.springapp.mvc;
+package kr.corearoad.controller;
 
 import org.junit.Before;
 import org.junit.Test;

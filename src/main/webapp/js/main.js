@@ -15,39 +15,70 @@ require.config({
 
 require([
     'jquery',
-    'foundation',
-    'vision'
-], function($, foundation, vision){
+    'foundation'
+], function($, foundation){
+
+	var _welLoginBtnArea = $('._login_btn'),
+		_h1UserId = $('._user_id');
+
     $(document).foundation();
 
+	//top bar animation initialize setting
 	$(document).ready(function(){
-        $('.menu_title').on('click',function (e) {
-            e.preventDefault();
+		
+		_getLoginSession();
+		_attachEvent();
+    });
+	
+	function _getLoginSession() {
+		$.ajax('/getSession.do')
+			.done(function (oData) {
+				if(oData == 'login fail') {
+					_welLoginBtnArea.show();
+					alert('Login Failed! please sign up.')
+				} else {
+					var result = $.parseJSON(oData);
+					_welLoginBtnArea.hide();
+					_h1UserId.html(result.name)
+				}
 
-            var target = this.hash;
-            var $target = $(target);
+		})
+	}
+	
+	function _attachEvent() {
+		$(window).scroll(function(){
+			if ($(this).scrollTop() > 125) {
+				$('.top-bar').addClass("_scroll");
+			} else {
+				$('.top-bar').removeClass("_scroll");
+			}
+		});
+
+		_initializeTopBar();
+	}
+	
+	function _initializeTopBar() {
+		$('.menu_title').on('click',function (e) {
+			e.preventDefault();
+
+			var target = this.hash;
+			var $target = $(target);
 
 			if($(window).scrollTop() < 125) {
 				$('.top-bar').addClass('_scroll');
 			}
 
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top - $('.top-bar').height()
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
-        });
-    });
+			$('html, body').stop().animate({
+				'scrollTop': $target.offset().top - $('.top-bar').height()
+			}, 900, 'swing', function () {
+				window.location.hash = target;
+			});
+		});
+	}
 
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 125) {
-            $('.top-bar').addClass("_scroll");
-        } else {
-            $('.top-bar').removeClass("_scroll");
-        }
-    });
 });
 
+// layer open event method
 function openLayer(targetID, options){
 	var $layer = $('#'+targetID);
 	var $close = $layer.find('.close');

@@ -16,18 +16,19 @@ require.config({
 require([
     'foundation',
 	'text!/header.html',
-	'text!/footer.html'
-], function(foundation, _welheader, _welFooter){
+	'text!/footer.html',
+	'text!/content.html'
+], function(foundation, _welheader, _welFooter, _welContent){
 	var _welLoginBtnArea = $('._login_btn'),
 		_h1UserId = $('._user_id'),
 		_welHeaderArea = $('._corearoad_header'),
-		_welFooterArea = $('._corearoad_footer');
-
-    $(document).foundation();
-
+		_welFooterArea = $('._corearoad_footer'),
+		_welContentArea = $('._corearoad_content');
+	
 	//top bar animation initialize setting
 	$(document).ready(function(){
 		_includeTemplate();
+		$(document).foundation();
 		_getLoginSession();
 		_attachEvent();
     });
@@ -35,6 +36,7 @@ require([
 	function _includeTemplate() {
 		_welHeaderArea.html(_welheader);
 		_welFooterArea.html(_welFooter);
+		_welContentArea.html(_welContent);
 	}
 	
 	function _getLoginSession() {

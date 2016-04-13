@@ -11,12 +11,39 @@
                 </ul>
             </div>
             <div class="_login_area">
-                <button type="button" class="button _login_btn" data-toggle="example-dropdown">Login</button>
+                <button type="button" class="button _login_btn" onclick="openLayer('login',{top:30, left:30});return false;">Login</button>
                 <h1 class="_user_id"></h1>
             </div>
         </div>
     </div>
 </div>
+
+<!-- pop up layer -->
+<div id="login" class="layer-popup">
+    <div  class="reveal-modal remove-whitespace">
+    <!-- inside popup-->
+    <form action="/login.do" method="post">
+        <div class="row">
+            <div class="medium-6 columns">
+                <label>email
+                    <input type="text" placeholder="Kirk, James T."name="email" class="_email">
+                </label>
+            </div>
+            <div class="medium-6 columns">
+                <label>password
+                    <input type="password" class="_password" name="password">
+                </label>
+            </div>
+        </div>
+        <a href="#" class="close">x</a>
+        <button class="button _login" type="submit">Login</button>
+        <a href="#" class="button">Sign Up</a>
+    </form>
+    </div>
+
+</div>
+
+<!--
 <div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
     <form action="/login.do" method="post">
         <div class="row">
@@ -34,4 +61,4 @@
         <button class="button _login" type="submit">Login</button>
         <a href="#" class="button">Sign Up</a>
     </form>
-</div>
+</div>-->

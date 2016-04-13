@@ -8,25 +8,34 @@ require.config({
     shim: {
     },
     paths: {
+		text: 'vendor/text',
         foundation: 'vendor/foundation.min',
     }
 });
 
 require([
-    'foundation'
-], function(foundation){
-
+    'foundation',
+	'text!/header.html',
+	'text!/footer.html'
+], function(foundation, _welheader, _welFooter){
 	var _welLoginBtnArea = $('._login_btn'),
-		_h1UserId = $('._user_id');
+		_h1UserId = $('._user_id'),
+		_welHeaderArea = $('._corearoad_header'),
+		_welFooterArea = $('._corearoad_footer');
 
     $(document).foundation();
 
 	//top bar animation initialize setting
 	$(document).ready(function(){
-		
+		_includeTemplate();
 		_getLoginSession();
 		_attachEvent();
     });
+	
+	function _includeTemplate() {
+		_welHeaderArea.html(_welheader);
+		_welFooterArea.html(_welFooter);
+	}
 	
 	function _getLoginSession() {
 		$.ajax('/getSession.do')

@@ -17,8 +17,9 @@ require([
     'foundation',
 	'text!/header.html',
 	'text!/footer.html',
-	'text!/content.html'
-], function(foundation, _welheader, _welFooter, _welContent){
+	'text!/content.html',
+	'text!/program.html'
+], function(foundation, _welheader, _welFooter, _welContent, _welProgram){
 	var _welLoginBtnArea = $('._login_btn'),
 		_h1UserId = $('._user_id'),
 		_welHeaderArea = $('._corearoad_header'),
@@ -64,6 +65,10 @@ require([
 		});
 
 		_initializeTopBar();
+
+		$('._color_img').on('click', function () {
+			_welContentArea.html(_welProgram);
+		})
 	}
 	
 	function _initializeTopBar() {

@@ -353,3 +353,8 @@ p.title {
 .content{
     height: 450px;
 }
+#menu_logo{
+    max-width: 150px;
+    height:auto;
+    cursor: pointer;
+}

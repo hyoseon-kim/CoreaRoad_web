@@ -17,26 +17,30 @@
 		return this.each(function() {
 
 			/* Open Images */
-			function intipreview(object, path, caption) {
-				/*var */
-				var close = $('<figure class="close"></figure>'),
-					img = $('<img src="' + path + '"/>'),
-					thumb = $('li a')
+			function intipreview(object, path, text, caption) {
+				console.log('call');
+				/!*var *!/
+				var img = $('<img src="' + path + '"/>'),
+					close=$('<figure class="close"></figure>'),
+					thumb = $('li a'),
+					imgTemplate = $('<div class="carouselGallery-modal"><span class="carouselGallery-left"><img src="/img/layer/left.png"/></span><span class="carouselGallery-right"><img src="/img/layer/right.png"/></span><div class="container"><span class="icons iconscircle-cross close-icon"></span><div class="carouselGallery-scrollbox" style="max-height: 871px;"><div class="carouselGallery-modal-image"><img src="" alt="carouselGallery image" class="_color_preview_img"></div><div class="carouselGallery-modal-text"><span class="carouselGallery-modal-username"><a href="https://instagram.com/p/92tWKsQVUN/">visitsweden</a> </span><span class="carouselGallery-modal-location"></span><span class="carouselGallery-item-modal-likes"><span class="icons icon-heart"></span><a href="https://instagram.com/p/92tWKsQVUN/">3939</a></span><span class="carouselGallery-modal-imagetext"><p>Photographer: @tannerstedtphotography Location: Resm A perfect place for stargazing.Tag #visitsweden and #swedishmoments for a chance to get featured. //@deskriptiv</p></span></div></div></div></div>');
 
-				/* Load img */
+
 				img.load(
 					function() {
 						if ( caption.length ) {
-							object.html('<article>' + caption + '</article>');
+							object.html('')
 						} else {
 							object.html('');
 						}
 
-						object						
-							.prepend(img)
+
+						object
+							.prepend(imgTemplate)
 							.append(close)
-							.slideDown('slow')
 							thumb.removeClass('load');
+						$('._color_preview_img').attr('src',path);
+						object.slideDown('slow');
 					}
 				);
 				
@@ -57,12 +61,13 @@
 					/* var */
 					var $$ = $(this),
 						path = $$.attr('href'),
+						text = $$.attr('data-text'),
 						preview = $('.least-preview'),
 						previewImg = preview.children('img'),
 						caption = $$.attr('data-caption') || '';
 
 					/* Same Image */
-					if ( previewImg.length && path === previewImg.attr('src') ) {
+					if ( /*previewImg.length && path === previewImg.attr('src')*/false ) {
 						preview.slideToggle('slow');
 
 						$$.toggleClass('active');
@@ -71,7 +76,7 @@
 					}
 
 					/* Other Image */
-					if ( previewImg.length ) {
+					if ( /*previewImg.length*/true ) {
 
 						$$.addClass('active');
 						$('.least-gallery li a.active').removeClass('active');
@@ -82,6 +87,7 @@
 								intipreview(
 									preview,
 									path,
+									text,
 									caption
 								);
 							}

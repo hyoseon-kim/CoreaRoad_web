@@ -11,7 +11,7 @@ require.config({
 		jquery: 'vendor/jquery.min',
 		foundation: 'vendor/foundation.min',
 		text:'vendor/text',
-		least: 'vendor/least'
+		least: 'vendor/least',
     }
 });
 
@@ -30,7 +30,6 @@ require(['jquery'], function($){
 			_welHeaderArea = $('._corearoad_header'),
 			_welFooterArea = $('._corearoad_footer'),
 			_welContentArea = $('._corearoad_content');
-
 		//top bar animation initialize setting
 		$(document).ready(function(){
 			_includeTemplate();
@@ -79,9 +78,10 @@ require(['jquery'], function($){
 				}
 			});
 
-			_initializeTopBar();
+			//_initializeTopBar();
 
-			$('._color_img').on('click', function () {
+			//gallery open
+			$('#menu_activities').on('click', function () {
 				_welContentArea.html(_welProgram);
 			})
 
@@ -91,7 +91,7 @@ require(['jquery'], function($){
 			})
 		}
 
-		function _initializeTopBar() {
+		/*function _initializeTopBar() {
 			$('.menu_title').on('click',function (e) {
 				e.preventDefault();
 
@@ -108,8 +108,8 @@ require(['jquery'], function($){
 					window.location.hash = target;
 				});
 			});
-		}
-
+		}*/
+	
 		// layer open event method
 		function openLayer(targetID, options){
 			var $layer = $('#'+targetID);

@@ -37,11 +37,6 @@ require(['jquery'], function($){
 			$(document).foundation();
 			_getLoginSession();
 			_attachEvent();
-
-			$.ajax('/getMainActionPictureList').done(function (oData) {
-				var json = $.parseJSON(oData);
-				console.log(json);
-			})
 		});
 
 		function _includeTemplate() {
@@ -87,6 +82,14 @@ require(['jquery'], function($){
 			//gallery open
 			$('#menu_activities').on('click', function () {
 				_welContentArea.html(_welProgram);
+			});
+
+			$("._login_btn").on('click', function () {
+				$('#login').foundation('open');
+			});
+			
+			$("._login_close").on('click', function () {
+				$('#login').foundation('close');
 			})
 
 			$('._sign_up_btn').on('click', function () {

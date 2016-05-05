@@ -23,8 +23,7 @@
 </div>
 
 <!-- pop up layer -->
-<div id="login" data-reveal>
-    <div  class="reveal-modal remove-whitespace">
+<div class="reveal" id="login" data-reveal>
     <!-- inside popup-->
     <form action="/login.do" method="post">
         <div class="row">
@@ -39,9 +38,10 @@
                 </label>
             </div>
         </div>
-        <a href="#" class="close">x</a>
+        <button class="close-button _login_close" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
         <button class="button _login" type="submit">Login</button>
         <a href="#" class="button _sign_up_btn">Sign Up</a>
     </form>
-    </div>
 </div>

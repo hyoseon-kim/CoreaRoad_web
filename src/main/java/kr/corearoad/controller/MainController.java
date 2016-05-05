@@ -155,7 +155,7 @@ public class MainController {
 		return "hello";
 	}
 
-	@RequestMapping("/getMainActionPictureList")
+	@RequestMapping("/getMainActionPictureList.do")
 	public String getMainActionPictureList(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
 		Gson gson = new GsonBuilder().create();
 		map.put("message", gson.toJson(actionBO.getMainPictureList()));

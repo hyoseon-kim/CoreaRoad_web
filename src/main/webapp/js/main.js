@@ -37,6 +37,11 @@ require(['jquery'], function($){
 			$(document).foundation();
 			_getLoginSession();
 			_attachEvent();
+
+			$.ajax('/getMainActionPictureList').done(function (oData) {
+				var json = $.parseJSON(oData);
+				console.log(json);
+			})
 		});
 
 		function _includeTemplate() {
@@ -113,9 +118,6 @@ require(['jquery'], function($){
 				});
 			})
 		}
-	
-
-
 	});
 });
 

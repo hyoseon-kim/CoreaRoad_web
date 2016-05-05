@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.corearoad.mapper.ActionInterface">
+    <resultMap id="action" type="kr.corearoad.bean.Action">
+        <id column="act_no" property="no"/>
+        <result column="act_name" property="name"/>
+        <result column="act_city" property="city"/>
+        <result column="act_text" property="text"/>
+        <result column="act_totaltime" property="totalTime"/>
+        <result column="act_meetplace" property="meetPlace"/>
+        <result column="act_exception" property="exception"/>
+        <result column="act_tagList" property="tagList"/>
+        <result column="act_thumbList" property="thumbList"/>
+        <result column="act_cartList" property="cartList"/>
+        <result column="act_bookList" property="bookList"/>
+        <result column="act_pictureList" property="pictureList"/>
+        <result column="jingermanID_List" property="jingermanList"/>
+    </resultMap>
+    <select id="getAction" parameterType="String" resultMap="action">
+        select * from action where act_no = #{no};
+    </select>
+    <select id="getPictureList" resultType="HashMap">
+        select act_no, act_pictureList from action;
+
+    </select>
+</mapper>

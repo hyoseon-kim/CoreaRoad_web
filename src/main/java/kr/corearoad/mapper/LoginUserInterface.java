@@ -10,5 +10,7 @@ import java.sql.SQLException;
  */
 public interface LoginUserInterface {
 
-    User test(String email) throws SQLException;
+    User getUser(String email) throws SQLException;
+
+    void join(User user) throws SQLException;
 }

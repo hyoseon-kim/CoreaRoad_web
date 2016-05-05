@@ -20,10 +20,21 @@ public class LoginUserBO {
     public User getUser(String email){
         User user = null;
         try {
-            user =  loginUserDAO.test(email);
+            user =  loginUserDAO.getUser(email);
         } catch (SQLException e) {
             e.printStackTrace();
+           return null;
         }
         return user;
+    }
+
+    public String join(User user) {
+        try {
+            loginUserDAO.join(user);
+            return "success";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "fail";
+        }
     }
 }

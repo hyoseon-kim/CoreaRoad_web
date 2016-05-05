@@ -15,7 +15,7 @@
                 </ul>
             </div>
             <div class="_login_area">
-                <button type="button" class="button _login_btn" onclick="openLayer('login',{top:30, left:30});return false;">Login</button>
+                <p><a type="button" class="button _login_btn" data-open="login">Login</a></p>
                 <h3 class="_user_id"></h3>
             </div>
         </div>
@@ -23,7 +23,7 @@
 </div>
 
 <!-- pop up layer -->
-<div id="login" class="layer-popup">
+<div id="login" data-reveal>
     <div  class="reveal-modal remove-whitespace">
     <!-- inside popup-->
     <form action="/login.do" method="post">

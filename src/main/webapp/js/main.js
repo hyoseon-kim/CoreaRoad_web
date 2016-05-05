@@ -11,7 +11,7 @@ require.config({
 		jquery: 'vendor/jquery.min',
 		foundation: 'vendor/foundation.min',
 		text:'vendor/text',
-		least: 'vendor/least',
+		least: 'vendor/least'
     }
 });
 
@@ -30,6 +30,7 @@ require(['jquery'], function($){
 			_welHeaderArea = $('._corearoad_header'),
 			_welFooterArea = $('._corearoad_footer'),
 			_welContentArea = $('._corearoad_content');
+
 		//top bar animation initialize setting
 		$(document).ready(function(){
 			_includeTemplate();
@@ -78,8 +79,6 @@ require(['jquery'], function($){
 				}
 			});
 
-			//_initializeTopBar();
-
 			//gallery open
 			$('#menu_activities').on('click', function () {
 				_welContentArea.html(_welProgram);
@@ -88,76 +87,36 @@ require(['jquery'], function($){
 			$('._sign_up_btn').on('click', function () {
 				$("#login").hide();
 				_welContentArea.html(_welSignUp);
-			})
-		}
-
-		/*function _initializeTopBar() {
-			$('.menu_title').on('click',function (e) {
-				e.preventDefault();
-
-				var target = this.hash;
-				var $target = $(target);
-
-				if($(window).scrollTop() < 125) {
-					$('.top-bar').addClass('_scroll');
-				}
-
-				$('html, body').stop().animate({
-					'scrollTop': $target.offset().top - $('.top-bar').height()
-				}, 900, 'swing', function () {
-					window.location.hash = target;
-				});
-			});
-		}*/
-	
-		// layer open event method
-		function openLayer(targetID, options){
-			var $layer = $('#'+targetID);
-			var $close = $layer.find('.close');
-			var width = $layer.outerWidth();
-			var ypos = options.top;
-			var xpos = options.left;
-			var scrollTop = $(window).scrollTop();
-			var marginLeft = 0;
-			var maskHeight = $(document).height();
-			var maskWidth = $(window).width();
-
-			if(xpos==undefined){
-				xpos = '50%';
-				marginLeft = -(width/2);
-			}
-
-			if(!$layer.is(':visible')){
-				$layer.css({'top':ypos+scrollTop+'px','left':xpos,'margin-left':marginLeft,'z-index':1000,'margin':'10%'}).show();
-				$('.popup_background').css({'width':maskWidth,'height':maskHeight}).show();
-				$(document).on("mousewheel.disableScroll DOMMouseScroll.disableScroll touchmove.disableScroll", function(e) {
-					e.preventDefault();
-					return;
-				});
-				$(document).on("keydown.disableScroll", function(e) {
-					var eventKeyArray = [32, 33, 34, 35, 36, 37, 38, 39, 40];
-					for (var i = 0; i < eventKeyArray.length; i++) {
-						if (e.keyCode === eventKeyArray [i]) {
-							e.preventDefault();
-							return;
-						}
+				
+				$('._add_lang').on('click', function (we) {
+					if($('.capableLang2Display').css('display') == 'none') {
+						$('.capableLang2Display').show();
+					} else {
+						$('.capableLang3Display').show();
+						$('._add_lang').hide();
 					}
 				});
-				console.log("팝업창이 뜹니다.");
-			}
 
-			$close.bind('click',function(){
-				if($layer.is(':visible')){
-					$layer.hide();
-					$('.popup_background').hide();
-					$(document).off(".disableScroll");
-				}
-				return false;
-			});
+				$('._check_id').on('click', function (we) {
+					$.ajax({
+						method: 'GET',
+						url:'/checkId.do',
+						data: {email: $('#signup_email').val()}
+					})
+						.done(function (oData) {
+							if(oData == 'exist') {
+								alert('already existed Id!');
+							} else {
+								alert('You can use this id');
+							}
+					});
+				});
+			})
 		}
+	
+
 
 	});
 });
-
 
 

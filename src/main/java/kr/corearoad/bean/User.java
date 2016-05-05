@@ -1,8 +1,12 @@
 package kr.corearoad.bean;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Naver on 2016-04-09.
@@ -13,6 +17,7 @@ public class User {
     private String email;
     private String name;
     private String password;
+    private String gender;
     private String nationality;
     private String capableLang1;
     private String capableLang2;
@@ -25,10 +30,11 @@ public class User {
     private boolean isKorean = false;
     private boolean forFakeUser = false;
 
-    public User(String email, String name, String password, String nationality, String capableLang1, String capableLang2, String capableLang3, String birthDate, String profilePicture, String tourInitinerary, String selfIntroduction, boolean chatStatus, boolean isKorean) {
+    public User(String email, String name, String password, String gender, String nationality, String capableLang1, String capableLang2, String capableLang3, String birthDate, String profilePicture, String tourInitinerary, String selfIntroduction, boolean chatStatus, boolean isKorean) {
         this.email = email;
         this.name = name;
         this.password = password;
+        this.gender = gender;
         this.nationality = nationality;
         this.capableLang1 = capableLang1;
         this.capableLang2 = capableLang2;
@@ -69,6 +75,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getNationality() {
@@ -162,6 +176,19 @@ public class User {
     public void setForFakeUser(boolean forFakeUser) {
         this.forFakeUser = forFakeUser;
     }
+
+    public String getCapableLangJsonString(String lang, String level) {
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("level", level);
+        map.put("lang", lang);
+
+        Gson gson = new GsonBuilder().create();
+        ;
+
+        return gson.toJson(map);
+    }
+
+
 
     @Override
     public String toString() {

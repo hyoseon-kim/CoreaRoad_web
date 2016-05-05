@@ -22,8 +22,13 @@ public class LoginUserDAO implements LoginUserInterface{
 
     @Override
     @Transactional
-    public User test(String email) throws SQLException {
+    public User getUser(String email) throws SQLException {
         return (User)sqlSession.selectOne("kr.corearoad.mapper.LoginUserInterface.getUser", email);
     }
 
+    @Override
+    @Transactional
+    public void join(User user) throws SQLException {
+        sqlSession.insert("kr.corearoad.mapper.LoginUserInterface.joinUser", user);
+    }
 }

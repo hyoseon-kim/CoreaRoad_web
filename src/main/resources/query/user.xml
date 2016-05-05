@@ -19,4 +19,23 @@
     <select id="getUser" parameterType="String" resultMap="user">
         select * from user where email = #{email}
     </select>
+    <insert id="joinUser" parameterType="kr.corearoad.bean.User">
+        insert into user(email, name, password, nationality, capable_lang_1, capable_lang_2, capable_lang_3, birthdate, profile_pic, tour_itinerary, self_introduction, chat_status, korean)
+        VALUES (
+            #{email},
+            #{name},
+            #{password},
+            #{nationality},
+            #{capableLang1},
+            #{capableLang2},
+            #{capableLang3},
+            STR_TO_DATE(#{birthDate}, '%Y%m%d'),
+            #{profilePicture},
+            #{tourInitinerary},
+            #{selfIntroduction},
+            #{chatStatus},
+            #{isKorean}
+        );
+
+    </insert>
 </mapper>

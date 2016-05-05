@@ -1,0 +1,18 @@
+.aboutContent{
+    display: inline-block;
+}
+
+.about{
+    text-align: center;
+}
+
+.mission{
+    max-width:300px;
+    height: auto;
+}
+
+.infoName{
+    text-align: center;
+    display: inline-block;
+    color:gray;
+}

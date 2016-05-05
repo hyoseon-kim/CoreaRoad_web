@@ -1,5 +1,3 @@
-
-
 <!--갤러리-->
 <section id="least">
 
@@ -10,72 +8,29 @@
     <!-- Least Gallery: Thumbnails -->
     <ul class="least-gallery">
         <!-- 1 || Element with data-caption ||-->
-        <li>
-            <a href="img/layer/1.PNG" title="Color Run" data-subtitle="View Picture">
-                <img src="img/layer/1.PNG" alt="Alt Image Text" />
-            </a>
-        </li>
-
-        <!-- 2 || Element with data-caption as href-attribute ||-->
-        <li>
-            <a href="img/layer/2.PNG" title="GgimJilBang" data-subtitle="View Picture" data-caption="Now it's possibe to add an URL-Link into caption text - <a href='http://www.google.com' target='_blank'>GOOGLE</a>">
-                <img src="img/layer/2.PNG" alt="Alt Image Text" />
-            </a>
-        </li>
-
-        <!-- 3 -->
-        <li>
-            <a href="img/layer/3.PNG" title="GwangJang Market" data-subtitle="View Picture">
-                <img src="img/layer/3.PNG" alt="Alt Image Text" />
-            </a>
-        </li>
-
-        <!-- 4 -->
-        <li>
-            <a href="img/layer/4.PNG" title="Han River" data-subtitle="View Picture">
-                <img src="img/layer/4.PNG" alt="Alt Image Text" />
-            </a>
-        </li>
-
-        <!-- 5 -->
-        <li>
-            <a href="img/layer/5.PNG" title="HongDae" data-subtitle="View Picture">
-                <img src="img/layer/5.PNG" alt="Alt Image Text" />
-            </a>
-        </li>
-
-        <!-- 6 -->
-        <li>
-            <a href="img/layer/6.PNG" title="Mud Festival" data-subtitle="View Picture">
-                <img src="img/layer/6.PNG" alt="Alt Image Text" />
-            </a>
-        </li>
+        <!--gallery 와꾸만들기 -->
     </ul>
 
 </section>
 <!-- Least Gallery end -->
 
 <script>
-    $(document).ready(function(){
-        $('.least-gallery').least();
+    $(document).ready(function() {
+        $.ajax('/getMainActionPictureList.do').done(function (oData) {
+            var json = $.parseJSON(oData);
 
-        $.ajax('/url').done(function (oData) {
-            var result = $.parseJSON(oData);
-            // result = [{image:'http://!!',text:'ddddddd},{image:'http://!!',text:'ddddddd}]
-
-            result.forEach(result, function (index) {
-                var image = result.image;
-                var text = result.text;
+            $.each(json, function( index, value ) {
+                var image = value.url;
+                var name = value.name;
                 var sHtml = [];
                 sHtml.push('<li>');
-                sHtml.push('<a href="'+image+'" title="Mud Festival" data-subtitle="View Picture" data-text="">');
-                sHtml.push(' <img src="'+image+'" alt="Alt Image Text" />');
-                sHtml.push('<li>');
+                sHtml.push('<a href="img/' + image + '" title="'+name+'"data-subtitle="">');
+                sHtml.push(' <img src="img/' + image + '" alt="Alt Image Text" /></a>');
+                sHtml.push('</li>');
                 $('.least-gallery').append(sHtml.join(''));
-
-
-            })
-        })
+            });
+            $('.least-gallery').least();
+        });
     });
 </script>
 

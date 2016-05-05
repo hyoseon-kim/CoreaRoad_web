@@ -50,6 +50,7 @@ public class ActionBO {
                 String[] tempPictureList = strPicture.split(",");
                 map.put("url", tempPictureList[0].trim().replaceAll("'",""));
                 map.put("no", pic.get("act_no"));
+                map.put("name", pic.get("act_name"));
                 retList.add(map);
             }
             return retList;

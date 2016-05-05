@@ -23,8 +23,9 @@ require(['jquery'], function($){
 		'text!/footer.html',
 		'text!/content.html',
 		'text!/program.html',
-		'text!/signUpForm.html'
-	], function(foundation, least, _welheader, _welFooter, _welContent, _welProgram, _welSignUp){
+		'text!/signUpForm.html',
+		'text!/aboutUs.html'
+	], function(foundation, least, _welheader, _welFooter, _welContent, _welProgram, _welSignUp, _welAboutUs){
 		var _welLoginBtnArea = null,
 			_h1UserId = null,
 			_welHeaderArea = $('._corearoad_header'),
@@ -37,6 +38,11 @@ require(['jquery'], function($){
 			$(document).foundation();
 			_getLoginSession();
 			_attachEvent();
+
+			$.ajax('/getMainActionPictureList.do').done(function (oData) {
+				var json = $.parseJSON(oData);
+				console.log(json);
+			})
 		});
 
 		function _includeTemplate() {
@@ -82,6 +88,9 @@ require(['jquery'], function($){
 			//gallery open
 			$('#menu_activities').on('click', function () {
 				_welContentArea.html(_welProgram);
+			});
+			$('#menu_aboutUs').on('click', function () {
+				_welContentArea.html(_welAboutUs);
 			});
 
 			$("._login_btn").on('click', function () {

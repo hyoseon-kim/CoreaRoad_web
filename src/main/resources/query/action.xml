@@ -20,7 +20,7 @@
         select * from action where act_no = #{no};
     </select>
     <select id="getPictureList" resultType="HashMap">
-        select act_no, act_pictureList from action;
+        select act_no, act_name, act_pictureList from action;
 
     </select>
 </mapper>

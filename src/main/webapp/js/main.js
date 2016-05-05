@@ -93,7 +93,7 @@ require(['jquery'], function($){
 			})
 
 			$('._sign_up_btn').on('click', function () {
-				$("#login").hide();
+				$('#login').foundation('close');
 				_welContentArea.html(_welSignUp);
 				
 				$('._add_lang').on('click', function (we) {

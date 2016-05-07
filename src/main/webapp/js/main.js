@@ -38,11 +38,6 @@ require(['jquery'], function($){
 			$(document).foundation();
 			_getLoginSession();
 			_attachEvent();
-
-			$.ajax('/getMainActionPictureList.do').done(function (oData) {
-				var json = $.parseJSON(oData);
-				console.log(json);
-			})
 		});
 
 		function _includeTemplate() {
@@ -104,7 +99,9 @@ require(['jquery'], function($){
 			$('._sign_up_btn').on('click', function () {
 				$('#login').foundation('close');
 				_welContentArea.html(_welSignUp);
-				
+
+				var elem = new Foundation.Abide($('._sign_up_form'),{});
+				$('._sign_up_form').foundation('requiredCheck', $('_sign_up_form'));
 				$('._add_lang').on('click', function (we) {
 					if($('.capableLang2Display').css('display') == 'none') {
 						$('.capableLang2Display').show();

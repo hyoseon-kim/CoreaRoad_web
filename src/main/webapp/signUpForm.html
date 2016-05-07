@@ -1,5 +1,8 @@
-<form action="/signup.do" class="register" method="post">
+<form action="/signup.do" class="register _sign_up_form" method="post" data-abide novalidate>
     <h1>Registration</h1>
+    <div data-abide-error class="alert callout" style="display: none;">
+        <p><i class="fi-alert"></i> There are some errors in your form.</p>
+    </div>
     <fieldset>
         <legend>Account Details</legend>
         <div class="row medium-uncollapse large-collapse">
@@ -8,7 +11,7 @@
                     <label for="signup_email" class="text-right">Email *</label>
                     </div>
                     <div>
-                        <input type="text" id="signup_email" name="email"/>
+                        <input type="text" id="signup_email" name="email" required />
                         <a href="#" class="success button _check_id">Check ID</a>
                     </div>
             </div>
@@ -17,7 +20,7 @@
                         <label for="signup_password" class="text-right">Password *</label>
                     </div>
                     <div>
-                        <input type="password" id="signup_password" name="password"/>
+                        <input type="password" id="signup_password" name="password" required />
                     </div>
             </div>
         </div>
@@ -30,7 +33,7 @@
                Name *
            </div>
            <div class="small-9 columns">
-               <input type="text" class="long" id="signup_name" name="name"/>
+               <input type="text" class="long" id="signup_name" name="name" required />
            </div>
        </div>
         <div class="row">
@@ -48,7 +51,7 @@
                Nationality *
             </div>
             <div class="small-9 columns">
-                <select name="nationality">
+                <select name="nationality" required>
                     <option value="">-- select one --</option>
                     <option value="afghan">Afghan</option>
                     <option value="albanian">Albanian</option>
@@ -248,7 +251,8 @@
         <div class="row">
             <div class="small-2 columns"> Birthdate *</div>
             <div class="small-3 columns">
-            <select class="date" name="date">
+            <select class="date" name="date" required>
+                    <option value=""></option>
                     <option value="01">01
                     </option>
                     <option value="02">02
@@ -315,6 +319,7 @@
             </div>
             <div class="small-3 columns">
                 <select name="month">
+                    <option value=""></option>
                     <option value="01">January
                     </option>
                     <option value="02">February
@@ -342,7 +347,7 @@
                 </select>
             </div>
             <div class="small-4 columns">
-                <input class="year" type="text" size="4" maxlength="4" placeholder="e.g 1976" name="year"/>
+                <input class="year" type="text" size="4" maxlength="4" placeholder="e.g 1976" name="year" required/>
             </div>
         </div>
     </fieldset>
@@ -355,6 +360,7 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang1">
+                    <option value="">---</option>
                     <option value="english">English</option>
                     <option value="spanish">Spanish</option>
                     <option value="french">French</option>
@@ -366,6 +372,7 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang1_level">
+                    <option value="">---</option>
                     <option value="good">Good</option>
                     <option value="fair">Fair</option>
                     <option value="poor">Poor</option>
@@ -378,6 +385,7 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang2">
+                    <option value="">---</option>
                     <option value="english">English</option>
                     <option value="spanish">Spanish</option>
                     <option value="french">French</option>
@@ -389,6 +397,7 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang2_level">
+                    <option value="">---</option>
                     <option value="good">Good</option>
                     <option value="fair">Fair</option>
                     <option value="poor">Poor</option>
@@ -401,6 +410,7 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang3">
+                    <option value="">---</option>
                     <option value="english">English</option>
                     <option value="spanish">Spanish</option>
                     <option value="french">French</option>
@@ -412,6 +422,7 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang3_level">
+                    <option value="">---</option>
                     <option value="good">Good</option>
                     <option value="fair">Fair</option>
                     <option value="poor">Poor</option>

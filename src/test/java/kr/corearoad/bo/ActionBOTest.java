@@ -30,16 +30,7 @@ public class ActionBOTest {
 
     @Test
     public void getPictureList() throws Exception {
-        List<Map<String,String>> retList = new ArrayList<Map<String,String>>();
-        List<Map<String,String>> picList = actionBO.getPictureList();
-        for(Map<String,String> pic : picList) {
-            Map<String,String> map = new HashMap<String, String>();
-            String strPicture = pic.get("act_pictureList").split("\\[")[1].split("\\]")[0];
-            String[] tempPictureList = strPicture.split(",");
-            map.put("url", tempPictureList[0].trim().replaceAll("'",""));
-            map.put("no", pic.get("act_no"));
-            retList.add(map);
-        }
+        List<Map<String,String>> retList = actionBO.getMainPictureList();
         System.out.println(retList);
     }
 

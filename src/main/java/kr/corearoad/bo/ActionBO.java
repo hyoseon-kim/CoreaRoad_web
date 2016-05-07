@@ -2,6 +2,7 @@ package kr.corearoad.bo;
 
 import kr.corearoad.bean.Action;
 import kr.corearoad.dao.ActionDAO;
+import kr.corearoad.util.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +21,27 @@ public class ActionBO {
     @Autowired
     ActionDAO actionDAO;
 
-    public Action getAction(String no) {
-        Action action = null;
+    public Map<String,Object> getAction(String no) {
+        Map<String,Object> retMap = new HashMap<String, Object>();
         try {
-            action = actionDAO.getAction(no);
-            return action;
+            Action action = actionDAO.getAction(no);
+            retMap.put("no", action.getNo());
+            retMap.put("name", action.getName());
+            retMap.put("city", action.getCity());
+            retMap.put("text", action.getText());
+            retMap.put("totalTime", action.getTotalTime());
+            retMap.put("meetPlace", action.getMeetPlace());
+            retMap.put("exception", action.getException());
+            retMap.put("tagList", CommonUtils.returnStringArrayFromString(action.getTagList()));
+            retMap.put("thumbList", CommonUtils.returnStringArrayFromString(action.getThumbList()));
+            retMap.put("cartList", CommonUtils.returnStringArrayFromString(action.getCartList()));
+            retMap.put("bookList", CommonUtils.returnStringArrayFromString(action.getBookList()));
+            retMap.put("pictureList", CommonUtils.returnStringArrayFromString(action.getPictureList()));
+            retMap.put("jingermanList", CommonUtils.returnStringArrayFromString(action.getJingermanList()));
+            return retMap;
         } catch (SQLException e) {
             e.printStackTrace();
-            return action;
+            return null;
         }
     }
 

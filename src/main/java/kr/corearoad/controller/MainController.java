@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -159,6 +160,15 @@ public class MainController {
 	public String getMainActionPictureList(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
 		Gson gson = new GsonBuilder().create();
 		map.put("message", gson.toJson(actionBO.getMainPictureList()));
+		return "hello";
+	}
+
+	@RequestMapping("/getAction.do")
+	public String getAction(HttpServletRequest req, HttpServletResponse res, ModelMap map) throws UnsupportedEncodingException {
+		req.setCharacterEncoding("UTF-8");
+		res.setCharacterEncoding("UTF-8");
+		Gson gson = new GsonBuilder().create();
+		map.put("message", gson.toJson(actionBO.getAction(req.getParameter("actionNo"))));
 		return "hello";
 	}
 }

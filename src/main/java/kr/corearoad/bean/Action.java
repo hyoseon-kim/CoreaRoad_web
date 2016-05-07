@@ -1,5 +1,6 @@
 package kr.corearoad.bean;
 
+import kr.corearoad.util.CommonUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

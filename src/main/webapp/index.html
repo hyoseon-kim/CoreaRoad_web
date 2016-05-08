@@ -5,14 +5,14 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>CoreRoad | Just One Trip For U</title>
-    <!--<link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="css/foundation.min.css">
     <!--<link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" href="css/slide.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div class="_corearoad_header">
+<div class="_corearoad_header off-canvas-wrap" data-offcanvas>
     <div class="top-bar">
         <div class="_top_menu">
             <div class="row" style="max-width: 50rem; text-align: center;">
@@ -30,7 +30,8 @@
                     </ul>
                 </div>
                 <div class="_login_area">
-                    <p><a type="button" class="button _login_btn" data-open="login">Login</a></p>
+                    <a href="#" class="_side_bar" ><img src="img/hamburger_menu.png" width="40px"/></a>
+                    <a href="#" class="_login_btn" data-open="login"><img src="img/login.png" width="45px"/> </a>
                     <h3 class="_user_id"></h3>
                 </div>
             </div>
@@ -59,6 +60,14 @@
             <button class="button _login" type="submit">Login</button>
             <a href="#" class="button _sign_up_btn">Sign Up</a>
         </form>
+    </div>
+
+    <!-- pop up layer -->
+    <div id="sidebar" style="position: fixed;top: 0;right: 0;height: 100%;display: none;background: white;z-index:1000;width:30%">
+            <button class="close-button _login_close" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
     </div>
 </div>
 
@@ -90,6 +99,7 @@
         </div>
     </div>
 </div>
+
 
 
 <!--color-->

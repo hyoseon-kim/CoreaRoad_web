@@ -49,6 +49,10 @@ define([
                         }
                     });
             });
+
+            $("._login_close").on('click', function () {
+                $('#login').foundation('close');
+            })
         });
     }
     return {

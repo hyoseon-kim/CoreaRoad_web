@@ -60,15 +60,14 @@ require(['jquery'], function ($) {
 				}
 			});
 
-			
 
 			$("._login_btn").on('click', function () {
 				$('#login').foundation('open');
 			});
 
-			$("._login_close").on('click', function () {
-				$('#login').foundation('close');
-			})
+			$("._side_bar").on('click', function () {
+				$('#sidebar').show();
+			});
 		}
 	});
 });

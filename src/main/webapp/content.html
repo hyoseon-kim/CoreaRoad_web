@@ -17,32 +17,98 @@
             </li>
         </ul>
     </div>
+
+   <!--search engine-->
+  <div class="content_footerbar">
+      <div class="search-bar">
+        <div class="search-box">
+            <form id="search-box-form" method="get" action="/s"> <<!--what is meaning? /s-->
+                <div class="search-box-input">
+                    <!--1. 도시설정-->
+                    <label class="search-location input-placeholder-group">
+                        <span class="input-placeholder-label screen-reader-only">City in Corea</span>
+                        <input class="search-box-inputBox location" id="location" name="location" type="text" placeholder="City in Corea">
+                        <!--aria-autocomplete="both" aria-owns="autocomplete-menu-s055dd31948c56" autocomplete="off" value="" data-reactid=".2.0.0.$/=10.2"-->
+                    </label>
+                    <!--도시설정을 안했을 경우-->
+                    <div class="search-box-location-error hide">
+                        <span data-reactid=" ">Check your city</span>
+                    </div>
+                    <!--2. 날짜-->
+                    <div class="search-dates input-placeholder-group">
+                        <div data-reactid="">
+                            <div class="searchBox-datePicker" data-reactid=" ">
+                                <div class="searchBox-datePicker-input">
+                                    <div class="date-inputs pull-left search-fix" data-reactid="">
+                                        <!--check in-->
+                                        <div class="date-picker-start">
+                                            <label class="input-placeholder-group">
+                                                <span class="input-placeholder-label screen-reader-only">From</span>
+                                                <input type="text" id="startDate" name="startDate" value="" placeholder="From" >
+                                            </label>
+                                            <div class="display-text no-date-selected">From</div>
+                                        </div>
+                                        <!--중간 화살표-->
+                                        <span class="date-piker-arrow">
+                                            <i class="arrow-icon icon"></i>
+                                        </span>
+                                        <!--check out-->
+                                        <div class="date-picker-start">
+                                            <label class="input-placeholder-group">
+                                                <span class="input-placeholder-label screen-reader-only">To</span>
+                                                <input type="text" id="endDate" name="startDate" value="" placeholder="To" >
+                                            </label>
+                                            <div class="display-text no-date-selected">To</div>
+                                        </div>
+                                        <!--number jingermans-->
+                                        <div class="guests">
+                                            <label class="searchbox_guests">
+                                                <span class="screen-reader-only" data-reactid=" ">
+                                                    <span data-reactid="">jingermans 수</span>
+                                                </span>
+                                                <div class="select select-guests" data-reactid="">
+                                                    <select id="guest" name="guest" data-reactid="">
+                                                        <option value="1" data-reactid="">1명</option>
+                                                        <option value="2" data-reactid="">2명</option>
+                                                        <option value="3" data-reactid="">3명</option>
+                                                        <option value="4" data-reactid="">4명</option>
+                                                        <option value="5" data-reactid="">5명</option>
+                                                        <option value="6" data-reactid="">6명</option>
+                                                    </select>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <!--Hash Tag-->
+                                        <div class="searchbox-hash">
+                                            <label class="input-placeholder-group">
+                                                <span class="input-placeholder-label screen-reader-only">#Hash Tag</span>
+                                                <input type="text" id="hashTag" name="hashTag" value="" placeholder="#hash tag">
+                                            </label>
+                                        </div>
+                                        <!--button-->
+                                        <div class="searchbox_button">
+                                            <a class="search_button" href="#color">Check</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+  </div>
+
+
+    <!--
     <div style="position: absolute;top: 70%;left: 40%;">
         <a class="large button" href="#" style="background-color:rgba(255,255,255,0.4);font:2.5rem;border:2px solid;">
             R U READY ?
         </a>
     </div>
+--></div>
 </div>
-</div>
-
-
-<!--color-->
-<!--<div class="tabs-content" data-tabs-content="example-tabs" id="color">
-    <div class="tabs-panel is-active" id="panel1" aria-hidden="false">
-        <h1>CRAZY3<small>Three Crazy Sections</small></h1>
-        <div class="contents_all">
-            <div class="aboutplay" style="cursor:pointer;width:100%">
-                &lt;!&ndash;<a href="program.html">&ndash;&gt;
-                <a href="#color" class="_color_img">
-                    <img src="img/contents/contents_play.jpg" >
-                    <img src="img/contents/contents_eat.png">
-                    <img src="img/contents/contents_exprerience.png">&lt;!&ndash;</a>&ndash;&gt;
-               &lt;!&ndash; <a href="#" class="cbtn" onclick="openLayer('poster1',{top:0, left:0});return false;">&ndash;&gt;
-                </a>
-            </div>
-        </div>
-    </div>
-</div>-->
 
 <!-- popup background-black -->
 <div class="popup_background">

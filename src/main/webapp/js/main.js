@@ -61,16 +61,6 @@ require(['jquery'], function ($) {
 			});
 
 			//gallery open
-			$('#menu_activities').on('click', function () {
-				_welContentArea.html(_welProgram);
-			});
-			$('#menu_aboutUs').on('click', function () {
-				_welContentArea.html(_welAboutUs);
-			});
-			$('#menu_monthly').on('click', function () {
-				_welContentArea.html(_welMonthly);
-			});
-
 			$("._login_btn").on('click', function () {
 				$('#login').foundation('open');
 			});

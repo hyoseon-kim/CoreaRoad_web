@@ -4,8 +4,9 @@
 define([
     'text!/program.html',
     'text!/signUpForm.html',
-    'text!/aboutUs.html'
-],function (_welProgram, _welSignUp, _welAboutUs) {
+    'text!/aboutUs.html',
+    'text!/monthly.html'
+],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly) {
     var _welContentArea = $('._corearoad_content');
     function init() {
         attachEvent();
@@ -18,6 +19,9 @@ define([
         });
         $('#menu_aboutUs').on('click', function () {
             _welContentArea.html(_welAboutUs);
+        });
+        $('#menu_monthly').on('click', function () {
+            _welContentArea.html(_welMonthly);
         });
 
         $('._sign_up_btn').on('click', function () {

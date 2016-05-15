@@ -1,3 +1,4 @@
+<form action="/signup.do" class="register" method="post" style="max-width: 70%;">
 <form action="/signup.do" class="register _sign_up_form" method="post" data-abide novalidate>
     <h1>Registration</h1>
     <div data-abide-error class="alert callout" style="display: none;">
@@ -6,6 +7,19 @@
     <fieldset>
         <legend>Account Details</legend>
         <div class="row medium-uncollapse large-collapse">
+            <div class="row">
+                <div class="small-3 columns">
+                    <!--<label for="signup_email" class="text-right">-->Email *<!--</label>-->
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="signup_email" name="email"/>
+                </div>
+                <div class="small-3 columns">
+                    <a href="#" class="success button _check_id">Check ID</a>
+                </div>
+
+            </div>
+
             <div class="small-6 columns">
                     <div>
                     <label for="signup_email" class="text-right">Email *</label>
@@ -13,6 +27,7 @@
                     <div>
                         <input type="text" id="signup_email" name="email" required />
                         <a href="#" class="success button _check_id">Check ID</a>
+                    </div>
                     </div>
             </div>
             <div class="small-6 columns">
@@ -251,8 +266,7 @@
         <div class="row">
             <div class="small-2 columns"> Birthdate *</div>
             <div class="small-3 columns">
-            <select class="date" name="date" required>
-                    <option value=""></option>
+            <select class="date" name="date">
                     <option value="01">01
                     </option>
                     <option value="02">02
@@ -319,7 +333,6 @@
             </div>
             <div class="small-3 columns">
                 <select name="month">
-                    <option value=""></option>
                     <option value="01">January
                     </option>
                     <option value="02">February
@@ -347,7 +360,7 @@
                 </select>
             </div>
             <div class="small-4 columns">
-                <input class="year" type="text" size="4" maxlength="4" placeholder="e.g 1976" name="year" required/>
+                <input class="year" type="text" size="4" maxlength="4" placeholder="e.g 1976" name="year"/>
             </div>
         </div>
     </fieldset>
@@ -360,7 +373,6 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang1">
-                    <option value="">---</option>
                     <option value="english">English</option>
                     <option value="spanish">Spanish</option>
                     <option value="french">French</option>
@@ -372,7 +384,6 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang1_level">
-                    <option value="">---</option>
                     <option value="good">Good</option>
                     <option value="fair">Fair</option>
                     <option value="poor">Poor</option>
@@ -385,7 +396,6 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang2">
-                    <option value="">---</option>
                     <option value="english">English</option>
                     <option value="spanish">Spanish</option>
                     <option value="french">French</option>
@@ -397,7 +407,6 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang2_level">
-                    <option value="">---</option>
                     <option value="good">Good</option>
                     <option value="fair">Fair</option>
                     <option value="poor">Poor</option>
@@ -410,7 +419,6 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang3">
-                    <option value="">---</option>
                     <option value="english">English</option>
                     <option value="spanish">Spanish</option>
                     <option value="french">French</option>
@@ -422,7 +430,6 @@
             </div>
             <div class="small-4 columns">
                 <select name="capable_lang3_level">
-                    <option value="">---</option>
                     <option value="good">Good</option>
                     <option value="fair">Fair</option>
                     <option value="poor">Poor</option>
@@ -443,7 +450,7 @@
             </div>
             <div class="small-9 columns">
                 <label for="exampleFileUpload" class="button">Upload File</label>
-                <input type="file" id="exampleFileUpload" name="profilePicture" class="show-for-sr">
+                <input type="file" id="exampleFileUpload" class="show-for-sr">
             </div>
         </div>
         <div class="row">

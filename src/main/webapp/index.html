@@ -10,20 +10,185 @@
     <!--<link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" href="css/slide.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/least.min.css">
-    <link rel="stylesheet" href="css/program.css">
 </head>
 <body>
-<div class="_corearoad_header">
+<div class="_corearoad_header off-canvas-wrap" data-offcanvas>
+    <div class="top-bar">
+        <div class="_top_menu">
+            <div class="row" style="max-width: 50rem; text-align: center;">
+                <div class="small-centered">
+                    <ul class="menu">
+                        <li><a href="#aboutUs" class="menu_title" id="menu_aboutUs" style="color:#EB5C4B;">AboutUs</a> </li>
+                        <li><a href="#color" class="menu_title" id="menu_activities" style="color:#ED7C48">Activities</a> </li>
+                        <li><a href="#monthly" class="menu_title" id="menu_monthly" style="color: #F7CA13">Monthly</a> </li>
+                        <li><a href="#chat" class="menu_title" id="menu_chat" style="color: #C0C424">Chat</a> </li>
+                        <li><a href="/index.html"><img src="img/logo.png" id="menu_logo"/></a></li>
+                        <li><a href="#jingerWalls" class="menu_title" style="color: #43A688">JingerWalls</a> </li>
+                        <li><a href="#coreaPicks" class="menu_title" style="color:#54BEDA">CoreaPicks</a> </li>
+                        <li><a href="#event" class="menu_title" style="color:#8BA6D3">Event</a> </li>
+                        <li><a href="#contact" class="menu_title" style="color:#A77CB4">Contact</a> </li>
+                    </ul>
+                </div>
+                <div class="_login_area">
+                    <a href="#" class="_side_bar" ><img src="img/hamburger_menu.png" width="40px"/></a>
+                    <a href="#" class="_login_btn" data-open="login"><img src="img/login.png" width="45px"/> </a>
+                    <h3 class="_user_id"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- pop up layer -->
+    <div class="reveal" id="login" data-reveal>
+        <!-- inside popup-->
+        <form action="/login.do" method="post">
+            <div class="row">
+                <div class="medium-6 columns">
+                    <label>email
+                        <input type="text" placeholder="Kirk, James T."name="email" class="_email">
+                    </label>
+                </div>
+                <div class="medium-6 columns">
+                    <label>password
+                        <input type="password" class="_password" name="password">
+                    </label>
+                </div>
+            </div>
+            <button class="close-button _login_close" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <button class="button _login" type="submit">Login</button>
+            <a href="#" class="button _sign_up_btn">Sign Up</a>
+        </form>
+    </div>
+
+    <div class="foreground_black reveal-overlay" style="display: none;"></div>
+
+    <!-- pop up layer -->
+    <div id="sidebar">
+        <div class="content">
+            <p>My Info</p>
+        </div>
+            <button class="close-button _sidebar_close" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+    </div>
 </div>
 
 <!--컨텐츠 영역-->
 <div class="_corearoad_content">
+    <div style="position: relative">
+        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+            <ul class="orbit-container">
+                <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+                <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+                <li class="orbit-slide is-active" style="top: 85px;">
+                    <img src="img/1.jpg" width="100%">
+                </li>
+                <li class="orbit-slide">
+                    <img src="img/5.jpg" width="100%">
+                </li>
+                <li class="orbit-slide">
+                    <img src="img/3.jpg" width="100%">
+                </li>
+                <li class="orbit-slide">
+                    <img src="img/4.jpg" width="100%">
+                </li>
+            </ul>
+        </div>
+        <div style="position: absolute;top: 70%;left: 40%;">
+            <a class="large button" href="#" style="background-color:rgba(255,255,255,0.4);font:2.5rem;border:2px solid;">
+                R U READY ?
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<!--color-->
+<!--<div class="tabs-content" data-tabs-content="example-tabs" id="color">
+    <div class="tabs-panel is-active" id="panel1" aria-hidden="false">
+        <h1>CRAZY3<small>Three Crazy Sections</small></h1>
+        <div class="contents_all">
+            <div class="aboutplay" style="cursor:pointer;width:100%">
+                &lt;!&ndash;<a href="program.html">&ndash;&gt;
+                <a href="#color" class="_color_img">
+                    <img src="img/contents/contents_play.jpg" >
+                    <img src="img/contents/contents_eat.png">
+                    <img src="img/contents/contents_exprerience.png">&lt;!&ndash;</a>&ndash;&gt;
+               &lt;!&ndash; <a href="#" class="cbtn" onclick="openLayer('poster1',{top:0, left:0});return false;">&ndash;&gt;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!-- popup background-black -->
+<div class="popup_background">
+</div>
 </div>
 <!-- 푸터 -->
-<div class="_corearoad_footer"></div>
-<script src="js/vendor/jquery.min.js"></script>
-<script src="js/least.min.js"></script>
-<script src="js/vendor/require.js" type="text/javascript" data-main="js/main.js"></script>
+<div class="_corearoad_footer">
+    <footer class="footer" id="contact">
+        <div class="row">
+            <div class="small-12 medium-6 large-5 columns">
+                <p class="logo"><i class="fi-shield"></i> CoreaRoad</p>
+                <p class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">About</a>
+                    <a href="#">Faq</a>
+                    <a href="#">Contact</a>
+                </p>
+                <p class="copywrite">Copywrite not copywrite © 2015</p>
+            </div>
+            <div class="small-12 medium-6 large-4 columns">
+                <ul class="contact">
+                    <li><p><i class="fi-marker"></i>Doosan Bears Tower 510, Yongdu-dong, Dongdaemoon-gu, Seoul, South Korea</p></li>
+                    <li><p><i class="fi-telephone"></i>+82-10-5133-1564</p></li>
+                    <li><p><i class="fi-mail"></i>corearoadofficial@gmail.com</p></li>
+                </ul>
+            </div>
+            <div class="small-12 medium-12 large-3 columns">
+                <p class="about">If You wanna Real Crazy Travel in Corea</p>
+                <p class="about subheader">You can be a Jingerman, if you join CoreaRoad. Then you can get a chance to enjoy Crazy Trip you have not been ever.</p>
+                <ul class="inline-list social">
+                    <a href="#"><i class="fi-social-facebook"></i></a>
+                    <a href="#"><i class="fi-social-twitter"></i></a>
+                    <a href="#"><i class="fi-social-linkedin"></i></a>
+                    <a href="#"><i class="fi-social-github"></i></a>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+
 </body>
+<script>
+    var require ={
+        baseUrl:'./js',
+        paths: {
+            vendor: 'vendor/',
+            jquery: 'vendor/jquery-2.2.3',
+            foundation: 'vendor/foundation.min',
+            text: 'vendor/text',
+            least: 'vendor/least'
+        },
+        shim: {
+            'least' : {
+                deps: ['jquery'],
+                exports: 'least'
+            },
+            'foundation' : {
+                deps : ['jquery'],
+                exports: 'foundation'
+            }
+        }
+    };
+</script>
+<script src="js/vendor/require.js" type="text/javascript"></script>
+<script src="js/main.js"></script>
 </html>

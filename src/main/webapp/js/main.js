@@ -3,30 +3,12 @@
  */
 'use strict';
 
-require.config({
-    baseUrl:'./js',
-	shim: {
-	},
-    paths: {
-		jquery: 'vendor/jquery.min',
-		foundation: 'vendor/foundation.min',
-		text:'vendor/text',
-		least: 'vendor/least'
-    }
-});
-
-require(['jquery'], function($){
+require.config();
+require(['jquery'], function ($) {
 	require([
 		'foundation',
-		'least',
-		'text!/header.html',
-		'text!/footer.html',
-		'text!/content.html',
-		'text!/program.html',
-		'text!/signUpForm.html',
-		'text!/aboutUs.html',
-		'text!/monthly.html'
-	], function(foundation, least, _welheader, _welFooter, _welContent, _welProgram, _welSignUp, _welAboutUs,_welMonthly){
+		'header'
+	], function(foundation, header){
 		var _welLoginBtnArea = null,
 			_h1UserId = null,
 			_welHeaderArea = $('._corearoad_header'),
@@ -39,18 +21,10 @@ require(['jquery'], function($){
 			$(document).foundation();
 			_getLoginSession();
 			_attachEvent();
-
-			$.ajax('/getMainActionPictureList.do').done(function (oData) {
-				var json = $.parseJSON(oData);
-				console.log(json);
-			})
 		});
 
 		function _includeTemplate() {
-			_welHeaderArea.html(_welheader);
-			_welFooterArea.html(_welFooter);
-			_welContentArea.html(_welContent);
-
+			header.init();
 			_welLoginBtnArea = $('._login_btn');
 			_h1UserId = $('._user_id');
 		}
@@ -100,41 +74,17 @@ require(['jquery'], function($){
 			$("._login_btn").on('click', function () {
 				$('#login').foundation('open');
 			});
+
+			$("._side_bar").on('click', function () {
+				$('.foreground_black').show();
+				$('#sidebar').show();
+			});
 			
-			$("._login_close").on('click', function () {
-				$('#login').foundation('close');
-			})
-
-			$('._sign_up_btn').on('click', function () {
-				$('#login').foundation('close');
-				_welContentArea.html(_welSignUp);
-				
-				$('._add_lang').on('click', function (we) {
-					if($('.capableLang2Display').css('display') == 'none') {
-						$('.capableLang2Display').show();
-					} else {
-						$('.capableLang3Display').show();
-						$('._add_lang').hide();
-					}
-				});
-
-				$('._check_id').on('click', function (we) {
-					$.ajax({
-						method: 'GET',
-						url:'/checkId.do',
-						data: {email: $('#signup_email').val()}
-					})
-						.done(function (oData) {
-							if(oData == 'exist') {
-								alert('already existed Id!');
-							} else {
-								alert('You can use this id');
-							}
-					});
-				});
+			$('._sidebar_close').on('click', function (evt) {
+				$('.foreground_black').hide();
+				$('#sidebar').hide();
 			})
 		}
 	});
 });
-
 

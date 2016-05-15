@@ -7,10 +7,10 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://121.254.168.77:3306/dbcorearoad?autoReconnect=true"/>
+        <property name="url" value="jdbc:mysql://121.254.168.77:3306/dbcorearoad?autoReconnect=true&amp;interactiveClient=true&amp;autoReconnectForPools=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="username" value="corearoad"/>
         <property name="password" value="cr20160323**"/>
-        <property name="maxIdle" value="2"/>
+        <property name="maxIdle" value="10"/>
         <property name="maxWaitMillis" value="1000"/>
 
         <property name="testOnBorrow" value="true"/>
@@ -21,7 +21,7 @@
         <property name="minEvictableIdleTimeMillis" value="-1"/>
         <property name="validationQuery" value="SELECT 1"/>
         <property name="poolPreparedStatements" value="true"/>
-        <property name="maxOpenPreparedStatements" value="50"/>
+        <property name="maxOpenPreparedStatements" value="20"/>
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">

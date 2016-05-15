@@ -24,8 +24,8 @@ define([
             $('#login').foundation('close');
             _welContentArea.html(_welSignUp);
 
-            var elem = new Foundation.Abide($('._sign_up_form'),{});
-            $('._sign_up_form').foundation('requiredCheck', $('_sign_up_form'));
+           //var elem = new Foundation.Abide($('._sign_up_form'),{});
+            //$('._sign_up_form').foundation('requiredCheck', $('._sign_up_form'));
             $('._add_lang').on('click', function (we) {
                 if($('.capableLang2Display').css('display') == 'none') {
                     $('.capableLang2Display').show();

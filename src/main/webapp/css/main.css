@@ -368,3 +368,19 @@ p.title {
 .part{
     display: inline-block;
 }
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: none;
+    background: white;
+    z-index:1006;
+    width:30%
+}
+
+#sidebar .content {
+    margin-top: 15%;
+    margin-left: 10%;
+}

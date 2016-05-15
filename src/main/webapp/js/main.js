@@ -66,8 +66,14 @@ require(['jquery'], function ($) {
 			});
 
 			$("._side_bar").on('click', function () {
+				$('.foreground_black').show();
 				$('#sidebar').show();
 			});
+			
+			$('._sidebar_close').on('click', function (evt) {
+				$('.foreground_black').hide();
+				$('#sidebar').hide();
+			})
 		}
 	});
 });

@@ -24,8 +24,9 @@ require(['jquery'], function($){
 		'text!/content.html',
 		'text!/program.html',
 		'text!/signUpForm.html',
-		'text!/aboutUs.html'
-	], function(foundation, least, _welheader, _welFooter, _welContent, _welProgram, _welSignUp, _welAboutUs){
+		'text!/aboutUs.html',
+		'text!/monthly.html'
+	], function(foundation, least, _welheader, _welFooter, _welContent, _welProgram, _welSignUp, _welAboutUs,_welMonthly){
 		var _welLoginBtnArea = null,
 			_h1UserId = null,
 			_welHeaderArea = $('._corearoad_header'),
@@ -91,6 +92,9 @@ require(['jquery'], function($){
 			});
 			$('#menu_aboutUs').on('click', function () {
 				_welContentArea.html(_welAboutUs);
+			});
+			$('#menu_monthly').on('click', function () {
+				_welContentArea.html(_welMonthly);
 			});
 
 			$("._login_btn").on('click', function () {

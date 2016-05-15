@@ -10,9 +10,27 @@
     max-width:300px;
     height: auto;
 }
+.jingerman_intro{
+    text-align : center;
+}
 
 .infoName{
     text-align: center;
     display: inline-block;
     color:gray;
+}
+
+.jingerman_table{
+    background-color: white;
+    max-width : 900px;
+    display: inline-block;
+}
+
+.table_row{
+    background-color: white;
+    max-width : 700px;
+    border: white;
+}
+#why_did_you_grey{
+    background-color: white;
 }

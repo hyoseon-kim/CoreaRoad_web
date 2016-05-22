@@ -8,6 +8,7 @@
     <context:component-scan base-package="kr.corearoad.*"/>
 
     <import resource="context-mapper.xml"></import>
+    <import resource="ws-config.xml"></import>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>

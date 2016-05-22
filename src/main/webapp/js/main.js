@@ -4,11 +4,10 @@
 'use strict';
 
 require.config();
-require(['jquery'], function ($) {
+require([], function () {
 	require([
-		'foundation',
 		'header'
-	], function(foundation, header){
+	], function(header){
 		var _welLoginBtnArea = null,
 			_h1UserId = null,
 			_welHeaderArea = $('._corearoad_header'),
@@ -18,9 +17,17 @@ require(['jquery'], function ($) {
 		//top bar animation initialize setting
 		$(document).ready(function(){
 			_includeTemplate();
-			$(document).foundation();
 			_getLoginSession();
 			_attachEvent();
+
+			$('.carousel').carousel({
+				interval: 2000
+			});
+
+			$('body').scrollspy({ target: '#navbar-example' });
+			$('[data-spy="scroll"]').each(function () {
+				var $spy = $(this).scrollspy('refresh')
+			});
 		});
 
 		function _includeTemplate() {

@@ -4,7 +4,11 @@
 }
 @font-face {
     font-family: 'CalibriB';
-    src: url('/font/calibrib.TTF');
+    src: url('/font/calibrib.ttf');
+}
+
+body {
+    position: relative;
 }
 
 .event {

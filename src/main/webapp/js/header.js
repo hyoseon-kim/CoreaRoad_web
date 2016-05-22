@@ -5,8 +5,9 @@ define([
     'text!/program.html',
     'text!/signUpForm.html',
     'text!/aboutUs.html',
-    'text!/monthly.html'
-],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly) {
+    'text!/monthly.html',
+    'text!/chat.html'
+],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml) {
     var _welContentArea = $('._corearoad_content');
     function init() {
         attachEvent();
@@ -23,9 +24,12 @@ define([
         $('#menu_monthly').on('click', function () {
             _welContentArea.html(_welMonthly);
         });
+        $('#menu_chat').on('click', function () {
+            _welContentArea.html(_welChatHtml);
+        })
 
         $('._sign_up_btn').on('click', function () {
-            $('#login').foundation('close');
+            //$('#login').foundation('close');
             _welContentArea.html(_welSignUp);
 
            //var elem = new Foundation.Abide($('._sign_up_form'),{});
@@ -55,7 +59,7 @@ define([
             });
 
             $("._login_close").on('click', function () {
-                $('#login').foundation('close');
+                //$('#login').foundation('close');
             })
         });
     }

@@ -502,3 +502,8 @@ displaying for small
     margin-top: 15%;
     margin-left: 10%;
 }
+
+/*main carousel img item 아래로 좀 내려놓음*/
+.item{
+    padding-top: 50px;
+}

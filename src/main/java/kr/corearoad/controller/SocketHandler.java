@@ -47,13 +47,24 @@ public class SocketHandler extends TextWebSocketHandler{
                                      TextMessage message) throws Exception {
 
         //0번째에 session.getId() 1번째에 message.getPayload() 넣음
-        logger.info("{}로 부터 {} 받음", session.getId(), message.getPayload());
+        String payload = message.getPayload();
+
+        logger.info("{}로 부터 {} 받음", session.getId(), payload);
         //    logger.info("{}로부터 {}받음", new String[]{session.getId(),message.getPayload()});
 
-        //연결된 모든 클라이언트에게 메시지 전송 : 리스트 방법
-        for(WebSocketSession sess : sessionList){
-            sess.sendMessage(new TextMessage("echo:" + message.getPayload()));
+        if(payload.contains("setID")) {
+            for(WebSocketSession sess : sessionList){
+                sess.sendMessage(new TextMessage(String.format("{\"setId\": \"%s\"}",
+                        session.getId())));
+            }
+        } else {
+            for(WebSocketSession sess : sessionList){
+                sess.sendMessage(new TextMessage(String.format("{\"msg\": \"%s\", \"id\": \"%s\"}",
+                        payload, session.getId())));
+            }
         }
+        //연결된 모든 클라이언트에게 메시지 전송 : 리스트 방법
+
 
         // 맵 방법.
         /*Iterator<String> sessionIds = sessions.ketSet().iterator();

@@ -1,55 +1,113 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
-    <script type="text/javascript" src="<c:url value="js/vendor/jquery-2.2.3.js"/>"></script>
     <script type="text/javascript" src="<c:url value="js/vendor/sockjs-0.3.4.js"/>"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function(){
-            $("#sendBtn").click(function(){
-                sendMessage();
-            });
-        });
-
-        //websocket을 지정한 URL로 연결
-        var sock= new SockJS("<c:url value="/echo"/>");
-        //websocket 서버에서 메시지를 보내면 자동으로 실행된다.
-        sock.onmessage = onMessage;
-        //websocket 과 연결을 끊고 싶을때 실행하는 메소드
-        sock.onclose = onClose;
-
-
-
-        function sendMessage(){
-
-            //websocket으로 메시지를 보내겠다.
-            sock.send($("#message").val());
-
-        }
-
-        //evt 파라미터는 websocket이 보내준 데이터다.
-        function onMessage(evt){  //변수 안에 function자체를 넣음.
-            var data = evt.data;
-            $("#data").append(data+"<br/>");
-            /* sock.close(); */
-        }
-
-        function onClose(evt){
-            $("#data").append("연결 끊김");
-        }
-
-    </script>
 </head>
 <body>
-
-<input type="text" id="message"/>
-<input type="button" id="sendBtn" value="전송"/>
-<div id="data"></div>
-
+<div class="content container-fluid bootstrap snippets" style="margin-top: 80px;">
+    <div class="row row-broken">
+        <div class="col-sm-3 col-xs-12">
+            <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
+                <div class="chat-users">
+                    <h6>Online</h6>
+                    <div id="chatUserList">
+                    <div class="user">
+                        <div class="avatar">
+                            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                            <div class="status off"></div>
+                        </div>
+                        <div class="name">User name</div>
+                        <div class="mood">User mood</div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-xs-12 chat" style="overflow: scroll; outline: none;" tabindex="5001">
+            <div class="col-inside-lg decor-default">
+                <div class="chat-body">
+                    <h6>Mini Chat</h6>
+                    <div id="chatMsgList">
+                    <div class="answer left">
+                        <div class="avatar">
+                            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                            <div class="status offline"></div>
+                        </div>
+                        <div class="name">Alexander Herthic</div>
+                        <div class="text">
+                            Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adiping elit
+                        </div>
+                        <div class="time">5 min ago</div>
+                    </div>
+                    <div class="answer right">
+                        <div class="avatar">
+                            <img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
+                            <div class="status offline"></div>
+                        </div>
+                        <div class="name">Alexander Herthic</div>
+                        <div class="text">
+                            Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adiping elit
+                        </div>
+                        <div class="time">5 min ago</div>
+                    </div>
+                    </div>
+                    <div class="answer-add">
+                        <input placeholder="Write a message" id="message">
+                        <span class="answer-btn answer-btn-1"></span>
+                        <span class="answer-btn answer-btn-2" id="sendBtn"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#sendBtn").click(function () {
+            sendMessage();
+        });
+    });
+
+    //websocket을 지정한 URL로 연결
+    var sock = new SockJS("<c:url value="/echo"/>");
+    //websocket 서버에서 메시지를 보내면 자동으로 실행된다.
+    sock.onmessage = onMessage;
+    //websocket 과 연결을 끊고 싶을때 실행하는 메소드
+    sock.onclose = onClose;
+    sock.onopen = onOpen;
+
+
+    function sendMessage() {
+        var id = "TempId";  //로그인된 사용자 닉네임으로 대체
+        //websocket으로 메시지를 보내겠다.
+        sock.send($("#message").val());
+
+    }
+
+    //evt 파라미터는 websocket이 보내준 데이터다.
+    function onMessage(evt) {  //변수 안에 function자체를 넣음.
+        var data = JSON.parse(evt.data);
+
+        if(data.setId != null) {
+            $("#chatUserList").append(' <div class="user"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status off"></div> </div> <div class="name">'+data.setId+'</div> <div class="mood"></div> </div>');
+        }
+        $("#chatMsgList").append('<div class="answer right"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.id+'</div><div class="text">'+data.msg+'</div><div class="time">5 min ago</div></div>')
+        /* sock.close(); */
+    }
+
+    function onClose(evt) {
+        $("#data").append("연결 끊김");
+    }
+
+    function onOpen() {
+        sock.send("{'setID:'dd'}");
+    }
+
+</script>
 </html>

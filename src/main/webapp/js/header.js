@@ -6,7 +6,7 @@ define([
     'text!/signUpForm.html',
     'text!/aboutUs.html',
     'text!/monthly.html',
-    'text!/chat.html'
+    'text!/chatting.jsp'
 ],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml) {
     var _welContentArea = $('._corearoad_content');
     function init() {
@@ -26,14 +26,11 @@ define([
         });
         $('#menu_chat').on('click', function () {
             _welContentArea.html(_welChatHtml);
-        })
+        });
 
         $('._sign_up_btn').on('click', function () {
-            //$('#login').foundation('close');
             _welContentArea.html(_welSignUp);
 
-           //var elem = new Foundation.Abide($('._sign_up_form'),{});
-            //$('._sign_up_form').foundation('requiredCheck', $('._sign_up_form'));
             $('._add_lang').on('click', function (we) {
                 if($('.capableLang2Display').css('display') == 'none') {
                     $('.capableLang2Display').show();
@@ -57,10 +54,6 @@ define([
                         }
                     });
             });
-
-            $("._login_close").on('click', function () {
-                //$('#login').foundation('close');
-            })
         });
     }
     return {

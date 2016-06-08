@@ -1,9 +1,11 @@
 
 package kr.corearoad.controller;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.socket.CloseStatus;
@@ -20,6 +22,7 @@ public class SocketHandler extends TextWebSocketHandler{
 
     //방법 2 : 전체 채팅
     private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
+    private static List<String> userOnlineList = new ArrayList<String>();
 
 
     private static Logger logger = LoggerFactory.getLogger(SocketHandler.class);
@@ -57,6 +60,7 @@ public class SocketHandler extends TextWebSocketHandler{
                 sess.sendMessage(new TextMessage(String.format("{\"setId\": \"%s\"}",
                         session.getId())));
             }
+
         } else {
             for(WebSocketSession sess : sessionList){
                 sess.sendMessage(new TextMessage(String.format("{\"msg\": \"%s\", \"id\": \"%s\"}",
@@ -92,6 +96,9 @@ public class SocketHandler extends TextWebSocketHandler{
 //        sessions.remove(session.getId());
 
         logger.info("{} 연결 끊김.", session.getId());
+        for(WebSocketSession sess : sessionList){
+            sess.sendMessage(new TextMessage(String.format("{\"removeId\": \"%s\"}",
+                    session.getId())));
+        }
     }
-
 }

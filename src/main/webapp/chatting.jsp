@@ -68,6 +68,8 @@
 </body>
 <script type="text/javascript">
 
+    var userList = {};
+
     $(document).ready(function () {
         $("#sendBtn").click(function () {
             sendMessage();
@@ -75,7 +77,7 @@
     });
 
     //websocket을 지정한 URL로 연결
-    var sock = new SockJS("<c:url value="/echo"/>");
+    var sock = new SockJS("<c:url value="/echo.do"/>");
     //websocket 서버에서 메시지를 보내면 자동으로 실행된다.
     sock.onmessage = onMessage;
     //websocket 과 연결을 끊고 싶을때 실행하는 메소드
@@ -95,7 +97,14 @@
         var data = JSON.parse(evt.data);
 
         if(data.setId != null) {
-            $("#chatUserList").append(' <div class="user"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status off"></div> </div> <div class="name">'+data.setId+'</div> <div class="mood"></div> </div>');
+            if(userList && userList[data.setId]) {
+                return ;
+            } else {
+                userList[data.setId] = true;
+                $("#chatUserList").append(' <div class="user" id="'+data.setId+'"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status off"></div> </div> <div class="name">'+data.setId+'</div> <div class="mood"></div> </div>');
+            }
+        } else if (data.removeId != null) {
+            $("#"+data.removeId).remove();
         }
         $("#chatMsgList").append('<div class="answer right"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.id+'</div><div class="text">'+data.msg+'</div><div class="time">5 min ago</div></div>')
         /* sock.close(); */
@@ -106,6 +115,11 @@
     }
 
     function onOpen() {
+        getUserOnline();
+        setInterval(getUserOnline, 3000);
+    }
+
+    function getUserOnline() {
         sock.send("{'setID:'dd'}");
     }
 

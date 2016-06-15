@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd">
 
     <websocket:handlers>
-        <websocket:mapping handler="socketHandler" path="/echo"/>
+        <websocket:mapping handler="socketHandler" path="/echo.do"/>
         <websocket:sockjs/>
     </websocket:handlers>
 

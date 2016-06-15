@@ -98,11 +98,59 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
+
             <div class="item active">
                 <img src="img/5.jpg" alt="..." style="width: 100%;">
             </div>
             <div class="item">
                 <img src="img/5.jpg" alt="..." style="width: 100%;">
+            </div>
+
+            <!--search engine-->
+            <div class="content_footerbar">
+                <div class="column-search">
+                    <div class="search-bar">
+                        <table class="search-box">
+                            <form id="search-box-form" method="get" action="/s"> <!--what is meaning? /s-->
+                                <div class="search-box-input">
+                                    <!--1. 도시설정-->
+                                    <tr style="height: 44px;">
+                                        <td class="search-location">
+                                            <input type="text" class="search-box-input" id="location" name="location" placeholder="City in Corea">
+                                        </td>
+                                        <td> <!--monthly data받아올 것-->
+                                            <input type="text" class="search-box-input" id="startDate" name="startDate" placeholder="From">
+                                        </td>
+                                        <td>
+                                            <div style="background-color: white; height: 44px; border: 1px solid darkgrey; line-height: 44px;">
+                                                <img src="/img/direction-right.png" style="width: 20px;">
+                                            </div>
+                                        </td>
+                                        <td><!--monthly data 받아오기-->
+                                            <input type="text" class="search-box-input" id="endDate" name="startDate" placeholder="To">
+                                        </td>
+                                        <td>
+                                            <select id="guest" class="search-box-input" name="guest">
+                                                <option class="option" value="1" data-reactid="">1명</option>
+                                                <option class="option" value="2" data-reactid="">2명</option>
+                                                <option class="option" value="3" data-reactid="">3명</option>
+                                                <option class="option" value="4" data-reactid="">4명</option>
+                                                <option class="option" value="5" data-reactid="">5명</option>
+                                                <option class="option" value="6" data-reactid="">+6명</option><!--이상이 될 경우 예외처리-->
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input class="search-box-input" type="text" id="hashTag" name="hashTag" value="" placeholder="#hash tag">
+                                        </td>
+                                        <td class="search-button">
+                                            <a href="#color" style="color: white;">Check</a>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </form>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -117,50 +165,9 @@
         </a>
        <!-- /.carousel -->
         </div>
-</div>
 
 
-<!--search engine-->
-<div class="content_footerbar">
-    <div class="search-bar">
-        <table class="search-box">
-            <form id="search-box-form" method="get" action="/s"> <!--what is meaning? /s-->
-                <div class="search-box-input">
-                    <!--1. 도시설정-->
-                    <tr>
-                        <td class="search-location">
-                            <input type="text" class="search-box-input" id="location" name="location" placeholder="City in Corea" style="display: inline-table">
-                        </td>
-                        <td> <!--monthly data받아올 것-->
-                            <input type="text" class="search-box-input" id="startDate" name="startDate" placeholder="From">
-                        </td>
-                        <td>
-                            <img src="/img/direction-right.png" style="width: 30px; display: inline-table;">
-                        </td>
-                        <td><!--monthly data 받아오기-->
-                            <input type="text" class="search-box-input" id="endDate" name="startDate" placeholder="To">
-                        </td>
-                        <td>
-                            <select id="guest" class="search-box-input" name="guest" style="width: 60px;">
-                                <option value="1" data-reactid="">1명</option>
-                                <option value="2" data-reactid="">2명</option>
-                                <option value="3" data-reactid="">3명</option>
-                                <option value="4" data-reactid="">4명</option>
-                                <option value="5" data-reactid="">5명</option>
-                                <option value="6" data-reactid="">+6명</option><!--이상이 될 경우 예외처리-->
-                            </select>
-                        </td>
-                        <td>
-                            <input class="search-box-input" type="text" id="hashTag" name="hashTag" value="" placeholder="#hash tag">
-                        </td>
-                        <td class="search-button">
-                            <a href="#color">Check</a>
-                        </td>
-                    </tr>
-                </div>
-            </form>
-        </table>
-    </div>
+
 </div>
 
 

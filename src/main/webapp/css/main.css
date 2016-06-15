@@ -503,11 +503,6 @@ displaying for small
     margin-left: 10%;
 }
 
-/*main carousel img item 아래로 좀 내려놓음*/
-.item{
-    padding-top: 50px;
-}
-
 
 /*footer*/
 .footer-distributed{
@@ -517,9 +512,7 @@ displaying for small
     width: 100%;
     text-align: left;
     font: bold 16px sans-serif;
-
     padding: 55px 50px;
-    margin-top: 80px;
 }
 
 .footer-distributed .footer-left,
@@ -923,4 +916,67 @@ body{
         margin-left: 0;
     }
 
+}
+
+/*search box*/
+.content_footerbar{
+    background-color: rgba(0,0,0,0.6);
+    bottom: 0;
+    left: 0;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+}
+.column-search{
+    width:100%;
+    float:left;
+    height: 44px;
+}
+
+.search-bar{
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.search-box{
+    padding: 5rem;
+    z-index: 1000;
+    text-align: center;
+}
+
+#location{
+    width : 380px;
+    height: 44px;
+}
+#startDate{
+    width:123px;
+    height: 44px;
+}
+#endDate{
+    width:123px;
+    height: 44px;
+}
+#hashTag{
+    width:380px;
+    height: 44px;
+}
+#guest{
+    height: 44px;
+    width: 100px;
+}
+.search-button{
+    background-color: red;
+    width: 126px;
+    height: 44px;
+}
+.search-box-input{
+    font-size: 2rem;
+}
+.option{
+    font-size: 2rem;
+}
+.search-button{
+    font-size: 2rem;
 }

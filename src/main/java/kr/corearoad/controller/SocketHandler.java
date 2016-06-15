@@ -57,14 +57,14 @@ public class SocketHandler extends TextWebSocketHandler{
 
         if(payload.contains("setID")) {
             for(WebSocketSession sess : sessionList){
-                sess.sendMessage(new TextMessage(String.format("{\"setId\": \"%s\"}",
-                        session.getId())));
+                sess.sendMessage(new TextMessage(String.format("{\"setId\": \"%s\", \"isOwner\": \"%s\"}",
+                        session.getId(), sess.getId().equals(session.getId()))));
             }
 
         } else {
             for(WebSocketSession sess : sessionList){
-                sess.sendMessage(new TextMessage(String.format("{\"msg\": \"%s\", \"id\": \"%s\"}",
-                        payload, session.getId())));
+                sess.sendMessage(new TextMessage(String.format("{\"msg\": \"%s\", \"id\": \"%s\", \"isOwner\": \"%s\"}",
+                        payload, session.getId(), sess.getId().equals(session.getId()))));
             }
         }
         //연결된 모든 클라이언트에게 메시지 전송 : 리스트 방법

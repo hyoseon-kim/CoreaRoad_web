@@ -97,16 +97,27 @@
         var data = JSON.parse(evt.data);
 
         if(data.setId != null) {
-            if(userList && userList[data.setId]) {
+            console.log(data);
+            if(userList && userList[data.setId]) {  //이미 리스트에 있는 사용자는 아무 액션도 하지 않는다.
                 return ;
-            } else {
+            } else {    //채팅 참석자 추가 액션
                 userList[data.setId] = true;
                 $("#chatUserList").append(' <div class="user" id="'+data.setId+'"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status off"></div> </div> <div class="name">'+data.setId+'</div> <div class="mood"></div> </div>');
+                if(data.isOwner == "false"){    //참석자가 내가 아닌 경우에만
+                    getUserOnline();
+                }
+                return ;
             }
         } else if (data.removeId != null) {
             $("#"+data.removeId).remove();
+            return ;
         }
-        $("#chatMsgList").append('<div class="answer right"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.id+'</div><div class="text">'+data.msg+'</div><div class="time">5 min ago</div></div>')
+
+        if(userList[data.id]) {
+            $("#chatMsgList").append('<div class="answer left"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.id+'</div><div class="text">'+data.msg+'</div><div class="time">5 min ago</div></div>')
+        } else {
+            $("#chatMsgList").append('<div class="answer right"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.id+'</div><div class="text">'+data.msg+'</div><div class="time">5 min ago</div></div>')
+        }
         /* sock.close(); */
     }
 
@@ -116,7 +127,6 @@
 
     function onOpen() {
         getUserOnline();
-        setInterval(getUserOnline, 3000);
     }
 
     function getUserOnline() {

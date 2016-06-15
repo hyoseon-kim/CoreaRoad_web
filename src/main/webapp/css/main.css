@@ -687,19 +687,27 @@ body{
     cursor: pointer;
     margin: 0 0 20px;
 }
-.chat-users .user .avatar {
+.chat-users .user .avatar{
     top: 0;
     left: 0;
 }
-.chat .avatar {
+.chat .avatar{
     width: 40px;
     height: 40px;
     position: absolute;
 }
-.chat .avatar img {
+.chat .avatar img{
     display: block;
     border-radius: 20px;
     height: 100%;
+    position: relative;
+}
+
+.chat_room_list img {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 20px;
 }
 .chat .avatar .status.off {
     border: 1px solid #5a5a5a;

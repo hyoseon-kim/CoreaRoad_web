@@ -8,7 +8,25 @@
     <script type="text/javascript" src="<c:url value="js/vendor/sockjs-0.3.4.js"/>"></script>
 </head>
 <body>
-<div class="content container-fluid bootstrap snippets" style="margin-top: 80px;">
+
+<div style="margin-top: 80px;">
+    <h4>Chat</h4>
+    <div class="chat_room_list" style="position: relative;">
+        <div class="alert alert-info _chat_room" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+            aaaaaa</div>
+        <div class="alert alert-info _chat_room" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+            bbbbbb</div>
+        <div class="alert alert-info _chat_room" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+            ccccc</div>
+    </div>
+</div>
+<div class="content container-fluid bootstrap snippets" >
     <div class="row row-broken">
         <div class="col-sm-3 col-xs-12">
             <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">

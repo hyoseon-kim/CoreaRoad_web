@@ -13,6 +13,7 @@ public class ChatMessanger {
     private String messengerSendTime;
     private String messengerReadCount;
     private String messengerSendUserId;
+    private String messengerContent;
 
     public String getMessengerId() {
         return messengerId;
@@ -38,14 +39,6 @@ public class ChatMessanger {
         this.messengerSendTime = messengerSendTime;
     }
 
-    public String getMessangerReadCount() {
-        return messengerReadCount;
-    }
-
-    public void setMessangerReadCount(String messangerReadCount) {
-        this.messengerReadCount = messangerReadCount;
-    }
-
     public String getMessengerSendUserId() {
         return messengerSendUserId;
     }
@@ -54,14 +47,31 @@ public class ChatMessanger {
         this.messengerSendUserId = messengerSendUserId;
     }
 
+    public String getMessengerReadCount() {
+        return messengerReadCount;
+    }
+
+    public void setMessengerReadCount(String messengerReadCount) {
+        this.messengerReadCount = messengerReadCount;
+    }
+
+    public String getMessengerContent() {
+        return messengerContent;
+    }
+
+    public void setMessengerContent(String messengerContent) {
+        this.messengerContent = messengerContent;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("ChatMessanger{");
         sb.append("messengerId='").append(messengerId).append('\'');
         sb.append(", messengerRoomId='").append(messengerRoomId).append('\'');
         sb.append(", messengerSendTime='").append(messengerSendTime).append('\'');
-        sb.append(", messangerReadCount='").append(messengerReadCount).append('\'');
+        sb.append(", messengerReadCount='").append(messengerReadCount).append('\'');
         sb.append(", messengerSendUserId='").append(messengerSendUserId).append('\'');
+        sb.append(", messengerContent='").append(messengerContent).append('\'');
         sb.append('}');
         return sb.toString();
     }

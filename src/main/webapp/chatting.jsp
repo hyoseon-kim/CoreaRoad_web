@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    session = request.getSession();
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,7 @@
 <body>
 
 <div style="margin-top: 80px;">
-    <h4>Chat</h4>
+    <h4 class="title">Chat</h4>
     <div class="chat_room_list">
         <div class="list-group chat_room_instance">
         </div>
@@ -21,7 +25,7 @@
         <div class="col-sm-3 col-xs-12">
             <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
                 <div class="chat-users">
-                    <h6>Online</h6>
+                    <h6>Jingermans</h6>
                     <div id="chatUserList">
                     <div class="user">
                         <div class="avatar">
@@ -40,28 +44,7 @@
                 <div class="chat-body">
                     <h6>Mini Chat</h6>
                     <div id="chatMsgList">
-                    <div class="answer left">
-                        <div class="avatar">
-                            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                            <div class="status offline"></div>
-                        </div>
-                        <div class="name">Alexander Herthic</div>
-                        <div class="text">
-                            Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adiping elit
-                        </div>
-                        <div class="time">5 min ago</div>
-                    </div>
-                    <div class="answer right">
-                        <div class="avatar">
-                            <img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
-                            <div class="status offline"></div>
-                        </div>
-                        <div class="name">Alexander Herthic</div>
-                        <div class="text">
-                            Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adiping elit
-                        </div>
-                        <div class="time">5 min ago</div>
-                    </div>
+
                     </div>
                     <div class="answer-add">
                         <input placeholder="Write a message" id="message">
@@ -73,10 +56,10 @@
         </div>
     </div>
 </div>
+<input type="hidden" id="userEmail" value="<%=session.getAttribute("loginUser")%>"/>
 </body>
 <script type="text/javascript">
-
-    var userList = {};
+   var userList = {};
 
     $(document).ready(function () {
         $("#sendBtn").click(function () {

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import kr.corearoad.bean.User;
 import kr.corearoad.bo.ActionBO;
+import kr.corearoad.bo.ChatBO;
 import kr.corearoad.bo.LoginUserBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class MainController {
 
 	@Autowired
 	ActionBO actionBO;
+
+	@Autowired
+	ChatBO chatBO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(HttpServletRequest req, ModelMap model) {
@@ -167,6 +171,16 @@ public class MainController {
 		res.setCharacterEncoding("UTF-8");
 		Gson gson = new GsonBuilder().create();
 		map.put("message", gson.toJson(actionBO.getAction(req.getParameter("actionNo"))));
+		return "hello";
+	}
+
+	@RequestMapping("/getAllChatRoomByUserId.do")
+	public String getAllChatRoomByUserId(HttpServletRequest req, HttpServletResponse res, ModelMap map) throws UnsupportedEncodingException  {
+		req.setCharacterEncoding("UTF-8");
+		res.setCharacterEncoding("UTF-8");
+		String email = req.getParameter("email");
+		Gson gson = new GsonBuilder().create();
+		map.put("message", gson.toJson(chatBO.getAllCharRoomByUserId(email)));
 		return "hello";
 	}
 }

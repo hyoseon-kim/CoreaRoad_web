@@ -364,10 +364,6 @@ margin-bottom: 0px;
 p.title {
     border-bottom: 1px solid #cccccc !important;
 }
-
-.content{
-    height: 450px;
-}
 #menu_logo{
     max-width: 200px;
     height:auto;
@@ -901,6 +897,21 @@ body{
 .chat input {
     -webkit-appearance: none;
     border-radius: 0;
+}
+
+.chat_room_list {
+    position: relative;
+}
+
+.chat_room_instance {
+    text-align: left;
+    vertical-align: middle
+}
+
+.chat_font {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-left: 10px;
 }
 
 /* If you don't want the footer to be responsive, remove these media queries */

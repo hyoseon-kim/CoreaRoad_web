@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.corearoad.mapper.ChatInterface">
+    <resultMap id="room" type="kr.corearoad.bean.ChatRoom">
+        <id column="room_id" property="roomId"/>
+        <result column="room_name" property="roomName"/>
+        <result column="room_user_cnt" property="roomUserCount"/>
+        <result column="room_user_id_list" property="roomUserList"/>
+        <result column="room_create_datetime" property="roomCreateDateTime"/>
+    </resultMap>
+    <resultMap id="messenger" type="kr.corearoad.bean.ChatMessanger">
+        <id column="msg_id" property="messengerId"/>
+        <result column="msg_room_id" property="messengerRoomId"/>
+        <result column="msg_send_datetime" property="messengerSendTime"/>
+        <result column="msg_read_cnt" property="messengerReadCount"/>
+        <result column="msg_send_user_id" property="messengerSendUserId"/>
+    </resultMap>
+    <select id="getChatRoom" parameterType="String" resultMap="room">
+        select * from action where room_id = #{id};
+    </select>
+    <select id="getChatMessenger" parameterType="String" resultMap="messenger">
+        select * from action where msg_id = #{id};
+    </select>
+    <select id="getAllChatMessengerByRoomId" parameterType="String" resultMap="messenger">
+        select * from action where msg_room_id = #{id};
+    </select>
+    <select id="getAllChatRoomByUserId" parameterType="String" resultMap="room">
+        SELECT
+        chat_room.room_id as roomId,
+        chat_room.room_name as roomName,
+        chat_room.room_user_cnt as roomUserCount,
+        chat_room.room_user_id_list as roomUserList,
+        chat_room.room_create_datetime as roomDateTime
+        FROM user_chat_room
+        INNER JOIN chat_room
+        ON user_chat_room.user_id = #{email} and user_chat_room.room_id = chat_room.room_id;
+
+    </select>
+</mapper>

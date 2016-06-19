@@ -6,8 +6,9 @@ define([
     'text!/signUpForm.html',
     'text!/aboutUs.html',
     'text!/monthly.html',
-    'text!/chatting.jsp'
-],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml) {
+    'text!/chatting.jsp',
+    'chat',
+],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml, chat) {
     var _welContentArea = $('._corearoad_content');
     function init() {
         attachEvent();
@@ -15,7 +16,19 @@ define([
 
     function attachEvent() {
         //gallery open
-        $('#menu_activities').on('click', function () {
+        $('#menu_activities').on('click', function (we) {
+
+            //이미 on일 때는 class > off
+            if($(we).hasClass('on')){
+                $(we).removeClass('on');
+                $(we).addClass('off');
+
+                //이미 off일때는 class > on
+            } else {
+                $(we).removeClass('off');
+                $(we).addClass('on');
+            }
+            $(we).addClass('on');
             _welContentArea.html(_welProgram);
         });
         $('#menu_aboutUs').on('click', function () {
@@ -26,6 +39,7 @@ define([
         });
         $('#menu_chat').on('click', function () {
             _welContentArea.html(_welChatHtml);
+            chat.init();
         });
 
         $('._sign_up_btn').on('click', function () {

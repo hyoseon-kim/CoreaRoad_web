@@ -8,6 +8,7 @@ require([], function () {
 	require([
 		'header'
 	], function(header){
+
 		var _welLoginBtnArea = null,
 			_h1UserId = null,
 			_welHeaderArea = $('._corearoad_header'),
@@ -33,7 +34,6 @@ require([], function () {
 		function _includeTemplate() {
 			header.init();
 			_welLoginBtnArea = $('._login_btn');
-			_h1UserId = $('._user_id');
 		}
 
 		function _getLoginSession() {
@@ -52,7 +52,8 @@ require([], function () {
 					} else {
 						var result = $.parseJSON(oData);
 						_welLoginBtnArea.hide();
-						_h1UserId.html(result.name)
+						_h1UserId.html(result.name);
+						userEmail = result;
 					}
 
 				})

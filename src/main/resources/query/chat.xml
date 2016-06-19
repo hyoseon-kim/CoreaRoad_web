@@ -14,15 +14,16 @@
         <result column="msg_send_datetime" property="messengerSendTime"/>
         <result column="msg_read_cnt" property="messengerReadCount"/>
         <result column="msg_send_user_id" property="messengerSendUserId"/>
+        <result column="msg_content" property="messengerContent"/>
     </resultMap>
     <select id="getChatRoom" parameterType="String" resultMap="room">
-        select * from action where room_id = #{id};
+        select * from chat_room where room_id = #{id};
     </select>
     <select id="getChatMessenger" parameterType="String" resultMap="messenger">
-        select * from action where msg_id = #{id};
+        select * from chat_messenger where msg_id = #{id};
     </select>
     <select id="getAllChatMessengerByRoomId" parameterType="String" resultMap="messenger">
-        select * from action where msg_room_id = #{id};
+        select * from chat_messenger where msg_room_id = #{id} ORDER BY msg_send_datetime DESC LIMIT 10;
     </select>
     <select id="getAllChatRoomByUserId" parameterType="String" resultMap="room">
         SELECT

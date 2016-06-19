@@ -31,6 +31,8 @@ public class ChatBO {
     public static final String MESSENGER_ID = "messengerId";
     public static final String MEESENGER_SEND_TIME = "meesengerSendTime";
     public static final String MESSENGER_SEND_USER_ID = "messengerSendUserId";
+    public static final String MESSENGER_CONTENT = "messengerContent";
+    public static final String MESSENGER_READ_COUNT = "messengerReadCount";
     @Autowired
     ChatDAO chatDAO;
 
@@ -68,18 +70,20 @@ public class ChatBO {
 
     public List<Map<String,Object>> getAllChatMessengerByRoomId(String id) {
         List<Map<String,Object>> returnList = Lists.newArrayList();
-        List<ChatMessanger> getRoomList = Lists.newArrayList();
+        List<ChatMessanger> getMessengerList = Lists.newArrayList();
         try {
-            getRoomList=  (List<ChatMessanger>)chatDAO.getAllChatMessengerByRoomId(id);
+            getMessengerList=  (List<ChatMessanger>)chatDAO.getAllChatMessengerByRoomId(id);
         } catch (SQLException e) {
             logger.error("get all chat messenger by room id error: %s", id);
         }
 
-        for (ChatMessanger room : getRoomList) {
+        for (ChatMessanger room : getMessengerList) {
             Map<String,Object> map = Maps.newHashMap();
             map.put(MESSENGER_ID, room.getMessengerId());
             map.put(MEESENGER_SEND_TIME, room.getMessengerSendTime());
             map.put(MESSENGER_SEND_USER_ID, room.getMessengerSendUserId());
+            map.put(MESSENGER_CONTENT, room.getMessengerContent());
+            map.put(MESSENGER_READ_COUNT, room.getMessengerReadCount());
             returnList.add(map);
         }
 

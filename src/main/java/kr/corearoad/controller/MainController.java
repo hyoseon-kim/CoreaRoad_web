@@ -183,4 +183,16 @@ public class MainController {
 		map.put("message", gson.toJson(chatBO.getAllCharRoomByUserId(email)));
 		return "hello";
 	}
+
+	@RequestMapping("/getAllMessengersByRoomId.do")
+	public String getAllMessengersByRoomId(HttpServletRequest req, HttpServletResponse res, ModelMap map) throws UnsupportedEncodingException  {
+		req.setCharacterEncoding("UTF-8");
+		res.setCharacterEncoding("UTF-8");
+		String id = req.getParameter("roomId");
+		Gson gson = new GsonBuilder().create();
+		map.put("message", gson.toJson(chatBO.getAllChatMessengerByRoomId(id)));
+		return "hello";
+	}
+
+
 }

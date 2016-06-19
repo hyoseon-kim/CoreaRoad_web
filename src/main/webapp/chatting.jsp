@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="<c:url value="js/vendor/sockjs-0.3.4.js"/>"></script>
+    <script type="text/javascript" src="js/vendor/sockjs-0.3.4.js"/>
 </head>
 <body>
 

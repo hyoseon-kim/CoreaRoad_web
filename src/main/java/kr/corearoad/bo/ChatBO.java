@@ -2,8 +2,6 @@ package kr.corearoad.bo;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sun.xml.internal.ws.developer.Serialization;
-import com.sun.xml.internal.ws.runtime.config.ObjectFactory;
 import kr.corearoad.bean.ChatMessanger;
 import kr.corearoad.bean.ChatRoom;
 import kr.corearoad.dao.ChatDAO;

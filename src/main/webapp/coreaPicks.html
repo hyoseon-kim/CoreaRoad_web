@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="css/picks.css">
+
+<div class="coreaPicks_contents" style="background-color: white; height: 500px; position: relative;">
+
+<!--search box-->
+    <div class="picks_search_box">
+    <div class="content_headerbar">
+        <div class="column-picks-search">
+            <div class="search-bar-picks">
+                <table class="search-box-picks">
+                    <form id="search-box-form-picks" method="get" action="/s"> <!--what is meaning? /s-->
+                        <div class="search-box-input-picks">
+                            <!--coreaPicks search box-->
+                            <tr style="height: 44px;">
+                                <!--buttons 3개-->
+                                <td class="food_button">
+                                    <button type="button" class="btn_group coreaPicks_search_button food_picks on">Food</button>
+                                </td>
+                                <td class="accommodation_button">
+                                    <button type="button" class="btn_group coreaPicks_search_button accommo_picks on">Accommodation</button>
+                                </td>
+                                <td class="activity_button">
+                                    <button type="button" class="btn_group coreaPicks_search_button activity_picks on">Activity</button>
+                                </td>
+                                <!--도시설정-->
+                                <td class="city_picks">
+                                    <select id="city_picks" class="search-box-input" name="cityPicks">
+                                        <option class="option" value="seoul" data-reactid="">SEOUL</option>
+                                        <option class="option" value="jeju" data-reactid="">JEJU</option>
+                                        <option class="option" value="busan" data-reactid="">BUSAN</option>
+                                        <option class="option" value="junju" data-reactid="">JUNJU</option>
+                                    </select>
+                                </td>
+                                <!--직접 검색창-->
+                                <td class="searchBox_picks">
+                                    <input class="search-box-input" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken">
+                                </td>
+                                <!--검색 버튼-->
+                                <td class="button_picks">
+                                    <button type="button" id="picks-search-btn">Search</button>
+                                </td>
+                            </tr>
+                        </div>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--up button-->
+    <div class="coreaPicks_upButton">
+        <a href="#" id="back-to-top" title="Back to top"><img src="/img/upbutton.png" style="width:100%;"></a>
+    </div>
+
+<!--가격 boundary-->
+    <div class="picks_boundary">
+        <div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 검색결과 -->
+<div class="search-result-content">
+    <div class="search_content">
+        <!-- 지도 버튼/ 지도 -->
+        <div class="picks_map">
+            <div>
+
+            </div>
+        </div>
+
+        <!--gallery list-->
+        <div class="picks_gallery">
+
+        </div>
+
+        <!--gallery content-->
+        <div class="picks_cardContent">
+
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <!--write button-->
+    <div class="picks_write">
+
+    </div>
+</div>

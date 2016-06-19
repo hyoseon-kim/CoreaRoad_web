@@ -7,8 +7,10 @@ define([
     'text!/aboutUs.html',
     'text!/monthly.html',
     'text!/chatting.jsp',
+    'text!/coreaPicks.html',
     'chat',
-],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml, chat) {
+    'coreaPicks'
+],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml, _welCoreaPicks, chat, coreaPicks) {
     var _welContentArea = $('._corearoad_content');
     function init() {
         attachEvent();
@@ -41,10 +43,17 @@ define([
             _welContentArea.html(_welChatHtml);
             chat.init();
         });
+        $('#menu_coreaPicks').on('click', function () {
+            _welContentArea.html(_welCoreaPicks);
+            coreaPicks.init();
+        })
 
         $('._sign_up_btn').on('click', function () {
+            //$('#login').foundation('close');
             _welContentArea.html(_welSignUp);
 
+           //var elem = new Foundation.Abide($('._sign_up_form'),{});
+            //$('._sign_up_form').foundation('requiredCheck', $('._sign_up_form'));
             $('._add_lang').on('click', function (we) {
                 if($('.capableLang2Display').css('display') == 'none') {
                     $('.capableLang2Display').show();
@@ -68,6 +77,10 @@ define([
                         }
                     });
             });
+
+            $("._login_close").on('click', function () {
+                //$('#login').foundation('close');
+            })
         });
     }
     return {

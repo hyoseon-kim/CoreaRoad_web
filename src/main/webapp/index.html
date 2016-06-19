@@ -118,18 +118,18 @@
                                         <td class="search-location">
                                             <input type="text" class="search-box-input" id="location" name="location" placeholder="City in Corea">
                                         </td>
-                                        <td> <!--monthly data받아올 것-->
+                                        <td class="search-date"> <!--monthly data받아올 것-->
                                             <input type="text" class="search-box-input" id="startDate" name="startDate" placeholder="From">
                                         </td>
-                                        <td>
-                                            <div style="background-color: white; height: 44px; border: 1px solid darkgrey; line-height: 44px;">
-                                                <img src="/img/direction-right.png" style="width: 20px;">
+                                        <td class="search-direction">
+                                            <div style="background-color: white;width:100%; height: 44px; border: 1px solid darkgrey; line-height: 44px;">
+                                                <img src="/img/direction-right.png" style="width: 50%;">
                                             </div>
                                         </td>
-                                        <td><!--monthly data 받아오기-->
+                                        <td class="search-date"><!--monthly data 받아오기-->
                                             <input type="text" class="search-box-input" id="endDate" name="startDate" placeholder="To">
                                         </td>
-                                        <td>
+                                        <td class="search-number">
                                             <select id="guest" class="search-box-input" name="guest">
                                                 <option class="option" value="1" data-reactid="">1명</option>
                                                 <option class="option" value="2" data-reactid="">2명</option>
@@ -139,7 +139,7 @@
                                                 <option class="option" value="6" data-reactid="">+6명</option><!--이상이 될 경우 예외처리-->
                                             </select>
                                         </td>
-                                        <td>
+                                        <td class="search-hashTag">
                                             <input class="search-box-input" type="text" id="hashTag" name="hashTag" value="" placeholder="#hash tag">
                                         </td>
                                         <td class="search-button">

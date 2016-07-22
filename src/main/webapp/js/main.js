@@ -22,14 +22,15 @@ require([], function () {
 			_getLoginSession();
 			_attachEvent();
 
-			$('.carousel').carousel({
-				interval: 2000
-			});
+			/*$('.carousel').carousel({
+			 interval: 2000
+			 });*/
+			//이거 뭐지? 일단 지움
 
-			$('body').scrollspy({ target: '#navbar-example' });
+			/*$('body').scrollspy({ target: '#navbar-example' });
 			$('[data-spy="scroll"]').each(function () {
 				var $spy = $(this).scrollspy('refresh')
-			});
+			});*/
 		});
 
 		function _includeTemplate() {

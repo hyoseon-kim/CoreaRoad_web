@@ -35,11 +35,6 @@ define([],function () {
             $(we.target).addClass('on');
         }
     }
-    return {
-        init: _init
-    }
-
-
     /*back to top*/
     function backToTop() {
         if ($('#back-to-top').length) {
@@ -64,5 +59,12 @@ define([],function () {
             });
         }
     }
+
+    return {
+        init: _init
+    }
+
+
+
 });
 

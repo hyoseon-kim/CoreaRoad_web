@@ -6,11 +6,13 @@ define([
     'text!/signUpForm.html',
     'text!/aboutUs.html',
     'text!/monthly.html',
-    'text!/chatting.jsp',
+    'text!/chatting.html',
     'text!/coreaPicks.html',
     'chat',
-    'coreaPicks'
-],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml, _welCoreaPicks, chat, coreaPicks) {
+    'coreaPicks',
+    'monthly',
+    'program'
+],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml, _welCoreaPicks, chat, coreaPicks, monthly, program) {
     var _welContentArea = $('._corearoad_content');
     function init() {
         attachEvent();
@@ -18,7 +20,7 @@ define([
 
     function attachEvent() {
         //gallery open
-        $('#menu_activities').on('click', function (we) {
+        $('#menu_activities').on('click', function (we, index) {
 
             //이미 on일 때는 class > off
             if($(we).hasClass('on')){
@@ -32,12 +34,14 @@ define([
             }
             $(we).addClass('on');
             _welContentArea.html(_welProgram);
+            program.init(index);
         });
         $('#menu_aboutUs').on('click', function () {
             _welContentArea.html(_welAboutUs);
         });
         $('#menu_monthly').on('click', function () {
             _welContentArea.html(_welMonthly);
+            monthly.init();
         });
         $('#menu_chat').on('click', function () {
             _welContentArea.html(_welChatHtml);

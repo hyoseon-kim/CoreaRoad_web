@@ -107,4 +107,12 @@ public class ChatBO {
 
         return returnList;
     }
+
+    public void insertChatMessage(ChatMessanger chatMessanger) {
+        try {
+            chatDAO.insertChatMessenger(chatMessanger);
+        } catch (SQLException e) {
+            logger.error("insert Error", chatMessanger);
+        }
+    }
 }

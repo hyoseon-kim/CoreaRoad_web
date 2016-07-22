@@ -13,7 +13,8 @@ require([], function () {
 			_h1UserId = null,
 			_welHeaderArea = $('._corearoad_header'),
 			_welFooterArea = $('._corearoad_footer'),
-			_welContentArea = $('._corearoad_content');
+			_welContentArea = $('._corearoad_content'),
+			userEmail = null;
 
 		//top bar animation initialize setting
 		$(document).ready(function(){
@@ -52,7 +53,7 @@ require([], function () {
 					} else {
 						var result = $.parseJSON(oData);
 						_welLoginBtnArea.hide();
-						_h1UserId.html(result.name);
+						//_h1UserId.html(result.email);
 						userEmail = result;
 					}
 
@@ -81,7 +82,7 @@ require([], function () {
 			$('._sidebar_close').on('click', function (evt) {
 				$('.foreground_black').hide();
 				$('#sidebar').hide();
-			})
+			});
 		}
 	});
 });

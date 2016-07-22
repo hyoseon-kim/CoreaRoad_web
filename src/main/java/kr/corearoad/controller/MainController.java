@@ -1,7 +1,10 @@
 package kr.corearoad.controller;
 
+import com.google.common.collect.Maps;
+import com.google.common.net.InetAddresses;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import kr.corearoad.bean.ChatMessanger;
 import kr.corearoad.bean.User;
 import kr.corearoad.bo.ActionBO;
 import kr.corearoad.bo.ChatBO;
@@ -17,10 +20,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
 
+	public static final String MESSAGE = "message";
+	public static final String FAIL = "fail";
 	@Autowired
 	LoginUserBO loginUserBO;
 
@@ -37,7 +46,7 @@ public class MainController {
 
 	@RequestMapping(value = "/test.do",  method = RequestMethod.GET)
 	public String ajaxTest(HttpServletRequest req, ModelMap model) {
-		model.addAttribute("message", loginUserBO.getUser("hyos810@naver.com"));
+		model.addAttribute(MESSAGE, loginUserBO.getUser("hyos810@naver.com"));
 		return "hello";
 	}
 
@@ -83,13 +92,26 @@ public class MainController {
 		if(session != null && session.getAttribute("loginUser") != null) {
 			user = (User)session.getAttribute("loginUser");
 			if(user.isForFakeUser()) {
-				map.addAttribute("message", "login fail");
+				map.addAttribute(MESSAGE, "login fail");
 				session.removeAttribute("loginUser");
 			} else {
-				map.addAttribute("message", new Gson().toJson(user));
+				map.addAttribute(MESSAGE, new Gson().toJson(user));
 			}
 		} else {
-			map.addAttribute("message", "not a member");
+			InetAddress inetAddresses = null;
+			try {
+				inetAddresses = InetAddress.getLocalHost();
+
+				//if(inetAddresses.getHostAddress().equals("192.168.0.19")) {
+					session.setAttribute("loginUser", new User("hyos810@naver.com"));
+				//} else {
+				//	session.setAttribute("loginUser", new User("corearoad@naver.com"));
+				//}
+
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			}
+			map.addAttribute(MESSAGE, "not a member");
 		}
 
 		return "hello";
@@ -151,9 +173,9 @@ public class MainController {
 		}
 
 		if(user != null) {
-			map.put("message", "exist");
+			map.put(MESSAGE, "exist");
 		} else {
-			map.put("message", "not exist");
+			map.put(MESSAGE, "not exist");
 		}
 		return "hello";
 	}
@@ -161,7 +183,7 @@ public class MainController {
 	@RequestMapping("/getMainActionPictureList.do")
 	public String getMainActionPictureList(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
 		Gson gson = new GsonBuilder().create();
-		map.put("message", gson.toJson(actionBO.getMainPictureList()));
+		map.put(MESSAGE, gson.toJson(actionBO.getMainPictureList()));
 		return "hello";
 	}
 
@@ -170,7 +192,7 @@ public class MainController {
 		req.setCharacterEncoding("UTF-8");
 		res.setCharacterEncoding("UTF-8");
 		Gson gson = new GsonBuilder().create();
-		map.put("message", gson.toJson(actionBO.getAction(req.getParameter("actionNo"))));
+		map.put(MESSAGE, gson.toJson(actionBO.getAction(req.getParameter("actionNo"))));
 		return "hello";
 	}
 
@@ -178,9 +200,25 @@ public class MainController {
 	public String getAllChatRoomByUserId(HttpServletRequest req, HttpServletResponse res, ModelMap map) throws UnsupportedEncodingException  {
 		req.setCharacterEncoding("UTF-8");
 		res.setCharacterEncoding("UTF-8");
-		String email = req.getParameter("email");
+
+		HttpSession session = req.getSession();
+
+		if(session.getAttribute("loginUser") == null) {
+			map.put(MESSAGE, FAIL);
+			return "hello";
+		}
+
+		String email = ((User)session.getAttribute("loginUser")).getEmail();
 		Gson gson = new GsonBuilder().create();
-		map.put("message", gson.toJson(chatBO.getAllCharRoomByUserId(email)));
+
+		Map<String, Object> returnData = Maps.newHashMap();
+		List<Map<String, Object>> allChatRoomByUserId = chatBO.getAllCharRoomByUserId(email);
+
+		returnData.put("data", allChatRoomByUserId);
+		returnData.put("loginUserId", email);
+
+		map.put(MESSAGE, gson.toJson(returnData));
+
 		return "hello";
 	}
 
@@ -190,8 +228,33 @@ public class MainController {
 		res.setCharacterEncoding("UTF-8");
 		String id = req.getParameter("roomId");
 		Gson gson = new GsonBuilder().create();
-		map.put("message", gson.toJson(chatBO.getAllChatMessengerByRoomId(id)));
+		map.put(MESSAGE, gson.toJson(chatBO.getAllChatMessengerByRoomId(id)));
 		return "hello";
+	}
+
+	@RequestMapping("/insertChatMessage.do")
+	public String insertChatMessage(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
+
+		String content = req.getParameter("content");
+		String roomId = req.getParameter("roomId");
+
+		ChatMessanger chatMessanger = new ChatMessanger();
+		chatMessanger.setMessengerContent(content);
+		chatMessanger.setMessengerRoomId(roomId);
+		chatMessanger.setMessengerSendUserId(getUser(req).getEmail());
+
+		chatBO.insertChatMessage(chatMessanger);
+		return "hello";
+	}
+
+	public User getUser(HttpServletRequest req) {
+		HttpSession httpSession = req.getSession();
+		User user = null;
+		if(httpSession.getAttribute("loginUser") == null) {
+			return user;
+		} else {
+			return ((User)httpSession.getAttribute("loginUser"));
+		}
 	}
 
 

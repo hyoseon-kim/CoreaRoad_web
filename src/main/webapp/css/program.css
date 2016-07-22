@@ -354,7 +354,7 @@ box-shadow: 0 0 0 4px rgba(255,255,255,1);
     -moz-osx-font-smoothing: grayscale;
 }
 
-    .icon-star-full:before {
+    /*.icon-star-full:before {
         content: "\e905";
     }
     .icon-star-half:before {
@@ -1058,7 +1058,7 @@ box-shadow: 0 0 0 4px rgba(255,255,255,1);
     }
     .icon-scooter:before {
     content: "\e636";
-    }
+    }*/
 
 
     .carouselGallery-modal{

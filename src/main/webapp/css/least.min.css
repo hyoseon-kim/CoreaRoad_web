@@ -101,7 +101,7 @@ img {
 }
 #least .least-preview .close {
   background-size: 100%;
-  background-image: url("../img/close.svg");
+  /*background-image: url("../img/close.svg");*/
   width: 30px;
   height: 30px;
   display: block;
@@ -173,7 +173,7 @@ img {
   outline-color: #666666;
 }
 #least .least-gallery li a.load:after {
-  content: url("../img/loading.svg");
+  /*content: url("../img/loading.svg");*/
   position: absolute;
   top: 50%;
   left: 20px;

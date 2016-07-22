@@ -19,4 +19,6 @@ public interface ChatInterface {
     List getAllChatMessengerByRoomId(String id) throws SQLException;
 
     List getAllCharRoomByUserId(String email) throws SQLException;
+
+    void insertChatMessenger(ChatMessanger chatMessanger) throws SQLException;
 }

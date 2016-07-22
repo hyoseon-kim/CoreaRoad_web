@@ -46,7 +46,11 @@ define([
         $('#menu_coreaPicks').on('click', function () {
             _welContentArea.html(_welCoreaPicks);
             coreaPicks.init();
-        })
+        });
+
+        $("#login").on('click').on('click', function () {
+            
+        });
 
         $('._sign_up_btn').on('click', function () {
             //$('#login').foundation('close');

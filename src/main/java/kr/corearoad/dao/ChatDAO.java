@@ -54,4 +54,10 @@ public class ChatDAO implements ChatInterface{
         return sqlSession.selectList("kr.corearoad.mapper.ChatInterface.getAllChatRoomByUserId", email);
     }
 
+    @Override
+    @Transactional
+    public void insertChatMessenger(ChatMessanger chatMessanger) throws SQLException {
+        sqlSession.insert("kr.corearoad.mapper.ChatInterface.insertChatMessenger", chatMessanger);
+    }
+
 }

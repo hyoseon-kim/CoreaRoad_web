@@ -15,43 +15,64 @@
 		}, options);
 
 		return this.each(function() {
-
 			/* Open Images */
 			function intipreview(object, path, text, caption) {
-				console.log('call');
-				/!*var *!/
-				var img = $('<img src="' + path + '"/>'),
-					close=$('<figure class="close"></figure>'),
-					thumb = $('li a'),
-					imgTemplate = $('<div class="carouselGallery-modal"><span class="carouselGallery-left"><img src="/img/layer/left.png"/></span><span class="carouselGallery-right"><img src="/img/layer/right.png"/></span><div class="container"><span class="icons iconscircle-cross close-icon"></span><div class="carouselGallery-scrollbox" style="max-height: 871px;"><div class="carouselGallery-modal-image"><img src="" alt="carouselGallery image" class="_color_preview_img"></div><div class="carouselGallery-modal-text"><span class="carouselGallery-modal-username"><a href="https://instagram.com/p/92tWKsQVUN/">visitsweden</a> </span><span class="carouselGallery-modal-location"></span><span class="carouselGallery-item-modal-likes"><span class="icons icon-heart"></span><a href="https://instagram.com/p/92tWKsQVUN/">3939</a></span><span class="carouselGallery-modal-imagetext"><p>Photographer: @tannerstedtphotography Location: Resm A perfect place for stargazing.Tag #visitsweden and #swedishmoments for a chance to get featured. //@deskriptiv</p></span></div></div></div></div>');
+
+				var pictureList = [],
+					pictureIndex = 0;
+
+				$.ajax({
+						method: 'GET',
+						url:'/getAction.do',
+						data: {actionNo: text}
+					})
+					.done(function (oData) {
+						var data = $.parseJSON(oData);
+						console.log(data);
+
+						pictureList = data.pictureList;
+						pictureIndex = 0;
 
 
-				img.load(
-					function() {
-						if ( caption.length ) {
-							object.html('')
-						} else {
-							object.html('');
-						}
+						var img = $('<img src="' + path + '"/>'),
+							close=$('<figure class="close"></figure>'),
+							thumb = $('li a'),
+							imgTemplate = $('<div class="carouselGallery-modal"><span class="carouselGallery-left"><img src="/img/layer/left.png"/></span><span class="carouselGallery-right"><img src="/img/layer/right.png" class="_next_action"/></span><div class="container"><span class="icons iconscircle-cross close-icon"></span><div class="carouselGallery-scrollbox" style="max-height: 871px;"><div class="carouselGallery-modal-image"><img src="" alt="carouselGallery image" class="_color_preview_img"></div><div class="carouselGallery-modal-text"><span class="carouselGallery-modal-location"></span><span class="carouselGallery-item-modal-likes"><span class="icons icon-heart"></span><a href="https://instagram.com/p/92tWKsQVUN/">'+ data.name+'</a></span><span class="carouselGallery-modal-imagetext"><p>'+data.text+'</p></span></div></div></div></div>');
+						img.load(
+							function() {
+								if ( caption.length ) {
+									object.html('')
+								} else {
+									object.html('');
+								}
 
 
-						object
-							.prepend(imgTemplate)
-							.append(close)
-							thumb.removeClass('load');
-						$('._color_preview_img').attr('src',path);
-						object.slideDown('slow');
-					}
-				);
-				
-				/* Close Fullscreen */		
-				close.on(
-					'click',
-					function() {
-						$('.least-preview').slideToggle('slow');
-						thumb.removeClass('active');
-					}
-				);
+								object
+									.prepend(imgTemplate)
+									.append(close)
+								thumb.removeClass('load');
+								$('._color_preview_img').attr('src',path);
+								object.slideDown('slow');
+
+								$('._next_action').on('click', function (we) {
+									$('._color_preview_img').attr('src', 'img/' + $.trim(pictureList[++pictureIndex]));
+								});
+							}
+						);
+
+						/* Close Fullscreen */
+						close.on(
+							'click',
+							function() {
+								$('.least-preview').slideToggle('slow');
+								thumb.removeClass('active');
+							}
+						);
+						
+
+					});
+
+
 			}
 
 			/* Thumbnail */
@@ -61,7 +82,7 @@
 					/* var */
 					var $$ = $(this),
 						path = $$.attr('href'),
-						text = $$.attr('data-text'),
+						text = $$.attr('data-index'),
 						preview = $('.least-preview'),
 						previewImg = preview.children('img'),
 						caption = $$.attr('data-caption') || '';

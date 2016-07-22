@@ -51,6 +51,10 @@ public class User {
         this.forFakeUser = bfakeUser;
     }
 
+    public User(String email) {
+        this.email = email;
+    }
+
     public User() {}
 
     public String getEmail() {

@@ -1,64 +1,86 @@
 <link rel="stylesheet" href="css/picks.css">
+<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="//api.jquerymobile.com/wp-includes/js/wp-embed.min.js?ver=4.5.2"></script>
+<script type="text/javascript" src="//api.jquerymobile.com/wp-includes/js/comment-reply.min.js?ver=4.5.2"></script>
+
 
 <div class="coreaPicks_contents" style="background-color: white; height: 500px; position: relative;">
 
-<!--search box-->
+    <!--search box--> <!--데이터 넘기는 것 할 것/마크업만 완성된 상태-->
     <div class="picks_search_box">
-    <div class="content_headerbar">
-        <div class="column-picks-search">
-            <div class="search-bar-picks">
-                <table class="search-box-picks">
-                    <form id="search-box-form-picks" method="get" action="/s"> <!--what is meaning? /s-->
-                        <div class="search-box-input-picks">
-                            <!--coreaPicks search box-->
-                            <tr style="height: 44px;">
-                                <!--buttons 3개-->
-                                <td class="food_button">
-                                    <button type="button" class="btn_group coreaPicks_search_button food_picks on">Food</button>
-                                </td>
-                                <td class="accommodation_button">
-                                    <button type="button" class="btn_group coreaPicks_search_button accommo_picks on">Accommodation</button>
-                                </td>
-                                <td class="activity_button">
-                                    <button type="button" class="btn_group coreaPicks_search_button activity_picks on">Activity</button>
-                                </td>
-                                <!--도시설정-->
-                                <td class="city_picks">
-                                    <select id="city_picks" class="search-box-input" name="cityPicks">
-                                        <option class="option" value="seoul" data-reactid="">SEOUL</option>
-                                        <option class="option" value="jeju" data-reactid="">JEJU</option>
-                                        <option class="option" value="busan" data-reactid="">BUSAN</option>
-                                        <option class="option" value="junju" data-reactid="">JUNJU</option>
-                                    </select>
-                                </td>
-                                <!--직접 검색창-->
-                                <td class="searchBox_picks">
-                                    <input class="search-box-input" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken">
-                                </td>
-                                <!--검색 버튼-->
-                                <td class="button_picks">
-                                    <button type="button" id="picks-search-btn">Search</button>
-                                </td>
-                            </tr>
-                        </div>
-                    </form>
-                </table>
+         <div class="content_headerbar">
+            <div class="column-picks-search">
+                <div class="search-bar-picks">
+                    <table class="search-box-picks">
+                        <form id="search-box-form-picks" method="get" action="/s"> <!--what is meaning? /s-->
+                            <div class="search-box-input-picks">
+                                <!--coreaPicks search box-->
+                                <tr style="height: 44px;">
+                                    <!--buttons 3개-->
+                                    <td class="food_button">
+                                        <button type="button" class="btn_group coreaPicks_search_button food_picks on">Food</button>
+                                    </td>
+                                    <td class="accommodation_button">
+                                        <button type="button" class="btn_group coreaPicks_search_button accommo_picks on">Accommodation</button>
+                                    </td>
+                                    <td class="activity_button">
+                                        <button type="button" class="btn_group coreaPicks_search_button activity_picks on">Activity</button>
+                                    </td>
+                                    <!--도시설정-->
+                                    <td class="city_picks">
+                                        <select id="city_picks" class="search-box-input" name="cityPicks">
+                                            <option class="option" value="seoul" data-reactid="">SEOUL</option>
+                                            <option class="option" value="jeju" data-reactid="">JEJU</option>
+                                            <option class="option" value="busan" data-reactid="">BUSAN</option>
+                                            <option class="option" value="junju" data-reactid="">JUNJU</option>
+                                        </select>
+                                    </td>
+                                    <!--직접 검색창-->
+                                    <td class="searchBox_picks">
+                                        <input class="search-box-input" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken">
+                                    </td>
+                                    <!--검색 버튼-->
+                                    <td class="button_picks">
+                                        <button type="button" id="picks-search-btn">Search</button>
+                                    </td>
+                                </tr>
+                            </div>
+                        </form>
+                    </table>
+                </div>
             </div>
-        </div>
-    </div>
+         </div>
     </div>
 
-    <!--up button-->
+    <!--up button--> <!--위치 해결 조금 남음-->
     <div class="coreaPicks_upButton">
         <a href="#" id="back-to-top" title="Back to top"><img src="/img/upbutton.png" style="width:100%;"></a>
     </div>
 
-<!--가격 boundary-->
-    <div class="picks_boundary">
-        <div>
+    <!--가격 ranger slider--> <!--jquery해결/-->
+    <div class="picks_rangeslider">
+                <div data-role="rangeslider" class="ui-rangeslider" style="padding: 3rem; width: 60%; display: inline-block;">
+                    <input name="range-1a" id="range-1a" min="0" max="100" value="0" type="number" data-type="range" class="ui-shadow-inset ui-corner-all ui-slider-input ui-rangeslider-first ui-body-inherit">
+                    <label for="range-1b" id="range-1b-label">Rangeslider:</label>
+                    <input name="range-1b" id="range-1b" min="0" max="100" value="100" type="number" data-type="range" class="ui-shadow-inset ui-corner-all ui-slider-input ui-rangeslider-last ui-body-inherit">
 
+                    <div class="ui-rangeslider-sliders">
+                        <div role="application" class="ui-slider-track ui-shadow-inset ui-bar-inherit ui-corner-all" aria-disabled="false" style="z-index: 1;">
+                            <div class="ui-slider-bg ui-btn-active">
+                            </div>
+                        </div>
+                        <div role="application" class="ui-slider-track ui-shadow-inset ui-bar-inherit ui-corner-all" aria-disabled="false">
+                            <div class="ui-slider-bg ui-btn-active"></div>
+                            <a href="#" class="ui-slider-handle ui-btn ui-shadow ui-btn-null" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0" title="0" aria-labelledby="range-1a-label"></a>
+                            <a href="#" class="ui-slider-handle ui-btn ui-shadow ui-btn-null" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-valuetext="100" title="100" aria-labelledby="range-1b-label"></a>
+                        </div>
+                    </div>
+              </div>
         </div>
     </div>
+
 </div>
 
 <!-- 검색결과 -->
@@ -66,13 +88,57 @@
     <div class="search_content">
         <!-- 지도 버튼/ 지도 -->
         <div class="picks_map">
-            <div>
 
-            </div>
         </div>
 
         <!--gallery list-->
-        <div class="picks_gallery">
+        <div class="picks_gallery" style="width: 400px;">
+           <!-- http://materialdesignblog.com/10-material-design-cards-for-web-in-css-html/
+           7번으로 할 것-->
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    <img src="/img/eat.jpg" alt="image" class="border-tlr-radius">
+                </div>
+
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <div class="card__social">
+                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                        </div>
+
+                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                    </div>
+
+                    <div class="card__meta">
+                        <a href="#">Web Design</a>
+                        <time>17th March</time>
+                    </div>
+
+                    <article class="card__article">
+                        <h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                    </article>
+                </div>
+
+                <div class="card__action">
+
+                    <div class="card__author">
+                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                        <div class="card__author-content">
+                            By <a href="#">John Doe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
 
         </div>
 
@@ -83,10 +149,28 @@
     </div>
 </div>
 
-<div>
 
+
+<div>
     <!--write button-->
     <div class="picks_write">
 
     </div>
 </div>
+
+
+<script>
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1076265-1']);
+    _gaq.push(['_setDomainName', 'api.jquerymobile.com']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>

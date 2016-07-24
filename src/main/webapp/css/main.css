@@ -164,7 +164,7 @@ body {
     max-width: 1200px; }
 
 #footer {
-    background-color:#baabf9;
+    background-color:black;
 }
 
 #footer a {
@@ -932,14 +932,16 @@ body{
     left: 0;
     padding-bottom: 30px;
     padding-top: 30px;
-    position: absolute;
+    position:absolute;
     right: 0;
     z-index: 1000;
 }
 .column-search{
     width:100%;
+    top:0;
     float:left;
     height: 44px;
+    position: relative;
 }
 
 .search-bar{
@@ -1345,10 +1347,10 @@ body{
 .main_text_launching{
     color: white;
     font-weight: 900;
-    position: absolute;
+    position: relative;
 }
 .main_text_travel{
-    position:absolute;
+    position: relative;
     color: white;
     font-size: 6rem;
     font-weight: 700;

@@ -1197,6 +1197,9 @@ body{
 .card {
     background-color: #fff;
     margin-bottom: 1.6rem;
+    width: 400px;
+    height: 450px;
+    padding: 2px;
 }
 
 .card__padding {

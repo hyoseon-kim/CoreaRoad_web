@@ -902,6 +902,87 @@ body{
     margin-left: 10px;
 }
 
+@media (max-width: 740px) {
+    #roomprofile-search {
+        height: auto;
+    }
+    #roomprofile-search .section .search-bar {
+        margin-bottom: 13px;
+        width: 92.5%;
+    }
+    #roomprofile-search .section .search-bar input[type="text"] {
+        width: auto;
+        min-width: 91%;
+    }
+}
+
+#roomprofile-search {
+    background: #0095d5;
+    padding: 33px 0 30px 0;
+    font-family: "Roboto";
+}
+
+#roomprofile-search .section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    max-width: 1312px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#roomprofile-search .section .search-bar {
+    background: #fff;
+    width: 92.5%;
+    height: 40px;
+    border-radius: 4px;
+    padding: 8px 12px;
+    position: relative;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    text-align: left;
+}
+
+#roomprofile-search .section .search-bar input[type="text"] {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    width: 500px;
+    padding: 0;
+    margin: 0;
+    height: 25px;
+    font-size: 17px;
+    font-style: italic;
+    color: #e3e3e3;
+    font-weight: 300;
+    font-family: "Roboto";
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#roomprofile-search .section .search-bar .search-icon {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+}
+
+.search-icon {
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    background-color: transparent;
+    background-image: url(../img/search.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    width: 24px;
+    height: 24px;
+}
+
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 880px) {
@@ -1377,4 +1458,21 @@ body{
 }
 @media (min-width: 817px){
     .small_size {display: none;}
+}
+
+
+/* bootstrap card*/
+.bootsrapStype_Card {
+    position: relative;
+    display: block;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: .25rem;
+    max-width: 16rem;
+    margin: 1rem;
+    float: left;
+}
+
+.card_block {
+    padding: 1.25rem;
 }

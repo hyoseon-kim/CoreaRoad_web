@@ -1,4 +1,4 @@
-define([],function () {
+define(['handlebars'],function (Handlebars) {
 
     var sRoomId = '',
         chatList = {},
@@ -26,27 +26,27 @@ define([],function () {
     }
 
     function _makeChatRoomHtml(result) {
-        var html = [];
         $.each(result.data, function (nIndex, data) {
-            html.push('<a href="#chat/'+data.roomId+'" class="list-group-item" data-value="'+data.roomId+'">');
+            var template = Handlebars.compile($("#chat_list_html").html());
+            console.log($("#chat_list_html").html())
+            /*html.push('<a href="#chat/'+data.roomId+'" class="list-group-item" data-value="'+data.roomId+'">');
             html.push('<img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">');
             html.push('<span class="roomName chat_font">'+data.roomName+'</span>');
             html.push('<span class="roomUserCount chat_font">('+data.roomUserCount+')</span>');
             html.push('<button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>');
-            html.push('</a>');
+            html.push('</a>');*/
             chatList[data.roomId] = data;
+            $('#chat_room_list').append(template(data));
         });
-        
-        $('.chat_room_instance').html(html.join(''));
     }
     
     function _attachEvent() {
-        $('.list-group-item').on('click', function (oEvent) {
+        $('.card-link').on('click', function (oEvent) {
             var target = oEvent.target;
-            var roomId = $(target).attr('data-value');
+            var roomId = $(target).attr('data-index');
 
             $('.title').html(chatList[roomId].roomName);
-            $('.chat_room_list').hide();
+            $('.chat_list_div').hide();
             $('.chat_messenger_main').show();
             _setChatMessengerMainView(roomId);
         });
@@ -83,7 +83,7 @@ define([],function () {
 
     function setSocketNetwork() {
         //websocket을 지정한 URL
-        sock = new SockJS("http://192.168.0.19:8080/echo.do");
+        sock = new SockJS("http://localhost:8080/echo.do");
         //websocket 서버에서 메시지를 보내면 자동으로 실행된다.
         sock.onmessage = onMessage;
         //websocket 과 연결을 끊고 싶을때 실행하는 메소드

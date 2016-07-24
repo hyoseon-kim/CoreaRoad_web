@@ -15,52 +15,85 @@
         <div id="error-msg" class="error-msg search"></div>
     </div>
 </div>
-<div class="card radius shadowDepth1" style="position: relative; width: 400px; float: left; margin : 0.3em;">
-    <div class="card__image border-tlr-radius">
-        <img src="/img/eat.jpg" alt="image" class="border-tlr-radius">
-    </div>
 
-    <div class="card__content card__padding">
-        <div class="card__share">
-            <div class="card__social">
-                <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
-                <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
-                <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+<div class="chat_list_div">
+    <h3>Members</h3>
+    <div id="chat_jingenrmans_card_list" style="position: relative;display: inline-block; width:100%">
+        <div class="bootsrapStype_Card">
+            <div class="card-block">
+                <h4 class="card-title">JingerMan</h4>
+                <h6 class="card-subtitle text-muted">Korean</h6>
             </div>
-
-            <a id="share" class="share-toggle share-icon" href="#"></a>
-        </div>
-
-        <div class="card__meta">
-            <time>17th March</time>
-        </div>
-
-        <article class="card__article">
-            <h2><a href="#">Party in Han-river with ChiMak</a></h2>
-
-            <p>Han-river</p>
-        </article>
-    </div>
-
-    <div class="card__action">
-
-        <div class="card__author">
-            <img src="http://lorempixel.com/40/40/sports/" alt="user">
-            <div class="card__author-content">
-                By <a href="#">John Doe</a>
+            <img src="img/profile/sunny.jpg" alt="Card image" style="height: 120px; width: 100%; display: block;">
+            <div class="card-block">
+                <p class="card-text">Hello! My Name is JingerMan..</p>
+                <a href="#" class="card-link">Chat</a>
             </div>
         </div>
+
+        <div class="bootsrapStype_Card">
+            <div class="card-block">
+                <h4 class="card-title">JingerMan</h4>
+                <h6 class="card-subtitle text-muted">Korean</h6>
+            </div>
+            <img src="img/profile/alice.jpg" alt="Card image" style="height: 120px; width: 100%; display: block;">
+            <div class="card-block">
+                <p class="card-text">Hello! My Name is JingerMan..</p>
+                <a href="#" class="card-link">Chat</a>
+            </div>
+        </div>
+        <div class="bootsrapStype_Card">
+            <div class="card-block">
+                <h4 class="card-title">JingerMan</h4>
+                <h6 class="card-subtitle text-muted">Korean</h6>
+            </div>
+            <img src="img/profile/jules.jpg" alt="Card image" style="height: 120px; width: 100%; display: block;">
+            <div class="card-block">
+                <p class="card-text">Hello! My Name is JingerMan..</p>
+                <a href="#" class="card-link">Chat</a>
+            </div>
+        </div>
+        <div class="bootsrapStype_Card">
+            <div class="card-block">
+                <h4 class="card-title">JingerMan</h4>
+                <h6 class="card-subtitle text-muted">Korean</h6>
+            </div>
+            <img src="img/profile/sunny.jpg" alt="Card image" style="height: 120px; width: 100%; display: block;">
+            <div class="card-block">
+                <p class="card-text">Hello! My Name is JingerMan..</p>
+                <a href="#" class="card-link">Chat</a>
+            </div>
+        </div>
+        <div class="bootsrapStype_Card">
+            <div class="card-block">
+                <h4 class="card-title">JingerMan</h4>
+                <h6 class="card-subtitle text-muted">Korean</h6>
+            </div>
+            <img src="img/profile/alice.jpg" alt="Card image" style="height: 120px; width: 100%; display: block;">
+            <div class="card-block">
+                <p class="card-text">Hello! My Name is JingerMan..</p>
+                <a href="#" class="card-link">Chat</a>
+            </div>
+        </div>
+        <div class="bootsrapStype_Card">
+            <div class="card-block">
+                <h4 class="card-title">JingerMan</h4>
+                <h6 class="card-subtitle text-muted">Korean</h6>
+            </div>
+            <img src="img/profile/jules.jpg" alt="Card image" style="height: 120px; width: 100%; display: block;">
+            <div class="card-block">
+                <p class="card-text">Hello! My Name is JingerMan..</p>
+                <a href="#" class="card-link">Chat</a>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <h3>My Rooms</h3>
+    <div id="chat_room_list" style="position: relative;display: inline-block; width: 100%">
     </div>
 </div>
 
-
-    <div>
-        <div class="chat_room_list">
-            <div class="list-group chat_room_instance">
-            </div>
-        </div>
-    </div>
-    <div class="content container-fluid bootstrap snippets chat_messenger_main" style="display: none;">
+<div class="content container-fluid bootstrap snippets chat_messenger_main" style="display: none;">
         <div class="row row-broken">
             <div class="col-sm-3 col-xs-12">
                 <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
@@ -98,5 +131,19 @@
     </div>
 
 </div>
+
 </body>
+<script id="chat_list_html" type="text/x-handlebars-template">
+    <div class="bootsrapStype_Card {{roomId}}">
+        <div class="card-block">
+            <h4 class="card-title">{{roomName}}</h4>
+            <h6 class="card-subtitle text-muted">{{roomUserCount}}</h6>
+        </div>
+        <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
+        <div class="card-block">
+            <p class="card-text">Hello! My Name is JingerMan..</p>
+            <a href="#" data-index="{{roomId}}"class="card-link">Chat</a>
+        </div>
+    </div>
+</script>
 </html>

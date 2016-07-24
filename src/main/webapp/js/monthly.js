@@ -1,7 +1,9 @@
 /**
  * Created by Naver on 2016-07-23.
  */
-define(['vendor/fullcalendar', 'vendor/scheduler'],function (fullCalendar, scheduler) {
+define([
+    'vendor/fullcalendar'
+],function (fullCalendar) {
 
     function _init() {
         $(document).ready(function() {

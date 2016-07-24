@@ -4169,7 +4169,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   min-height: 50px;
-  border: 1px solid transparent;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4180,9 +4179,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-header {
     float: left;
   }
+  .navbar-collapse {
+    margin-left: 120px;
+  }
 }
 .navbar-collapse {
-  margin-left: 120px;
   padding-right: 15px;
   padding-left: 15px;
   overflow-x: visible;
@@ -4303,7 +4304,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 8px;
   background-color: transparent;
   background-image: none;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   border-radius: 4px;
 }
 .navbar-toggle:focus {

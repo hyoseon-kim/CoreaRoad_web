@@ -5,9 +5,8 @@
 
 require.config();
 	require([
-		'header',
-		'bootstrap'
-	], function(header, bootstrap){
+		'header'
+	], function(header){
 
 		var _welLoginBtnArea = null,
 			_h1UserId = null,

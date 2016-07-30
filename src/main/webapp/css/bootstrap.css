@@ -6240,11 +6240,15 @@ button.close {
 }
 .carousel {
   position: relative;
+  max-width: 1600px;
+  max-height: 900px;
+  overflow: hidden;
 }
 .carousel-inner {
   position: relative;
-  width: 100%;
-  overflow: hidden;
+  width: 1600px;
+  left: 50%;
+  margin-left: -800px;
 }
 .carousel-inner > .item {
   position: relative;

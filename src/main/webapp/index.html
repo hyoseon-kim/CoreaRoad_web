@@ -13,15 +13,14 @@
 
     <script src="js/vendor/jquery.min.js" type="text/javascript"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="js/vendor/bootstrap.js"></script>
 
     <link rel="stylesheet" href="css/slide.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-<div class="_corearoad_header off-canvas-wrap" data-offcanvas>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<div class="_corearoad_header off-canvas-wrap " data-offcanvas>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
@@ -244,7 +243,8 @@
             text: 'vendor/text',
             least: 'vendor/least',
             moment: 'vendor/moment',
-            handlebars : 'vendor/handlebars.min'
+            handlebars : 'vendor/handlebars.min',
+            bootstrap: 'vendor/bootstrap'
         },
         shim: {
             'least' : {
@@ -255,5 +255,5 @@
     };
 </script>
 <script src="js/vendor/require.js" type="text/javascript"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js" ></script>
 </html>

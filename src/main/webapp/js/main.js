@@ -4,10 +4,10 @@
 'use strict';
 
 require.config();
-require([], function () {
 	require([
-		'header'
-	], function(header){
+		'header',
+		'bootstrap'
+	], function(header, bootstrap){
 
 		var _welLoginBtnArea = null,
 			_h1UserId = null,
@@ -21,16 +21,6 @@ require([], function () {
 			_includeTemplate();
 			_getLoginSession();
 			_attachEvent();
-
-			/*$('.carousel').carousel({
-			 interval: 2000
-			 });*/
-			//이거 뭐지? 일단 지움
-
-			/*$('body').scrollspy({ target: '#navbar-example' });
-			$('[data-spy="scroll"]').each(function () {
-				var $spy = $(this).scrollspy('refresh')
-			});*/
 		});
 
 		function _includeTemplate() {
@@ -72,7 +62,7 @@ require([], function () {
 
 			//gallery open
 			$("._login_btn").on('click', function () {
-				$('#login').foundation('open');
+				//$('#login').foundation('open');
 			});
 
 			$("._side_bar").on('click', function () {
@@ -86,5 +76,5 @@ require([], function () {
 			});
 		}
 	});
-});
+
 

@@ -120,15 +120,23 @@ public class SocketHandler extends TextWebSocketHandler{
     public void afterConnectionClosed(WebSocketSession session,
                                       CloseStatus status) throws Exception {
         //List 삭제
-        sessionList.remove(session);
+        Set<String> keySet = chatSessionList.keySet();
+        String roomId = "";
+        while (keySet.iterator().hasNext()) {
+            String next = keySet.iterator().next();
+            if(chatSessionList.get(next).contains(session)){
+                chatSessionList.get(next).remove(session);
+                roomId = next;
+            }
+        }
 
         //Map 삭제
 //        sessions.remove(session.getId());
 
         logger.info("{} 연결 끊김.", session.getId());
-        for(WebSocketSession sess : sessionList){
+        /*for(WebSocketSession sess : chatSessionList.get(roomId)){
             sess.sendMessage(new TextMessage(String.format("{\"removeId\": \"%s\"}",
                     session.getId())));
-        }
+        }*/
     }
 }

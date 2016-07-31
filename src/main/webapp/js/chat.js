@@ -6,12 +6,6 @@ define(['handlebars'],function (Handlebars) {
         sock = null,
         loginUserId = '';
 
-
-
-
-
-
-
     function _init() {
         $.ajax({
             method: 'GET',
@@ -28,7 +22,6 @@ define(['handlebars'],function (Handlebars) {
     function _makeChatRoomHtml(result) {
         $.each(result.data, function (nIndex, data) {
             var template = Handlebars.compile($("#chat_list_html").html());
-            console.log($("#chat_list_html").html())
             /*html.push('<a href="#chat/'+data.roomId+'" class="list-group-item" data-value="'+data.roomId+'">');
             html.push('<img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">');
             html.push('<span class="roomName chat_font">'+data.roomName+'</span>');
@@ -41,18 +34,24 @@ define(['handlebars'],function (Handlebars) {
     }
     
     function _attachEvent() {
-        $('.card-link').on('click', function (oEvent) {
+        $('.chat_room').on('click', function (oEvent) {
             var target = oEvent.target;
             var roomId = $(target).attr('data-index');
 
             $('.title').html(chatList[roomId].roomName);
             $('.chat_list_div').hide();
             $('.chat_messenger_main').show();
+            $('._show_members').on('click', function (evt) {
+                $('._room_member').slideToggle("slow");
+
+            })
             _setChatMessengerMainView(roomId);
         });
     }
     
     function _setChatMessengerMainView(roomId) {
+        $("#roomprofile-search").hide();
+        $("#room_chat_menu").show();
         if(roomId) {
             sRoomId = roomId;
         }
@@ -67,23 +66,25 @@ define(['handlebars'],function (Handlebars) {
             data: {roomId: roomId}
         }).done(function (oData) {
             var result = $.parseJSON(oData);
-            var userEmail = "hyos810@naver.com"; //TODO: session을 어떻게 가져오지.. 우선 패스
 
             setSocketNetwork();
 
             $.each(result, function (nIndex, data) {
-                if(data.messengerSendUserId != userEmail) {
-                    $("#chatMsgList").append('<div class="answer left"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.messengerSendUserId+'</div><div class="text">'+data.messengerContent+'</div><div class="time">'+data.meesengerSendTime+'</div></div>');
+                if(data.messengerSendUserId != loginUserId) {
+                    $("#chatMsgList").prepend('<div class="answer left"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.messengerSendUserId+'</div><div class="text">'+data.messengerContent+'</div><div class="time">'+data.meesengerSendTime+'</div></div>');
                 } else {
-                    $("#chatMsgList").append('<div class="answer right"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.messengerSendUserId+'</div><div class="text">'+data.messengerContent+'</div><div class="time">'+data.meesengerSendTime+'</div></div>');
+                    $("#chatMsgList").prepend('<div class="answer right"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status offline"></div></div><div class="name">'+data.messengerSendUserId+'</div><div class="text">'+data.messengerContent+'</div><div class="time">'+data.meesengerSendTime+'</div></div>');
                 }
             });
+
+            $(".chat_scroll").scrollTop($(".chat_scroll")[0].scrollHeight);
         });
     }
 
     function setSocketNetwork() {
         //websocket을 지정한 URL
-        sock = new SockJS("http://localhost:8080/echo.do");
+
+        sock = new SockJS("http://"+location.host+"/echo.do");
         //websocket 서버에서 메시지를 보내면 자동으로 실행된다.
         sock.onmessage = onMessage;
         //websocket 과 연결을 끊고 싶을때 실행하는 메소드
@@ -136,7 +137,7 @@ define(['handlebars'],function (Handlebars) {
                 return ;
             } else {    //채팅 참석자 추가 액션
                 userList[data.setId] = true;
-                $("#chatUserList").append(' <div class="user" id="'+data.setId+'"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status off"></div> </div> <div class="name">'+data.setId+'</div> <div class="mood"></div> </div>');
+                //$("#chatUserList").append(' <div class="user" id="'+data.setId+'"><div class="avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name"><div class="status off"></div> </div> <div class="name">'+data.setId+'</div> <div class="mood"></div> </div>');
                 if(data.isOwner == "false"){    //참석자가 내가 아닌 경우에만
                     getUserOnline();
                 }

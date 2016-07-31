@@ -42,7 +42,9 @@ require.config();
 						//login시도 후 성공
 					} else {
 						var result = $.parseJSON(oData);
-						_welLoginBtnArea.hide();
+						$("#menu_login").hide();
+						$("#menu_logout").show();
+						$("#menu_signup").hide();
 						//_h1UserId.html(result.email);
 						userEmail = result;
 					}

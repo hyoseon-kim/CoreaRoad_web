@@ -9,83 +9,55 @@
 <div id="roomprofile-search">
     <div class="section clearfix">
         <div class="search-bar">
-            <input type="text" id="searchkey" name="searchkey" value="" onclick="" placeholder="find gingermas (e.g gingermans@gmail.com)">
+            <input type="text" id="searchkey" name="searchkey" value="" onclick="" placeholder="find gingermas">
             <a href="#" class="search-icon"></a>
         </div>
         <div id="error-msg" class="error-msg search"></div>
     </div>
 </div>
 
+<div id="room_chat_menu" style="border:1px solid #EEEEEE;display: none;text-align: right;position:fixed;width: 100%;background: white;z-index: 1000;">
+    <div style="width: 100%;padding: 20px;">
+        <button class="btn _show_members"><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span>MEMBERS</button>
+        <button class="btn"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span> DELETE ROOM</button>
+    </div>
+    <div class="col-xs-12 _room_member" style="display: none;box-shadow: 4px 2px 5px #888888;">
+        <div class="col-inside-lg chat" style="overflow: hidden; outline: none;" tabindex="5000">
+            <div class="chat-users">
+                <h6>Jingermans</h6>
+                <div id="chatUserList">
+                    <div class="user">
+                        <div class="avatar">
+                            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                            <div class="status off"></div>
+                        </div>
+                        <div class="name">User name</div>
+                        <div class="mood">User mood</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="chat_list_div">
     <h3>Members</h3>
     <div id="chat_jingenrmans_card_list" style="position: relative;display: inline-block; width:100%">
-        <div class="bootsrapStype_Card">
-            <div class="card-block">
-                <h4 class="card-title">JingerMan</h4>
-                <h6 class="card-subtitle text-muted">Korean</h6>
-            </div>
-            <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
-            <div class="card-block">
-                <p class="card-text">Hello! My Name is JingerMan..</p>
-                <a href="#" class="card-link">Chat</a>
-            </div>
-        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span class="badge">14</span>
+                Cras justo odio
+            </li>
+            <li class="list-group-item">
+                <span class="badge">14</span>
+                Cras justo odio
+            </li>
+            <li class="list-group-item">
+                <span class="badge">14</span>
+                Cras justo odio
+            </li>
+        </ul>
 
-        <div class="bootsrapStype_Card">
-            <div class="card-block">
-                <h4 class="card-title">JingerMan</h4>
-                <h6 class="card-subtitle text-muted">Korean</h6>
-            </div>
-            <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
-            <div class="card-block">
-                <p class="card-text">Hello! My Name is JingerMan..</p>
-                <a href="#" class="card-link">Chat</a>
-            </div>
-        </div>
-        <div class="bootsrapStype_Card">
-            <div class="card-block">
-                <h4 class="card-title">JingerMan</h4>
-                <h6 class="card-subtitle text-muted">Korean</h6>
-            </div>
-            <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
-            <div class="card-block">
-                <p class="card-text">Hello! My Name is JingerMan..</p>
-                <a href="#" class="card-link">Chat</a>
-            </div>
-        </div>
-        <div class="bootsrapStype_Card">
-            <div class="card-block">
-                <h4 class="card-title">JingerMan</h4>
-                <h6 class="card-subtitle text-muted">Korean</h6>
-            </div>
-            <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
-            <div class="card-block">
-                <p class="card-text">Hello! My Name is JingerMan..</p>
-                <a href="#" class="card-link">Chat</a>
-            </div>
-        </div>
-        <div class="bootsrapStype_Card">
-            <div class="card-block">
-                <h4 class="card-title">JingerMan</h4>
-                <h6 class="card-subtitle text-muted">Korean</h6>
-            </div>
-            <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
-            <div class="card-block">
-                <p class="card-text">Hello! My Name is JingerMan..</p>
-                <a href="#" class="card-link">Chat</a>
-            </div>
-        </div>
-        <div class="bootsrapStype_Card">
-            <div class="card-block">
-                <h4 class="card-title">JingerMan</h4>
-                <h6 class="card-subtitle text-muted">Korean</h6>
-            </div>
-            <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
-            <div class="card-block">
-                <p class="card-text">Hello! My Name is JingerMan..</p>
-                <a href="#" class="card-link">Chat</a>
-            </div>
-        </div>
     </div>
     <hr/>
     <h3>My Rooms</h3>
@@ -95,27 +67,10 @@
 
 <div class="content container-fluid bootstrap snippets chat_messenger_main" style="display: none;">
         <div class="row row-broken">
-            <div class="col-sm-3 col-xs-12">
-                <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
-                    <div class="chat-users">
-                        <h6>Jingermans</h6>
-                        <div id="chatUserList">
-                            <div class="user">
-                                <div class="avatar">
-                                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                                    <div class="status off"></div>
-                                </div>
-                                <div class="name">User name</div>
-                                <div class="mood">User mood</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-9 col-xs-12 chat" style="overflow: scroll; outline: none;" tabindex="5001">
+
+            <div class="col-xs-12 chat chat_scroll" style="overflow: scroll; outline: none; max-height: 900px;" tabindex="5001">
                 <div class="col-inside-lg decor-default">
                     <div class="chat-body">
-                        <h6>Mini Chat</h6>
                         <div id="chatMsgList">
 
                         </div>
@@ -129,21 +84,16 @@
             </div>
         </div>
     </div>
-
+<ul class="list-group">
+</ul>
 </div>
 
 </body>
 <script id="chat_list_html" type="text/x-handlebars-template">
-    <div class="bootsrapStype_Card {{roomId}}">
-        <div class="card-block">
-            <h4 class="card-title">{{roomName}}</h4>
-            <h6 class="card-subtitle text-muted">{{roomUserCount}}</h6>
-        </div>
-        <img src="img/login.png" alt="Card image" style="height: 120px; width: 100%; display: block;">
-        <div class="card-block">
-            <p class="card-text">Hello! My Name is JingerMan..</p>
-            <a href="#" data-index="{{roomId}}"class="card-link">Chat</a>
-        </div>
-    </div>
+        <li class="list-group-item chat_room" data-index="{{roomId}}">
+            <span class="badge">{{roomUserCount}}</span>
+            {{roomName}}
+        </li>
+
 </script>
 </html>

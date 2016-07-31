@@ -44,12 +44,6 @@ public class MainController {
 		return "main";
 	}
 
-	@RequestMapping(value = "/test.do",  method = RequestMethod.GET)
-	public String ajaxTest(HttpServletRequest req, ModelMap model) {
-		model.addAttribute(MESSAGE, loginUserBO.getUser("hyos810@naver.com"));
-		return "hello";
-	}
-
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(HttpServletRequest req, HttpServletResponse res, ModelMap model) {
 		HttpSession session = req.getSession();
@@ -63,8 +57,6 @@ public class MainController {
 			user = loginUserBO.getUser(req.getParameter("email"));
 		} else {
 			//아이디가 잘못됨
-			User fakeUser = new User(true);
-			session.setAttribute("loginUser", fakeUser);
 			return "redirect:/";
 		}
 
@@ -79,10 +71,17 @@ public class MainController {
 			return "redirect:/";
 		} else {
 			//email이 있지만 password가 일치하지 않는 경우
-			User fakeUser = new User(true);
-			session.setAttribute("loginUser", fakeUser);
 			return "redirect:/";
 		}
+	}
+
+	@RequestMapping("/logout.do")
+	public String logOut(HttpServletRequest req, HttpServletResponse res, ModelMap model) {
+		HttpSession session = req.getSession();
+		if(session.getAttribute("loginUser") != null) {
+			session.removeAttribute("loginUser");
+		}
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/getSession.do", method = RequestMethod.GET)
@@ -98,19 +97,6 @@ public class MainController {
 				map.addAttribute(MESSAGE, new Gson().toJson(user));
 			}
 		} else {
-			InetAddress inetAddresses = null;
-			try {
-				inetAddresses = InetAddress.getLocalHost();
-
-				//if(inetAddresses.getHostAddress().equals("192.168.0.19")) {
-					session.setAttribute("loginUser", new User("hyos810@naver.com"));
-				//} else {
-				//	session.setAttribute("loginUser", new User("corearoad@naver.com"));
-				//}
-
-			} catch (UnknownHostException e) {
-				e.printStackTrace();
-			}
 			map.addAttribute(MESSAGE, "not a member");
 		}
 

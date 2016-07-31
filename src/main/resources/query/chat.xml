@@ -23,7 +23,7 @@
         select * from chat_messenger where msg_id = #{id};
     </select>
     <select id="getAllChatMessengerByRoomId" parameterType="String" resultMap="messenger">
-        select * from chat_messenger where msg_room_id = #{id} ORDER BY msg_send_datetime ASC LIMIT 10;
+        select * from chat_messenger where msg_room_id = #{id} ORDER BY msg_send_datetime DESC LIMIT 10;
     </select>
     <select id="getAllChatRoomByUserId" parameterType="String" resultMap="room">
         SELECT

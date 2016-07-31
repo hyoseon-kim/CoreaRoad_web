@@ -8,11 +8,13 @@ define([
     'text!/monthly.html',
     'text!/chatting.html',
     'text!/coreaPicks.html',
+    'text!/login.html',
     'chat',
     'coreaPicks',
     'monthly',
-    'program'
-],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml, _welCoreaPicks, chat, coreaPicks, monthly, program) {
+    'program',
+    'login'
+],function (_welProgram, _welSignUp, _welAboutUs, _welMonthly, _welChatHtml, _welCoreaPicks, _welLogin, chat, coreaPicks, monthly, program, login) {
     var _welContentArea = $('._corearoad_content');
     function init() {
         attachEvent();
@@ -52,11 +54,18 @@ define([
             coreaPicks.init();
         });
 
-        $("#login").on('click').on('click', function () {
-            
+        $("#menu_login").on('click', function () {
+            _welContentArea.html(_welLogin);
+            login.init();
         });
 
-        $('._sign_up_btn').on('click', function () {
+        $("#menu_logout").on("click", function () {
+            $.ajax("/logout.do").done(function () {
+                location.reload();
+            })
+        })
+
+        $('#menu_signup').on('click', function () {
             //$('#login').foundation('close');
             _welContentArea.html(_welSignUp);
 
@@ -85,10 +94,6 @@ define([
                         }
                     });
             });
-
-            $("._login_close").on('click', function () {
-                //$('#login').foundation('close');
-            })
         });
     }
     return {

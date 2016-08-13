@@ -9,15 +9,15 @@
 <div id="roomprofile-search">
     <div class="section clearfix">
         <div class="search-bar">
-            <input type="text" id="searchkey" name="searchkey" value="" onclick="" placeholder="find gingermas">
-            <a href="#" class="search-icon"></a>
+            <input type="text" id="searchkey" name="searchkey" value="" onclick="" placeholder="add a chat room">
+            <a href="#" class="search-icon _make_new_chat_room"></a>
         </div>
         <div id="error-msg" class="error-msg search"></div>
     </div>
 </div>
 
 <div id="room_chat_menu" style="border:1px solid #EEEEEE;display: none;text-align: right;position:fixed;width: 100%;background: white;z-index: 1000;">
-    <div style="width: 100%;padding: 20px;">
+    <div style="width: 100%;padding: 7px;">
         <button class="btn _show_members"><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span>MEMBERS</button>
         <button class="btn"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span> DELETE ROOM</button>
     </div>
@@ -27,12 +27,6 @@
                 <h6>Jingermans</h6>
                 <div id="chatUserList">
                     <div class="user">
-                        <div class="avatar">
-                            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                            <div class="status off"></div>
-                        </div>
-                        <div class="name">User name</div>
-                        <div class="mood">User mood</div>
                     </div>
                 </div>
             </div>
@@ -44,14 +38,6 @@
     <h3>Members</h3>
     <div id="chat_jingenrmans_card_list" style="position: relative;display: inline-block; width:100%">
         <ul class="list-group">
-            <li class="list-group-item">
-                <span class="badge">14</span>
-                Cras justo odio
-            </li>
-            <li class="list-group-item">
-                <span class="badge">14</span>
-                Cras justo odio
-            </li>
             <li class="list-group-item">
                 <span class="badge">14</span>
                 Cras justo odio
@@ -94,6 +80,5 @@
             <span class="badge">{{roomUserCount}}</span>
             {{roomName}}
         </li>
-
 </script>
 </html>

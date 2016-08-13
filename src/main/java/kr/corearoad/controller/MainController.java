@@ -5,9 +5,11 @@ import com.google.common.net.InetAddresses;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import kr.corearoad.bean.ChatMessanger;
+import kr.corearoad.bean.CoreaPicks;
 import kr.corearoad.bean.User;
 import kr.corearoad.bo.ActionBO;
 import kr.corearoad.bo.ChatBO;
+import kr.corearoad.bo.CoreaPicksBO;
 import kr.corearoad.bo.LoginUserBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +40,9 @@ public class MainController {
 
 	@Autowired
 	ChatBO chatBO;
+
+	@Autowired
+	CoreaPicksBO coreaPicksBO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(HttpServletRequest req, ModelMap model) {
@@ -230,6 +235,26 @@ public class MainController {
 		chatMessanger.setMessengerSendUserId(getUser(req).getEmail());
 
 		chatBO.insertChatMessage(chatMessanger);
+		return "hello";
+	}
+
+	@RequestMapping("/getAllCoreaPicksList")
+	public String getAllCoreaPicksList(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
+		Gson gson = new GsonBuilder().create();
+		map.put(MESSAGE, gson.toJson(coreaPicksBO.getAllCoreaPicksList()));
+		return "hello";
+	}
+
+	@RequestMapping("/searchCoreaPicks")
+	public String searchCoreaPiicks(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
+		CoreaPicks coreaPicks = new CoreaPicks();
+		coreaPicks.setCategory(req.getParameter("category"));
+		coreaPicks.setTagList(req.getParameter("tagList"));
+		coreaPicks.setStartPrice(Integer.parseInt(req.getParameter("startPrice")));
+		coreaPicks.setEndPrice(Integer.parseInt(req.getParameter("endPrice")));
+
+		Gson gson = new GsonBuilder().create();
+		map.put(MESSAGE, gson.toJson(coreaPicksBO.searchCoreaPicks(coreaPicks)));
 		return "hello";
 	}
 

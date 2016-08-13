@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.corearoad.mapper.CoreaPicksInterface">
+    <resultMap id="coreaPicks" type="kr.corearoad.bean.CoreaPicks">
+        <id column="post_id" property="postId"/>
+        <result column="category" property="category"/>
+        <result column="tag_list" property="tagList"/>
+        <result column="regist_date" property="registDate"/>
+        <result column="modified_date" property="modifiedDate"/>
+        <result column="writer_email" property="writerEmail"/>
+        <result column="content" property="content"/>
+        <result column="is_sponsor" property="isSponsor"/>
+        <result column="map" property="map"/>
+        <result column="title" property="title"/>
+        <result column="start_price" property="startPrice"/>
+        <result column="end_price" property="endPrice"/>
+        <result column="end_price" property="endPrice"/>
+        <result column="main_picture" property="mainPicture"/>
+    </resultMap>
+    <select id="selectTopCoreaPicks" resultMap="coreaPicks">
+        select * from coreaPicks limit 10;
+    </select>
+    <select id="selectCoreaPicksWithSearchCondition" resultMap="coreaPicks" parameterType="kr.corearoad.bean.CoreaPicks">
+        SELECT * FROM coreaPicks
+        WHERE
+          tag_list like '%${tagList}%'
+          AND
+          category = #{category}
+          AND
+          #{startPrice} > start_price
+          AND
+          end_price > #{endPrice}
+        ;
+    </select>
+    <insert id="insertCoreaPicks" parameterType="kr.corearoad.bean.CoreaPicks">
+        INSERT INTO
+        coreaPicks(
+          category, tag_list, modified_date, writer_email, content, is_sponsor, map, title, start_price, end_price, main_picture
+        )
+        VALUES (
+          #{category},
+          #{tagList},
+          #{modifiedDate},
+          #{writerEmail},
+          #{content},
+          #{isSponsor},
+          #{map},
+          #{title},
+          #{startPrice},
+          #{endPrice},
+          #{mainPicture}
+        )
+    </insert>
+</mapper>

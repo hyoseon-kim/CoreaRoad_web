@@ -1122,7 +1122,7 @@ body{
     height: 44px;
 }
 .search-bar-picks{
-    height: 44px;
+    /*height: 44px;*/
     width: 60%;
     box-sizing: border-box;
     display: inline-block;

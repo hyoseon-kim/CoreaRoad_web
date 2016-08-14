@@ -1,5 +1,6 @@
 package kr.corearoad.controller;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.net.InetAddresses;
 import com.google.gson.Gson;
@@ -26,6 +27,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -238,23 +240,54 @@ public class MainController {
 		return "hello";
 	}
 
-	@RequestMapping("/getAllCoreaPicksList")
+	@RequestMapping("/getAllCoreaPicksList.do")
 	public String getAllCoreaPicksList(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
 		Gson gson = new GsonBuilder().create();
 		map.put(MESSAGE, gson.toJson(coreaPicksBO.getAllCoreaPicksList()));
 		return "hello";
 	}
 
-	@RequestMapping("/searchCoreaPicks")
+	@RequestMapping("/searchCoreaPicks.do")
 	public String searchCoreaPiicks(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
 		CoreaPicks coreaPicks = new CoreaPicks();
-		coreaPicks.setCategory(req.getParameter("category"));
-		coreaPicks.setTagList(req.getParameter("tagList"));
+		String[] categoryList = req.getParameter("category").split(",");
+		String[] tagList = req.getParameter("tagList").split(",");
+		List<CoreaPicks> coreaPicksList = Lists.newArrayList();
+
+		StringBuilder categorySQL = new StringBuilder().append("(");
+
+		for(int i=0, endLength = categoryList.length; i < endLength; i++){
+			categorySQL.append("category = '");
+			categorySQL.append(categoryList[i]);
+			categorySQL.append("'");
+
+			if(i != (endLength-1)){
+				categorySQL.append(" OR ");
+			}
+		}
+		categorySQL.append(")");
+
+		StringBuilder tagListSQL = new StringBuilder().append("(");
+		for(int i=0, endLength = tagList.length; i < endLength; i++){
+			tagListSQL.append("tag_list like '%");
+			tagListSQL.append(tagList[i]);
+			tagListSQL.append("%'");
+
+			if(i != (endLength-1)){
+				tagListSQL.append(" OR ");
+			}
+		}
+		tagListSQL.append(")");
+
+		coreaPicks.setCategory(categorySQL.toString());
+		coreaPicks.setTagList(tagListSQL.toString());
 		coreaPicks.setStartPrice(Integer.parseInt(req.getParameter("startPrice")));
 		coreaPicks.setEndPrice(Integer.parseInt(req.getParameter("endPrice")));
+		coreaPicks.setCity(req.getParameter("city"));
+		coreaPicksList.addAll(coreaPicksBO.searchCoreaPicks(coreaPicks));
 
 		Gson gson = new GsonBuilder().create();
-		map.put(MESSAGE, gson.toJson(coreaPicksBO.searchCoreaPicks(coreaPicks)));
+		map.put(MESSAGE, gson.toJson(coreaPicksList.stream().distinct().collect(Collectors.toList())));
 		return "hello";
 	}
 

@@ -1,12 +1,10 @@
 <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="//api.jquerymobile.com/wp-includes/js/wp-embed.min.js?ver=4.5.2"></script>
 <script type="text/javascript" src="//api.jquerymobile.com/wp-includes/js/comment-reply.min.js?ver=4.5.2"></script>
-
-
 <div class="coreaPicks_contents" style="background-color: white; position: relative;">
 
     <!--search box--> <!--데이터 넘기는 것 할 것/마크업만 완성된 상태-->
-    <div class="picks_search_box">
+    <div class="picks_search_box" style="height: 350px;display: inline-block">
          <div class="content_headerbar">
             <div class="column-picks-search">
                 <div class="search-bar-picks">
@@ -35,10 +33,27 @@
                                         </select>
                                     </td>
                                     <!--직접 검색창-->
-                                    <td class="searchBox_picks">
-                                        <input class="search-box-input" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken">
+                                </tr>
+                                <tr>
+                                    <td class="searchBox_picks" colspan="4">
+                                        <div class="text_holder" style="background: white;border: 1px solid #eee;display: inline-block;position: relative;width: 100%">
+                                            <h3 class="text_tag"><input class="" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100px"></h3>
+                                        </div>
                                     </td>
-                                    <!--검색 버튼-->
+                                </tr>
+                                <tr>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control _start_price" placeholder="START PRICE EX) 10000">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control _end_price" placeholder="END PRICE EX)20000">
+                                        </div>
+                                    </div>
+
+
+                                </tr>
+                                <tr> <!--검색 버튼-->
                                     <td class="button_picks">
                                         <button type="button" id="picks-search-btn">Search</button>
                                     </td>
@@ -57,7 +72,7 @@
     </div>
 
     <!--가격 ranger slider--> <!--jquery해결/-->
-    <div class="picks_rangeslider">
+    <!--<div class="picks_rangeslider">
                 <div data-role="rangeslider" class="ui-rangeslider" style="padding: 3rem; width: 60%; display: inline-block;">
                     <input name="range-1a" id="range-1a" min="0" max="100" value="0" type="number" data-type="range" class="ui-shadow-inset ui-corner-all ui-slider-input ui-rangeslider-first ui-body-inherit">
                     <label for="range-1b" id="range-1b-label">Rangeslider:</label>
@@ -75,21 +90,20 @@
                         </div>
                     </div>
               </div>
-        </div>
+        </div>-->
 
 <!-- 검색결과 -->
 <div class="search-result-content">
     <div class="search_content">
         <!-- 지도 버튼/ 지도 -->
-        <div class="picks_map">
-
+        <div id="picks_map" style="height: 300px;width: 500px;text-align: center;">
         </div>
 
         <!--gallery list-->
         <div class="picks_gallery" style="width: 100%; position: relative; min-height: 500px; display: inline-block">
             <!-- http://materialdesignblog.com/10-material-design-cards-for-web-in-css-html/
             7번으로 할 것-->
-            <div class="card radius shadowDepth1" style="position: relative; float: left; margin : 0.3em;">
+           <!-- <div class="card radius shadowDepth1" style="position: relative; float: left; margin : 0.3em;">
                 <div class="card__image border-tlr-radius">
                     <img src="/img/eat.jpg" alt="image" class="border-tlr-radius">
                 </div>
@@ -236,7 +250,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!--<div class="card radius shadowDepth1" style="position: relative; width: 400px; float: left; margin : 0.3em;">
                 <div class="card__image border-tlr-radius">
                     <img src="/img/bibimbap.jpg" alt="image" class="border-tlr-radius">
@@ -333,6 +347,45 @@
     </div>-->
 </div>
 
+<script id="picks_card_template" type="text/x-handlebars-template">
+    <div class="card radius shadowDepth1" style="position: relative; float: left; margin : 0.3em;" id="picks_{{postId}}">
+        <div class="card__image border-tlr-radius">
+            <img src="{{mainPicture}}" alt="image" class="border-tlr-radius">
+        </div>
+
+        <div class="card__content card__padding">
+            <div class="card__share">
+                <div class="card__social">
+                    <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                    <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                    <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                </div>
+
+                <a id="share" class="share-toggle share-icon" href="#"></a>
+            </div>
+
+            <div class="card__meta">
+                <time>{{registDate}}</time>
+            </div>
+
+            <article class="card__article">
+                <h2><a href="#">{{title}}</a></h2>
+
+                <p>{{city}}</p>
+            </article>
+        </div>
+
+        <div class="card__action">
+
+            <div class="card__author">
+                <div class="card__author-content">
+                    By <a href="#">{{writerEmail}}</a>
+                </div>
+            </div>
+            <span>price : {{startPrice}}won ~ {{endPrice}}won</span>
+        </div>
+    </div>
+</script>
 
 <script>
 
@@ -348,4 +401,5 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
+</script>
 </script>

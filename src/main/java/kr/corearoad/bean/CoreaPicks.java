@@ -23,6 +23,7 @@ public class CoreaPicks {
         private int endPrice;
         private String mainPicture;
         private List processedTagList;
+        private String city;
 
         public String getPostId() {
                 return postId;
@@ -132,6 +133,30 @@ public class CoreaPicks {
                 this.processedTagList = CommonUtils.returnStringArrayFromString(getTagList());
         }
 
+        public boolean isSponsor() {
+                return isSponsor;
+        }
+
+        public void setSponsor(boolean sponsor) {
+                isSponsor = sponsor;
+        }
+
+        public List getProcessedTagList() {
+                return processedTagList;
+        }
+
+        public void setProcessedTagList(List processedTagList) {
+                this.processedTagList = processedTagList;
+        }
+
+        public String getCity() {
+                return city;
+        }
+
+        public void setCity(String city) {
+                this.city = city;
+        }
+
         @Override
         public String toString() {
                 final StringBuffer sb = new StringBuffer("CoreaPicks{");
@@ -149,6 +174,7 @@ public class CoreaPicks {
                 sb.append(", endPrice=").append(endPrice);
                 sb.append(", mainPicture='").append(mainPicture).append('\'');
                 sb.append(", processedTagList=").append(processedTagList);
+                sb.append(", city='").append(city).append('\'');
                 sb.append('}');
                 return sb.toString();
         }

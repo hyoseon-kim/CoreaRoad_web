@@ -16,6 +16,7 @@
         <result column="end_price" property="endPrice"/>
         <result column="end_price" property="endPrice"/>
         <result column="main_picture" property="mainPicture"/>
+        <result column="city" property="city"/>
     </resultMap>
     <select id="selectTopCoreaPicks" resultMap="coreaPicks">
         select * from coreaPicks limit 10;
@@ -23,13 +24,17 @@
     <select id="selectCoreaPicksWithSearchCondition" resultMap="coreaPicks" parameterType="kr.corearoad.bean.CoreaPicks">
         SELECT * FROM coreaPicks
         WHERE
-          tag_list like '%${tagList}%'
+          ${tagList}
           AND
-          category = #{category}
+          ${category}
           AND
-          #{startPrice} > start_price
+
+          #{startPrice} >= start_price
           AND
-          end_price > #{endPrice}
+          end_price >= #{endPrice}
+
+          AND
+          city = #{city}
         ;
     </select>
     <insert id="insertCoreaPicks" parameterType="kr.corearoad.bean.CoreaPicks">

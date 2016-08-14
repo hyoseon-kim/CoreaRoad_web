@@ -6,6 +6,23 @@
     <!--search box--> <!--데이터 넘기는 것 할 것/마크업만 완성된 상태-->
     <div class="picks_search_box" style="height: 350px;display: inline-block">
          <div class="content_headerbar">
+             <div class="container simple_search_box" style="display: none;">
+                 <div class="row">
+                     <div class="col-sm-6 col-sm-offset-3">
+                         <div id="imaginary_container">
+                             <div class="input-group stylish-input-group">
+                                 <input type="text" class="form-control"  placeholder="Search" id="simple_search_box_input">
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
             <div class="column-picks-search">
                 <div class="search-bar-picks">
                     <table class="search-box-picks">
@@ -37,17 +54,17 @@
                                 <tr>
                                     <td class="searchBox_picks" colspan="4">
                                         <div class="text_holder" style="background: white;border: 1px solid #eee;display: inline-block;position: relative;width: 100%">
-                                            <h3 class="text_tag"><input class="" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100px"></h3>
+                                            <h3 class="text_tag"><input class="" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100%"></h3>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control _start_price" placeholder="START PRICE EX) 10000">
+                                            <input type="text" class="form-control _start_price" placeholder="START PRICE EX) 10000" value="0">
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control _end_price" placeholder="END PRICE EX)20000">
+                                            <input type="text" class="form-control _end_price" placeholder="END PRICE EX)20000" value="1000000">
                                         </div>
                                     </div>
 
@@ -342,9 +359,9 @@
 
 <div>
     <!--write button-->
-  <!--  <div class="picks_write">
-
-    </div>-->
+    <div class="picks_write" style="position: fixed;bottom: 0;right: 0;">
+        <img src="img/picks_write.png" width="50px"/>
+    </div>
 </div>
 
 <script id="picks_card_template" type="text/x-handlebars-template">

@@ -1,7 +1,10 @@
 /**
  * Created by preme on 2016-06-19.
  */
-define(['handlebars'],function (Handlebars) {
+define([
+    'handlebars',
+    'text!/writePicks.html',
+    'picksWrite'],function (Handlebars, _welWritePicks, picksWrite) {
 
     var aPicksData = [],
         map,
@@ -24,11 +27,11 @@ define(['handlebars'],function (Handlebars) {
             window['initialize'] = initialize;
             // Asynchronously Load the map API
             var script = document.createElement('script');
-            script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+            script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize&language=en";
             document.body.appendChild(script);
             bInit = true;
         } else {
-            _renderCoreaPicksMain();
+            initialize();
         }
     }
 
@@ -83,7 +86,7 @@ define(['handlebars'],function (Handlebars) {
                 var postId = data.postId;
                 $('html, body').animate({
                     scrollTop: $("#picks_"+postId).offset().top
-                }, 2000);
+                }, 500);
 
             });
         });
@@ -105,16 +108,22 @@ define(['handlebars'],function (Handlebars) {
 
         $("#search_Picks").keyup(function (e) {
             var code = e.keyCode || e.which;
-            var value = $(e.target).val();
+            var value = $(e.target).val().split(' ');
 
             if(code == 13) {
-               $(".text_tag").prepend('<span class="label label-success">#<span class="tag_list">'+value+'</span><span class="badge">X</span></span>')
+                
+                $.each(value.reverse(), function (idx, val) {
+                    $(".text_tag").prepend('<span class="label label-success">#<span class="tag_list">'+val+'</span><span class="badge">X</span></span>');
+                });
                 $(e.target).val('');
             }
         });
-
         $("#picks-search-btn").on('click', _search);
         
+        $(".picks_write").on('click', function () {
+            $('._corearoad_content').html(_welWritePicks);
+            picksWrite.init();
+        })
     }
 
     function _search() {
@@ -152,6 +161,9 @@ define(['handlebars'],function (Handlebars) {
                 endPrice: endPrice
             }
         }).done(function (data) {
+            $('.simple_search_box').show();
+            $('#simple_search_box_input').val(tagList.join(','));
+            $('.column-picks-search').hide();
             _renderWithData($.parseJSON(data));
         })
 

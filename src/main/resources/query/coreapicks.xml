@@ -29,9 +29,9 @@
           ${category}
           AND
 
-          #{startPrice} >= start_price
+          start_price >= #{startPrice}
           AND
-          end_price >= #{endPrice}
+          #{endPrice} >= end_price
 
           AND
           city = #{city}

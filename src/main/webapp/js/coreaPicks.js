@@ -113,9 +113,9 @@ define([
             if(code == 13) {
                 
                 $.each(value.reverse(), function (idx, val) {
-                    $(".text_tag").prepend('<span class="label label-success">#<span class="tag_list">'+val+'</span><span class="badge">X</span></span>');
+                    $(".text_tag").prepend('<span class="tag label label-info">'+val+'<span data-role="remove"></span></span>');
                 });
-                $(e.target).val('');
+                $("#search_Picks").hide();
             }
         });
         $("#picks-search-btn").on('click', _search);

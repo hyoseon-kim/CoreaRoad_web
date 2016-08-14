@@ -9,5 +9,5 @@ define(['handlebars'],function (Handlebars) {
 
     return {
         init: _init
-    }
-}
+    };
+});

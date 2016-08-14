@@ -4,7 +4,7 @@
 <div class="coreaPicks_contents" style="background-color: white; position: relative;">
 
     <!--search box--> <!--데이터 넘기는 것 할 것/마크업만 완성된 상태-->
-    <div class="picks_search_box" style="height: 350px;display: inline-block">
+    <div class="picks_search_box" style="position: relative;">
          <div class="content_headerbar">
              <div class="container simple_search_box" style="display: none;">
                  <div class="row">
@@ -23,62 +23,75 @@
                  </div>
              </div>
 
-            <div class="column-picks-search">
+            <div class="column-picks-search" style="width: 100%;">
                 <div class="search-bar-picks">
-                    <table class="search-box-picks">
-                        <form id="search-box-form-picks" method="get" action="/s"> <!--what is meaning? /s-->
-                            <div class="search-box-input-picks">
-                                <!--coreaPicks search box-->
-                                <tr style="height: 44px;">
-                                    <!--buttons 3개-->
-                                    <td class="food_button">
-                                        <button type="button" class="btn_group coreaPicks_search_button food_picks on">Food</button>
-                                    </td>
-                                    <td class="accommodation_button">
-                                        <button type="button" class="btn_group coreaPicks_search_button accommo_picks on">Accommodation</button>
-                                    </td>
-                                    <td class="activity_button">
-                                        <button type="button" class="btn_group coreaPicks_search_button activity_picks on">Activity</button>
-                                    </td>
-                                    <!--도시설정-->
-                                    <td class="city_picks">
-                                        <select id="city_picks" class="search-box-input" name="cityPicks">
+                        <div class="form-horizontal">
+                            <fieldset>
+
+                                <!-- Form Name -->
+                                <legend>Picks Search</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Category</label>
+                                    <div class="col-md-4">
+                                        <table>
+                                            <tr>
+                                                <td class="food_button"><button type="button" class="btn_group coreaPicks_search_button food_picks on">Food</button></td>
+                                                <td class="accommodation_button"><button type="button" class="btn_group coreaPicks_search_button accommo_picks on">Accommodation</button></td>
+                                                <td class="activity_button"><button type="button" class="btn_group coreaPicks_search_button activity_picks on">Activity</button></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="city_picks">City</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" id="city_picks" name="cityPicks">
                                             <option class="option" value="seoul" data-reactid="">SEOUL</option>
                                             <option class="option" value="jeju" data-reactid="">JEJU</option>
                                             <option class="option" value="busan" data-reactid="">BUSAN</option>
                                             <option class="option" value="junju" data-reactid="">JUNJU</option>
                                         </select>
-                                    </td>
-                                    <!--직접 검색창-->
-                                </tr>
-                                <tr>
-                                    <td class="searchBox_picks" colspan="4">
-                                        <div class="text_holder" style="background: white;border: 1px solid #eee;display: inline-block;position: relative;width: 100%">
-                                            <h3 class="text_tag"><input class="" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100%"></h3>
+                                    </div>
+                                </div>
+
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">keyword</label>
+                                    <div class="col-md-4">
+                                        <span class="text_tag"><input class="form-control" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100%"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Price</label>
+                                    <div class="col-md-5 form-inline">
+                                        <div class="form-group" style="margin-right:1em">
+                                            <label class="sr-only" for="exampleInputEmail3">start price</label>
+                                            <input type="text" class="form-control _start_price" id="exampleInputEmail3" placeholder="10000"> won -
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control _start_price" placeholder="START PRICE EX) 10000" value="0">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control _end_price" placeholder="END PRICE EX)20000" value="1000000">
+                                        <span>~</span>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword3">end price</label>
+                                            <input type="text" class="form-control _end_price" id="exampleInputPassword3" placeholder="20000"> won
                                         </div>
                                     </div>
+                                </div>
 
-
-                                </tr>
-                                <tr> <!--검색 버튼-->
-                                    <td class="button_picks">
+                                <!-- Button -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="picks-search-btn"></label>
+                                    <div class="col-md-4">
                                         <button type="button" id="picks-search-btn">Search</button>
-                                    </td>
-                                </tr>
-                            </div>
-                        </form>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
                     </table>
-                </div>
             </div>
          </div>
     </div>
@@ -111,13 +124,13 @@
 
 <!-- 검색결과 -->
 <div class="search-result-content">
-    <div class="search_content">
+    <div class="search_content" style="text-align: center;">
         <!-- 지도 버튼/ 지도 -->
-        <div id="picks_map" style="height: 300px;width: 500px;text-align: center;">
+        <div id="picks_map" style="position:relative;margin:50px;min-height: 300px;border:1px solid #ed4e6e;">
         </div>
 
         <!--gallery list-->
-        <div class="picks_gallery" style="width: 100%; position: relative; min-height: 500px; display: inline-block">
+        <div class="picks_gallery" style="position: relative; min-height: 500px; display: inline-block">
             <!-- http://materialdesignblog.com/10-material-design-cards-for-web-in-css-html/
             7번으로 할 것-->
            <!-- <div class="card radius shadowDepth1" style="position: relative; float: left; margin : 0.3em;">
@@ -360,7 +373,7 @@
 <div>
     <!--write button-->
     <div class="picks_write" style="position: fixed;bottom: 0;right: 0;">
-        <img src="img/picks_write.png" width="50px"/>
+        <img src="" width="30px"/>
     </div>
 </div>
 

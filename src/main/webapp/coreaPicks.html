@@ -25,7 +25,7 @@
 
             <div class="column-picks-search" style="width: 100%;">
                 <div class="search-bar-picks">
-                        <div class="form-horizontal">
+                        <div class="form-horizontal" style="font-family: 'sans-serif'; color: #A6a6a6; font-size: 15px;">
                             <fieldset>
 
                                 <!-- Form Name -->
@@ -34,7 +34,7 @@
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Category</label>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <table>
                                             <tr>
                                                 <td class="food_button"><button type="button" class="btn_group coreaPicks_search_button food_picks on">Food</button></td>
@@ -48,7 +48,7 @@
                                 <!-- Select Basic -->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="city_picks">City</label>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <select class="form-control" id="city_picks" name="cityPicks">
                                             <option class="option" value="seoul" data-reactid="">SEOUL</option>
                                             <option class="option" value="jeju" data-reactid="">JEJU</option>
@@ -61,8 +61,8 @@
                                 <!-- Select Basic -->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">keyword</label>
-                                    <div class="col-md-4">
-                                        <span class="text_tag"><input class="form-control" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100%"></span>
+                                    <div class="col-md-5">
+                                        <span class="text_tag"><input class="form-control" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100%;background: #eee"></span>
                                     </div>
                                 </div>
 
@@ -71,12 +71,12 @@
                                     <label class="col-md-4 control-label">Price</label>
                                     <div class="col-md-5 form-inline">
                                         <div class="form-group" style="margin-right:1em">
-                                            <label class="sr-only" for="exampleInputEmail3">start price</label>
+                                            <label class="sr-only" for="exampleInputEmail3">min price</label>
                                             <input type="text" class="form-control _start_price" id="exampleInputEmail3" placeholder="10000"> won -
                                         </div>
                                         <span>~</span>
                                         <div class="form-group">
-                                            <label class="sr-only" for="exampleInputPassword3">end price</label>
+                                            <label class="sr-only" for="exampleInputPassword3">max price</label>
                                             <input type="text" class="form-control _end_price" id="exampleInputPassword3" placeholder="20000"> won
                                         </div>
                                     </div>
@@ -373,7 +373,7 @@
 <div>
     <!--write button-->
     <div class="picks_write" style="position: fixed;bottom: 0;right: 0;">
-        <img src="" width="30px"/>
+        <img src="img/picks_write.png" width="30px"/>
     </div>
 </div>
 

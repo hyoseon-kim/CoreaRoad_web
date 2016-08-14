@@ -36,11 +36,12 @@ require.config();
 						alert('Login Failed! please sign up.')
 
 						//login시도 안하고 첫페이지로 진입
-					} else if (oData == 'not a member') {
+					} else if ($.trim(oData) == 'not a member') {
 						_welLoginBtnArea.show();
 
 						//login시도 후 성공
 					} else {
+						console.log(oData);
 						var result = $.parseJSON(oData);
 						$("#menu_login").hide();
 						$("#menu_logout").show();

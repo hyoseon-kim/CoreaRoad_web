@@ -6,7 +6,8 @@ define(['handlebars'],function (Handlebars) {
     var aPicksData = [],
         map,
         bInit = false,
-        bounds;
+        bounds,
+        markers = [];
 
 
     function _init() {
@@ -26,6 +27,8 @@ define(['handlebars'],function (Handlebars) {
             script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
             document.body.appendChild(script);
             bInit = true;
+        } else {
+            _renderCoreaPicksMain();
         }
     }
 
@@ -38,13 +41,6 @@ define(['handlebars'],function (Handlebars) {
         // Display a map on the page
         map = new google.maps.Map(document.getElementById("picks_map"), mapOptions);
         map.setTilt(45);
-
-
-        // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-        var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-            this.setZoom(14);
-            google.maps.event.removeListener(boundsListener);
-        });
 
         _renderCoreaPicksMain();
     }
@@ -59,37 +55,46 @@ define(['handlebars'],function (Handlebars) {
         var parsedData = data;
         var template = Handlebars.compile($("#picks_card_template").html());
 
-        var markers = [];
-        // Multiple Markers
-        /*var markers = [
-         ['London Eye, London', 51.503454,-0.119562],
-         ['Palace of Westminster, London', 51.499633,-0.124755]
-         ];
-
-         // Display multiple markers on a map
-
-         }*/
         $('.picks_gallery').html('');
+
+        setMapOnAll();
+
         $.each(parsedData, function (idx, data) {
             aPicksData[data.postId] = data;
             $('.picks_gallery').append(template(data));
-            markers.push(data.title, data.map.split('/')[0], data.map.split('/')[1]);
-        });
 
-        var infoWindow = new google.maps.InfoWindow(), marker, i;
-
-        // Loop through our array of markers & place each one on the map
-        for (i = 0; i < markers.length; i++) {
-            var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            var position = new google.maps.LatLng(data.map.split('/')[0],  data.map.split('/')[1]);
             bounds.extend(position);
-            marker = new google.maps.Marker({
+
+            var infoWindow = new google.maps.InfoWindow({map: map, content: data.title});
+
+            var marker = new google.maps.Marker({
                 position: position,
+                title: data.title,
                 map: map,
-                title: markers[i][0]
+                postId: data.postId
             });
 
-            // Automatically center the map fitting all markers on the screen
+            infoWindow.open(map, marker);
+            markers.push(marker);
             map.fitBounds(bounds);
+
+            marker.addListener('click', function(e) {
+                var postId = data.postId;
+                $('html, body').animate({
+                    scrollTop: $("#picks_"+postId).offset().top
+                }, 2000);
+
+            });
+        });
+
+
+    }
+
+    // Sets the map on all markers in the array.
+    function setMapOnAll() {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
         }
     }
     

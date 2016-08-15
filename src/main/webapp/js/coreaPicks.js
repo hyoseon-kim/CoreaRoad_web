@@ -27,7 +27,7 @@ define([
             window['initialize'] = initialize;
             // Asynchronously Load the map API
             var script = document.createElement('script');
-            script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize&language=en";
+            script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyDbps9ge0Jp_5A0Bs2xczW8sULXdtzD3ZI&callback=initialize&language=en";
             document.body.appendChild(script);
             bInit = true;
         } else {

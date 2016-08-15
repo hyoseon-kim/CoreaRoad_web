@@ -251,7 +251,7 @@ public class MainController {
 	public String searchCoreaPiicks(HttpServletRequest req, HttpServletResponse res, ModelMap map) {
 		CoreaPicks coreaPicks = new CoreaPicks();
 		String[] categoryList = req.getParameter("category").split(",");
-		String[] tagList = req.getParameter("tagList").split(",");
+		String[] tagList = req.getParameter("tagList").toLowerCase().split(",");
 		List<CoreaPicks> coreaPicksList = Lists.newArrayList();
 
 		StringBuilder categorySQL = new StringBuilder().append("(");

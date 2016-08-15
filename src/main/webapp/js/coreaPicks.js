@@ -113,8 +113,12 @@ define([
             if(code == 13) {
                 
                 $.each(value.reverse(), function (idx, val) {
-                    $(".text_tag").prepend('<span class="tag label label-info">'+val+'<span data-role="remove"></span></span>');
+                    $(".text_tag").prepend('<span class="tag label label-info"><span class="tag_list">'+val+'</span><span data-role="remove" class="_remove_tag"></span></span>');
                 });
+                
+                $("._remove_tag").on('click', function (e) {
+                    $(e.target).parent().remove();
+                })
                 $("#search_Picks").hide();
             }
         });

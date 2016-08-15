@@ -25,15 +25,15 @@
 
             <div class="column-picks-search" style="width: 100%;">
                 <div class="search-bar-picks">
-                        <div class="form-horizontal" style="font-family: 'sans-serif'; color: #A6a6a6; font-size: 15px;">
+                        <!--<div class="form-horizontal" style="font-family: 'sans-serif'; color: #A6a6a6; font-size: 15px;">
                             <fieldset>
 
-                                <!-- Form Name -->
+                                &lt;!&ndash; Form Name &ndash;&gt;
                                 <legend>Picks Search</legend>
 
-                                <!-- Text input-->
+                                &lt;!&ndash; Text input&ndash;&gt;
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Category</label>
+                                    <label class="col-md-4 control-label">&lt;!&ndash;Category&ndash;&gt;</label>
                                     <div class="col-md-5">
                                         <table>
                                             <tr>
@@ -45,9 +45,9 @@
                                     </div>
                                 </div>
 
-                                <!-- Select Basic -->
+                                &lt;!&ndash; Select Basic &ndash;&gt;
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="city_picks">City</label>
+                                    <label class="col-md-4 control-label" for="city_picks"></label>
                                     <div class="col-md-5">
                                         <select class="form-control" id="city_picks" name="cityPicks">
                                             <option class="option" value="seoul" data-reactid="">SEOUL</option>
@@ -58,17 +58,17 @@
                                     </div>
                                 </div>
 
-                                <!-- Select Basic -->
+                                &lt;!&ndash; Select Basic &ndash;&gt;
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">keyword</label>
+                                    <label class="col-md-4 control-label">&lt;!&ndash;keyword&ndash;&gt;</label>
                                     <div class="col-md-5">
                                         <span class="text_tag"><input class="form-control" type="text" id="search_Picks" name="search_picks" value="" placeholder="Bangbae-dong chicken" style="border: none;position: relative;width: 100%;background: #eee"></span>
                                     </div>
                                 </div>
 
-                                <!-- Select Basic -->
+                                &lt;!&ndash; Select Basic &ndash;&gt;
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Price</label>
+                                    <label class="col-md-4 control-label">&lt;!&ndash;Price&ndash;&gt;</label>
                                     <div class="col-md-5 form-inline">
                                         <div class="form-group" style="margin-right:1em">
                                             <label class="sr-only" for="exampleInputEmail3">min price</label>
@@ -82,7 +82,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Button -->
+                                &lt;!&ndash; Button &ndash;&gt;
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="picks-search-btn"></label>
                                     <div class="col-md-4">
@@ -90,7 +90,24 @@
                                     </div>
                                 </div>
                             </fieldset>
-                        </div>
+                        </div>-->
+                    <table style="width: 98%;margin: 10px;">
+                        <tr><td width="30%"><button class="coreaPicks_search_button food_picks on" style="width: 100%">FOOD</button></td>
+                            <td width="40%"><button class="coreaPicks_search_button accommo_picks on" style="width: 100%">ACCOMMODATION</button></td>
+                            <td width="30%"><button class="coreaPicks_search_button activity_picks off" style="width: 100%">ACTIVITY</button></td>
+                        </tr>
+                        <tr><td colspan="3">
+                            <select class="search_field" style="width: 100%" id="city_picks" name="cityPicks">
+                                <option selected disabled >CITY</option>
+                                <option class="option" value="seoul" data-reactid="">SEOUL</option>
+                                <option class="option" value="jeju" data-reactid="">JEJU</option>
+                                <option class="option" value="busan" data-reactid="">BUSAN</option>
+                                <option class="option" value="junju" data-reactid="">JUNJU</option>
+                            </select>
+                        </td></tr>
+                        <tr><td colspan="3"><span class="text_tag"><input class="search_field" type="text" value="PORK FOOD" style="width: 100%" id="search_Picks" name="search_picks"/></span></td></tr>
+                        <tr><td colspan="3" class="search_field">￦<input type="text" placeholder="min price" class="price_field _start_price"> ~ ￦<input type="text" placeholder="max price" class="price_field _end_price"></td></tr>
+                        <tr><td colspan="3"><button style="width: 100%;background: #E6625A;color:white;border: none;height: 50px;" id="picks-search-btn">search</button></td></tr>
                     </table>
             </div>
          </div>
@@ -126,7 +143,7 @@
 <div class="search-result-content">
     <div class="search_content" style="text-align: center;">
         <!-- 지도 버튼/ 지도 -->
-        <div id="picks_map" style="position:relative;margin:50px;min-height: 300px;border:1px solid #ed4e6e;">
+        <div id="picks_map" style="position:relative;margin:50px;min-height: 300px;border:1px solid #e3e3e3;">
         </div>
 
         <!--gallery list-->

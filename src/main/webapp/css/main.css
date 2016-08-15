@@ -1141,9 +1141,33 @@ body{
 .activity_button{
     width:11%;
 }
-#city_picks{
-    width:100%;
-    height:100%;
+
+.coreaPicks_search_button {
+    background: #E6625A;
+    border:1px solid #e3e3e3;
+    color: white;
+    height: 50px;
+    font-weight: bolder;
+}
+
+.search_field {
+    width: 100%;
+    height: 45px;
+    background: white;
+    border-bottom: 1px solid #e3e3e3;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: #a6a6a6;
+
+}
+
+.price_field {
+    border-bottom: 1px solid #a6a6a6;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 40%
 }
 .option{
     height: 100%;
@@ -1206,28 +1230,12 @@ body{
 }
 
 .on{
-    line-height: 44px;
-    width: 100%;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 3rem;
-    font-family: 'Amatic SC';
+    background: #E6625A;
 }
 
 .off{
-    background-color: rgba(127, 127, 127, 1);
-    line-height: 44px;
-    width: 100%;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 3rem;
-    font-family: 'Amatic SC';
+    background: #EEEEEE;
+    color: #a6a6a6;
 }
 
 /*coreaPicks_upbutton*/

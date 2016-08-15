@@ -23,6 +23,7 @@ define([
     function attachEvent() {
         //gallery open
         $('#menu_activities').on('click', function (we, index) {
+            closeMenu();
 
             //이미 on일 때는 class > off
             if($(we).hasClass('on')){
@@ -39,33 +40,40 @@ define([
             program.init(index);
         });
         $('#menu_aboutUs').on('click', function () {
+            closeMenu();
             _welContentArea.html(_welAboutUs);
         });
         $('#menu_monthly').on('click', function () {
+            closeMenu();
             _welContentArea.html(_welMonthly);
             monthly.init();
         });
         $('#menu_chat').on('click', function () {
+            closeMenu();
             _welContentArea.html(_welChatHtml);
             chat.init();
         });
         $('#menu_coreaPicks').on('click', function () {
+            closeMenu();
             _welContentArea.html(_welCoreaPicks);
             coreaPicks.init();
         });
 
         $("#menu_login").on('click', function () {
+            closeMenu();
             _welContentArea.html(_welLogin);
             login.init();
         });
 
         $("#menu_logout").on("click", function () {
+            closeMenu();
             $.ajax("/logout.do").done(function () {
                 location.reload();
             })
         })
 
         $('#menu_signup').on('click', function () {
+            closeMenu();
             //$('#login').foundation('close');
             _welContentArea.html(_welSignUp);
 
@@ -95,6 +103,14 @@ define([
                     });
             });
         });
+    }
+    
+    function closeMenu() {
+        var nav = $('.navbar-toggle');
+
+        if(nav.css('display') !== 'none') {
+            nav.click();
+        }
     }
     return {
         init: init

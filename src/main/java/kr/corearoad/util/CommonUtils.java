@@ -1,9 +1,10 @@
 package kr.corearoad.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+
+import java.util.*;
 
 /**
  * Created by Naver on 2016-05-07.
@@ -20,6 +21,5 @@ public class CommonUtils {
         } else {
             return null;
         }
-
     }
 }

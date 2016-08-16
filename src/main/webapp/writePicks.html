@@ -1,3 +1,45 @@
-<div>
-    WritePicks
+<div class="title" ><input type="text" class="_write_picks_title" value="Write your Sepical memory"/></div>
+
+<div class="search_box">
+    <div class="form-inline search_box_inner">
+        <table width="100%">
+            <tr>
+                <td width="40%">
+                    <select class="category_select form-control" style="width: 100%">
+                        <option disabled>category</option>
+                        <option value="food">food</option>
+                        <option value="accommodation">accommodation</option>
+                        <option value="">activity</option>
+                        <option>shopping</option>
+                    </select>
+                </td>
+                <td width="60%">
+                    <div id="custom-search-form" class="form-horizontal" style="width:100%">
+                        <div width="100%" style="display: inline;">
+                            <input type="text" class="search-query form-control _search_shop_text" placeholder="Search" style="width:100%;">
+                            <button class="_search_shop"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="_init_guide_msg"><td colspan="2"><h3>please select the place where you want to review.</h3></td></tr>
+            <tr>
+                <td colspan="2">
+                    <div id="_search_shop_map" style="display: none;height: 200px;">MAP</div>
+                </td>
+            </tr>
+            <tr id="_search_shop_result" style="display: none;">
+                <td colspan="2">
+                    <table class="table table-hover" style="background:white;width:100%;">
+                        <thead><tr><th>name</th><th>address</th></tr></thead>
+                        <tbody class="_search_shop_list"></tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </div>
+
+
+

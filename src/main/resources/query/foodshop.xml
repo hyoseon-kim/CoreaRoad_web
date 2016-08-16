@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.corearoad.mapper.picks.FoodShopInterface">
+    <resultMap id="foodShop" type="kr.corearoad.bean.picks.FoodShop">
+        <id column="shop_no" property="shopNo"/>
+        <result column="shop_nm" property="shopName"/>
+        <result column="shop_addr_new" property="shopAddrNew"/>
+        <result column="shop_addr_old" property="shopAddrOld"/>
+        <result column="shop_phone" property="shopPhone"/>
+        <result column="shop_open_time" property="shopOpenTime"/>
+        <result column="shop_close_time" property="shopCloseTime"/>
+        <result column="shop_menu" property="shopMenu"/>
+        <result column="shop_thumb" property="shopThumb"/>
+        <result column="shop_post_id_list" property="shopPostId"/>
+        <result column="shop_map" property="shopMap"/>
+    </resultMap>
+    <select id="getFoodShopListBySearch" parameterType="HashMap" resultMap="foodShop">
+      <choose>
+          <when test="lang == en">
+              select * from food_shop_en where shop_nm like '%${name}%'
+          </when>
+          <otherwise>
+              select * from food_shop_en where shop_nm like '%${name}%'
+          </otherwise>
+      </choose>
+
+    </select>
+</mapper>

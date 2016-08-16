@@ -1,12 +1,8 @@
 package kr.corearoad.bo;
 
-import jdk.internal.util.xml.PropertiesDefaultHandler;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPClientConfig;
-import org.springframework.expression.spel.ast.PropertyOrFieldReference;
 import org.springframework.stereotype.Service;
-import sun.net.ftp.FtpClient;
-import sun.net.ftp.FtpClientProvider;
 
 import java.io.*;
 import java.net.SocketException;

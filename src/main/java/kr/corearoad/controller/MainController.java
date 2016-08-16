@@ -12,6 +12,7 @@ import kr.corearoad.bo.ActionBO;
 import kr.corearoad.bo.ChatBO;
 import kr.corearoad.bo.CoreaPicksBO;
 import kr.corearoad.bo.LoginUserBO;
+import kr.corearoad.bo.picks.FoodShopBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -288,6 +289,27 @@ public class MainController {
 
 		Gson gson = new GsonBuilder().create();
 		map.put(MESSAGE, gson.toJson(coreaPicksList.stream().distinct().collect(Collectors.toList())));
+		return "hello";
+	}
+
+	@Autowired
+	FoodShopBO foodShopBO;
+
+	@RequestMapping(value = "/getFoodShopListBySearch.do", method = RequestMethod.POST)
+	public String getFoodShopListBySearch(HttpServletRequest req, HttpServletResponse res, ModelMap map) throws UnsupportedEncodingException {
+		req.setCharacterEncoding("UTF-8");
+		res.setCharacterEncoding("UTF-8");
+
+		String lang = req.getParameter("lang");
+		String name = req.getParameter("name");
+
+		Map parameterMap = Maps.newHashMap();
+		parameterMap.put("lang", lang);
+		parameterMap.put("name", name);
+
+		Gson gson = new GsonBuilder().create();
+		map.put(MESSAGE, gson.toJson(foodShopBO.getFoodShopListBySearch(parameterMap)));
+
 		return "hello";
 	}
 

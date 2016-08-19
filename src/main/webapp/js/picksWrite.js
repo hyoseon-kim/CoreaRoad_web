@@ -1,7 +1,11 @@
 /**
  * Created by Naver on 2016-08-14.
  */
-define(['handlebars'],function (Handlebars) {
+define([
+    'handlebars',
+    'text!/writePicksContent.html',
+    'writePicksContent'
+],function (Handlebars, _welWritePicksContent, writePicksContent) {
 
     var map2,
         bounds,
@@ -15,6 +19,11 @@ define(['handlebars'],function (Handlebars) {
 
     function _attachEvent() {
 
+        $('._search_shop_text').on('keyup', function (e) {
+            if(e.keyCode == 13) {
+                $("._search_shop").click();
+            }
+        });
         $("._search_shop").on('click', function (e) {
 
             var category = $('.category_select').val();
@@ -49,7 +58,14 @@ define(['handlebars'],function (Handlebars) {
                     _setMap();
                 }
                 $.each(result, function (idx, data) {
-                    $('._search_shop_list').append('<tr><td>'+data.shopName+'</td><td>'+data.shopAddrOld+'</td></tr>');
+                    $('._search_shop_list').append('<tr class="shop_item" data-index="'+data.shopNo+'"><td>'+data.shopName+'</td><td>'+data.shopAddrOld+'</td></tr>');
+                    
+                    $('.shop_item').on('click', function (e) {
+                        var shopNo = $(e.target).attr('data-shopNo');
+                            var _welContentArea = $('._corearoad_content');
+                            _welContentArea.html(_welWritePicksContent);
+                            writePicksContent.init();
+                    });
 
                     var position = new google.maps.LatLng(data.shopMap.split('/')[0],  data.shopMap.split('/')[1]);
                     bounds.extend(position);

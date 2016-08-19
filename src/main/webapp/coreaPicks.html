@@ -164,13 +164,13 @@
 
 <div>
     <!--write button-->
-    <div class="picks_write" style="position: fixed;bottom: 0;right: 0;">
-        <img src="img/picks_write.png" width="50px"/>
+    <div style="position: fixed;bottom: 0;right: 0;">
+        <img src="img/picks_write.png" width="50px" class="picks_write"/>
     </div>
 </div>
 
 <script id="picks_card_template" type="text/x-handlebars-template">
-    <div class="card radius shadowDepth1" style="position: relative; display:inline-table;margin : 0.3em;" id="picks_{{postId}}">
+    <div class="card radius shadowDepth1" style="position: relative; display:inline-table;margin : 0.3em;min-height: 300px;" id="picks_{{postId}}">
         <div class="card__image border-tlr-radius">
             <img src="{{mainPicture}}" alt="image" class="border-tlr-radius">
         </div>
@@ -184,19 +184,19 @@
                 <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
             </div>
         </div>
+        <div class="card__content card__padding">
+            <article class="card__article">
+                <h3><a href="#">{{title}}</a></h3>
+                <p>{{city}}</p>
+            </article>
+        </div>
         <div style="position: relative;float: left;">
-            <div class="card__content card__padding">
-                <article class="card__article">
-                    <h3><a href="#">{{title}}</a></h3>
-                    <p>{{city}}</p>
-                </article>
-            </div>
             <div class="card__action">
                 <span>{{startPrice}}won ~ {{endPrice}}won</span>
             </div>
         </div>
 
-        <div class="card__author" style="position: relative;float: right;width: 20%;overflow: hidden;">
+        <div class="card__author" style="position: absolute;bottom:3px;right:0;width: 30%;overflow: hidden;">
             <div class="card__author-content">
                 <img src="img/profile/jules.jpg" class="img-responsive img-circle" style="height: auto;width: 60%;margin-top: 30px;"><br>
                 <a href="#"><span style="">{{writerEmail}}</span></a>

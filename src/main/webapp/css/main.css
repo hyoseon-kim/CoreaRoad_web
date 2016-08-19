@@ -53,6 +53,7 @@
 
 body {
     position: relative;
+    font-family: "Trebuchet MS";
 }
 
 .event {
@@ -1671,4 +1672,116 @@ body{
 
 .search_box_inner {
     margin: 1em;
+}
+
+
+/*write picks content*/
+.picks_wrtie_content {
+    width: 95%;
+    position: relative;
+    display: inline;
+}
+
+.picks_wrtie_content .title {
+    width: 100%;
+    background: #E6625A;
+    position: relative;
+    height: 50px;
+    display: inline-table;
+}
+
+.picks_wrtie_content .title input {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    width: 80%;
+    text-align: center;
+    position: relative;
+    float: right;
+}
+
+._corea_picks_write_thumbnail {
+    width: 38%;
+    position:relative;
+    float: left;
+}
+.picks_wrtie_content .img-thumbnail {
+    width: 80%;
+    border:1px solid #eee;
+}
+
+.picks_wrtie_content .content_header {
+    width: 95%;
+    position: relative;
+    display: inline-table;
+}
+
+.picks_wrtie_content ._rating_and_tags {
+    position:relative;
+    float: right;
+    width:62%;
+}
+
+._rating_and_tags .label {
+    margin: 5px;
+    border-radius: 1em;
+}
+
+.picks_wrtie_content article {
+    margin: 10px;
+}
+
+.picks_wrtie_content .content_menu {
+    width: 95%;
+    position: relative;
+}
+
+.picks_wrtie_content .content_post {
+    overflow: scroll;
+}
+
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.stars
+{
+    font-size: 24px;
+    color: #d17581;
+}
+
+/* sns */
+
+.facebook {
+    border-radius: 4px;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    opacity: 1;
+    width: 32px;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Cpath%20fill%3D%22%233B5998%22%20d%3D%22M0%200h32v32H0z%22%2F%3E%3Cpath%20fill%3D%22%23FFF%22%20d%3D%22M22.08%2032V19.607h4.16l.62-4.83h-4.78v-3.083c0-1.398.388-2.352%202.393-2.352h2.56V5.02c-.443-.058-1.962-.19-3.728-.19-3.688%200-6.213%202.25-6.213%206.385v3.562h-4.17v4.83h4.17V32h4.987z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+.twitter {
+    border-radius: 4px;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    opacity: 1;
+    width: 32px;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Cpath%20fill%3D%22%2355ACEE%22%20d%3D%22M0%200h32v32H0z%22%2F%3E%3Cpath%20fill%3D%22%23FFF%22%20d%3D%22M28%208.557c-.884.39-1.833.656-2.828.775%201.017-.608%201.798-1.573%202.166-2.725-.953.567-2.006.976-3.13%201.194-.896-.953-2.176-1.55-3.593-1.55-2.72%200-4.924%202.205-4.924%204.924%200%20.387.048.763.13%201.125-4.09-.21-7.72-2.17-10.15-5.15-.42.727-.665%201.574-.665%202.477%200%201.71.87%203.214%202.19%204.1-.806-.027-1.564-.25-2.23-.616v.06c0%202.39%201.7%204.38%203.952%204.83-.414.115-.85.174-1.297.174-.318%200-.626-.03-.928-.086.63%201.956%202.447%203.38%204.6%203.42-1.685%201.318-3.808%202.107-6.114%202.107-.398%200-.79-.023-1.175-.068%202.18%201.396%204.768%202.213%207.55%202.213%209.056%200%2014.01-7.507%2014.01-14.013%200-.213-.005-.426-.015-.637.96-.695%201.795-1.56%202.455-2.55z%22%2F%3E%3C%2Fsvg%3E')
+}
+
+.pinterest {
+    border-radius: 4px;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    opacity: 1;
+    width: 32px;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Cpath%20fill%3D%22%23BD081C%22%20d%3D%22M0%200h32v32H0z%22%2F%3E%3Cpath%20fill%3D%22%23FFF%22%20d%3D%22M10.046%2030.548l-.016-.15c-.13-1.288-.226-3.115.082-4.44.296-1.272%201.913-8.106%201.913-8.106s-.488-.977-.488-2.422c0-2.268%201.314-3.96%202.95-3.96%201.392%200%202.065%201.044%202.065%202.296%200%201.4-.89%203.492-1.35%205.43-.385%201.624.813%202.948%202.414%202.948%202.9%200%205.127-3.057%205.127-7.47%200-3.904-2.806-6.635-6.813-6.635-4.64%200-7.365%203.48-7.365%207.074%200%201.402.54%202.905%201.214%203.722.13.16.15.302.11.467-.125.515-.4%201.623-.454%201.85-.072.3-.237.362-.546.218-2.036-.947-3.31-3.925-3.31-6.32%200-5.143%203.738-9.87%2010.777-9.87%205.658%200%2010.055%204.034%2010.055%209.42%200%205.623-3.544%2010.147-8.464%2010.147-1.653%200-3.206-.86-3.738-1.873%200%200-.818%203.114-1.016%203.877-.365%201.404-1.342%203.158-2.007%204.244-.003.003-.455.833-.57%201h-.456c-.056%200-.116-1.445-.12-1.45z%22%2F%3E%3C%2Fsvg%3E')
+
 }

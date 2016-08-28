@@ -59,13 +59,7 @@ define([
                 }
                 $.each(result, function (idx, data) {
                     $('._search_shop_list').append('<tr class="shop_item" data-index="'+data.shopNo+'"><td>'+data.shopName+'</td><td>'+data.shopAddrOld+'</td></tr>');
-                    
-                    $('.shop_item').on('click', function (e) {
-                        var shopNo = $(e.target).attr('data-shopNo');
-                            var _welContentArea = $('._corearoad_content');
-                            _welContentArea.html(_welWritePicksContent);
-                            writePicksContent.init();
-                    });
+
 
                     var position = new google.maps.LatLng(data.shopMap.split('/')[0],  data.shopMap.split('/')[1]);
                     bounds.extend(position);
@@ -77,6 +71,15 @@ define([
                         title: data.shopName,
                         map: map2,
                         postId: data.shopNo
+                    });
+
+                    console.log(marker);
+
+                    $('.shop_item').on('click', function (e) {
+                        var shopNo = $(e.target).attr('data-shopNo');
+                        var _welContentArea = $('._corearoad_content');
+                        _welContentArea.html(_welWritePicksContent);
+                        writePicksContent.init($('._write_picks_title').val(), $('.category_select').val(), data.shopMap);
                     });
 
                     infoWindow.open(map2, marker);

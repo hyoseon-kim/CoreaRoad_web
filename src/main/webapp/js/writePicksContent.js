@@ -5,9 +5,17 @@ define(['handlebars'],function (Handlebars) {
     var imageStack = [],
         imgIndex = 0,
         mainImageIndex = 0,
-        tagList = [];
+        tagList = [],
+        title,
+        selectedCategory,
+        mapLatLng;
 
-    function _init() {
+    function _init(sTitle, sSelectedCategory, sMap) {
+        title = sTitle;
+        selectedCategory = sSelectedCategory;
+        mapLatLng = sMap;
+        $('._write_picks_title').val(sTitle);
+        $('.category_select').val(sSelectedCategory);
         _attatchEvent();
         _initRatingJS();
     }
@@ -35,6 +43,7 @@ define(['handlebars'],function (Handlebars) {
                     var newImage = document.createElement('img');
                     newImage.src = srcData;
                     newImage.id = imgIndex++;
+                    newImage.className = 'img_content_inner'
                     newImage.style.maxWidth = "300px";
 
                     //document.getElementById("imgTest").innerHTML = newImage.outerHTML;
@@ -47,6 +56,7 @@ define(['handlebars'],function (Handlebars) {
                     newImage.className = "img_thumbnail";
                     newImage.addEventListener("click", function (e) {
                         $('._main_img').attr('src', imageStack[newImage.id]);
+                        $('._main_img').attr('data-index', newImage.id);
                         mainImageIndex = newImage.id;
                     })
 
@@ -58,17 +68,70 @@ define(['handlebars'],function (Handlebars) {
 
         $('._plus_tag').on('click', function (e) {
             var tagText = $('._insert_tag_txt').val();
-            $('._write_picks_tag_list').append('<span class="label label-danger">#'+tagText+'</span>');
+            $('._write_picks_tag_list').append('<span class="label label-danger _tag_item">#'+tagText+'</span>');
             tagList.push(tagText);
         });
 
         $('._plus_recommended_menu').on('click', function (e) {
-            $('._inserted_recommended_menu').append('<span>'+$('#recommeded_menu').val()+' ' + $('#recommeded_price').val() + '/' + $('#recommeded_person').val() +' </span><br>');
+            $('._inserted_recommended_menu').append('<span class="_menu">'+$('#recommeded_menu').val()+'</span> <span class="_price">' + $('#recommeded_price').val() + '/' + $('#recommeded_person').val() +' </span><br>');
             $('#recommeded_menu').val('');
             $('#recommeded_price').val('');
             $('#recommeded_person').val('');
         });
+
+        $("._upload_picks").on('click', _upload);
     }
+    
+    function _upload() {
+        //Title
+        console.log(title);
+        //Category
+        console.log(selectedCategory);
+        //tagList;
+        var tagList =  [] ;
+        $('._tag_item').each(function () {
+            tagList.push($(this).html());
+        });
+        console.log(tagList);
+        //content
+        $('.img_content_inner').each(function (idx) {
+            $(this).replaceWith('<image'+idx+'>');
+        });
+
+        console.log($('._post_textarea').html());
+
+        //map
+        console.log(mapLatLng);
+
+        //간단한 도시명..
+
+        //price
+        var priceSum = 0;
+        $('._price').each(function (idx) {
+            var itemString = $(this).html(),
+                price = parseInt(itemString.split('/')[0]),
+                persons = parseInt(itemString.split('/')[1]);
+
+            priceSum += price/persons;
+        });
+        console.log(priceSum/$('.price').length);
+
+        //main picture
+        console.log($('._main_img').attr('data-index'));
+
+        //menu
+        var menus = [];
+        $('._menu').each(function (idx) {
+            var item = {};
+            item.menu = $(this).html();
+            item.price = $('._price')[idx].html();
+            
+        })
+        
+
+
+    }
+
     return {
         init : _init
     };

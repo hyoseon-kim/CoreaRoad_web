@@ -13,6 +13,10 @@ import kr.corearoad.bo.ChatBO;
 import kr.corearoad.bo.CoreaPicksBO;
 import kr.corearoad.bo.LoginUserBO;
 import kr.corearoad.bo.picks.FoodShopBO;
+import kr.corearoad.dao.CoreaPicksDAO;
+import org.apache.commons.lang.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -46,6 +50,8 @@ public class MainController {
 
 	@Autowired
 	CoreaPicksBO coreaPicksBO;
+
+	private static Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(HttpServletRequest req, ModelMap model) {
@@ -310,6 +316,64 @@ public class MainController {
 		Gson gson = new GsonBuilder().create();
 		map.put(MESSAGE, gson.toJson(foodShopBO.getFoodShopListBySearch(parameterMap)));
 
+		return "hello";
+	}
+
+	@RequestMapping(value = "/insertCoreaPicks" , method = RequestMethod.POST)
+	public String insertCoreaPicks(HttpServletRequest req, HttpServletResponse res, ModelMap map){
+
+		try {
+			String category = req.getParameter("category");
+			String tagList = req.getParameter("tagList");
+			String writerEmail = getUser(req).getEmail();
+			String content = req.getParameter("content");
+			String mapLatLng = req.getParameter("map");
+			String title = req.getParameter("title");
+			String city = req.getParameter("city");
+			int startPrice = Integer.parseInt(req.getParameter("startPrice"));
+			int endPrice = Integer.parseInt(req.getParameter("endPrice"));
+			int avgPrice = Integer.parseInt(req.getParameter("avgPrice"));
+			String mainPicture = req.getParameter("mainPicture");
+			String menus = req.getParameter("menus");
+			int rating = Integer.parseInt(req.getParameter("rating"));
+			String randomKey = RandomStringUtils.randomAlphanumeric(10);
+
+			CoreaPicks coreaPicks = new CoreaPicks();
+			coreaPicks.setPostId(randomKey);
+			coreaPicks.setCategory(category);
+			coreaPicks.setTagList("["+ tagList + "]");
+			coreaPicks.setWriterEmail(writerEmail);
+			coreaPicks.setContent(content);
+			coreaPicks.setIsSponsor(false);
+			coreaPicks.setMap(mapLatLng);
+			coreaPicks.setTitle(title);
+			coreaPicks.setCity(city);
+			coreaPicks.setStartPrice(startPrice);
+			coreaPicks.setEndPrice(endPrice);
+			coreaPicks.setAvgPrice(avgPrice);
+			coreaPicks.setMainPicture(mainPicture);
+			coreaPicks.setMenus(menus);
+			coreaPicks.setRating(rating);
+
+			Map resultMap  = Maps.newHashMap();
+			resultMap.put("result", coreaPicksBO.insertCorearPicks(coreaPicks));
+			resultMap.put("randomString", randomKey);
+
+			Gson gson = new Gson();
+			map.put(MESSAGE, gson.toJson(resultMap));
+
+		}catch (Exception e) {
+			logger.error("MainController insertCoreaPicks Fail");
+			e.printStackTrace();
+			map.put(MESSAGE, "fail");
+		}
+		return "hello";
+	}
+
+	@RequestMapping(value = "/insertCoreaPicksImg" , method = RequestMethod.POST)
+	public String insertCoreaPicksImg(HttpServletRequest req, HttpServletResponse res, ModelMap map){
+		coreaPicksBO.insertCoreaPicksImage(req.getParameter("key"), req.getParameter("img"));
+		map.put(MESSAGE, "success");
 		return "hello";
 	}
 

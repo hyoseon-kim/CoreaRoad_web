@@ -1,8 +1,10 @@
 package kr.corearoad.mapper;
 
 import kr.corearoad.bean.CoreaPicks;
+import kr.corearoad.bean.CoreaPicksImage;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -14,5 +16,7 @@ public interface CoreaPicksInterface{
 
     List selectCoreaPicksWithSearchCondition(CoreaPicks coreaPicks) throws SQLException;
 
-    void insertCoreaPicks(CoreaPicks coreaPicks) throws SQLException;
+    int insertCoreaPicks(CoreaPicks coreaPicks) throws SQLException;
+
+    int insertCoreaPicksImage(CoreaPicksImage coreaPicksImage) throws SQLException;
 }

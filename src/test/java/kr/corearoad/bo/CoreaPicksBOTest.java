@@ -24,4 +24,9 @@ public class CoreaPicksBOTest {
         System.out.println(sut.getAllCoreaPicksList());
     }
 
+    @Test
+    public void insertCoreaPicksImg() throws Exception {
+        sut.insertCoreaPicksImage("random_key", "data");
+    }
+
 }

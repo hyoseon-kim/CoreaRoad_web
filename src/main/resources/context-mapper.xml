@@ -7,9 +7,9 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://121.254.168.77:3306/dbcorearoad?autoReconnect=true&amp;interactiveClient=true&amp;autoReconnectForPools=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="username" value="corearoad"/>
-        <property name="password" value="cr20160323**"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jingermans?autoReconnect=true&amp;interactiveClient=true&amp;autoReconnectForPools=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="jingermans"/>
+        <property name="password" value="cr0323**"/>
         <property name="maxIdle" value="10"/>
         <property name="maxWaitMillis" value="1000"/>
 

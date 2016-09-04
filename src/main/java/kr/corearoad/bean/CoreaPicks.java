@@ -21,9 +21,13 @@ public class CoreaPicks {
         private String title;
         private int startPrice;
         private int endPrice;
+        private int avgPrice;
         private String mainPicture;
         private List processedTagList;
         private String city;
+        private String menus;
+        private int rating;
+        private CoreaPicksImage coreaPicksImage;
 
         public String getPostId() {
                 return postId;
@@ -157,6 +161,30 @@ public class CoreaPicks {
                 this.city = city;
         }
 
+        public int getAvgPrice() {
+                return avgPrice;
+        }
+
+        public void setAvgPrice(int avgPrice) {
+                this.avgPrice = avgPrice;
+        }
+
+        public String getMenus() {
+                return menus;
+        }
+
+        public void setMenus(String menus) {
+                this.menus = menus;
+        }
+
+        public int getRating() {
+                return rating;
+        }
+
+        public void setRating(int rating) {
+                this.rating = rating;
+        }
+
         @Override
         public String toString() {
                 final StringBuffer sb = new StringBuffer("CoreaPicks{");
@@ -172,9 +200,13 @@ public class CoreaPicks {
                 sb.append(", title='").append(title).append('\'');
                 sb.append(", startPrice=").append(startPrice);
                 sb.append(", endPrice=").append(endPrice);
+                sb.append(", avgPrice=").append(avgPrice);
                 sb.append(", mainPicture='").append(mainPicture).append('\'');
                 sb.append(", processedTagList=").append(processedTagList);
                 sb.append(", city='").append(city).append('\'');
+                sb.append(", menus='").append(menus).append('\'');
+                sb.append(", rating=").append(rating);
+                sb.append(", coreaPicksImage=").append(coreaPicksImage);
                 sb.append('}');
                 return sb.toString();
         }

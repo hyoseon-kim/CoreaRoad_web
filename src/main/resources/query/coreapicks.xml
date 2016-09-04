@@ -14,15 +14,26 @@
         <result column="title" property="title"/>
         <result column="start_price" property="startPrice"/>
         <result column="end_price" property="endPrice"/>
-        <result column="end_price" property="endPrice"/>
+        <result column="avg_price" property="avgPrice"/>
         <result column="main_picture" property="mainPicture"/>
         <result column="city" property="city"/>
+        <result column="rating" property="rating"/>
+        <result column="menus" property="menus"/>
+    </resultMap>
+    <resultMap id="coreaPicksImg" type="kr.corearoad.bean.CoreaPicksImage">
+        <id column="key" property="key"/>
+        <result column="img" property="img"/>
     </resultMap>
     <select id="selectTopCoreaPicks" resultMap="coreaPicks">
-        select * from coreaPicks limit 10;
+        select  coreaPicks.post_id, coreaPicks.category, coreaPicks.tag_list, coreaPicks.regist_date, coreaPicks.modified_date, coreaPicks.writer_email, coreaPicks.content, coreaPicks.is_sponsor, coreaPicks.map, coreaPicks.title, coreaPicks.start_price, coreaPicks.end_price, coreaPicks_img.img AS main_picture, coreaPicks.city, coreaPicks.avg_price, coreaPicks.menus, coreaPicks.rating
+        from coreaPicks
+          JOIN coreaPicks_img ON coreaPicks_img.img_id = CONCAT(coreaPicks.post_id,'_',coreaPicks.main_picture)
+      limit 10;
     </select>
     <select id="selectCoreaPicksWithSearchCondition" resultMap="coreaPicks" parameterType="kr.corearoad.bean.CoreaPicks">
-        SELECT * FROM coreaPicks
+        SELECT
+          coreaPicks.post_id, coreaPicks.category, coreaPicks.tag_list, coreaPicks.regist_date, coreaPicks.modified_date, coreaPicks.writer_email, coreaPicks.content, coreaPicks.is_sponsor, coreaPicks.map, coreaPicks.title, coreaPicks.start_price, coreaPicks.end_price, coreaPicks_img.img AS main_picture, coreaPicks.city, coreaPicks.avg_price, coreaPicks.menus, coreaPicks.ratingFROM coreaPicks
+        JOIN coreaPicks_img ON coreaPicks_img.img_id = CONCAT(coreaPicks.post_id,'_',coreaPicks.main_picture)
         WHERE
           ${tagList}
           AND
@@ -40,12 +51,13 @@
     <insert id="insertCoreaPicks" parameterType="kr.corearoad.bean.CoreaPicks">
         INSERT INTO
         coreaPicks(
-          category, tag_list, modified_date, writer_email, content, is_sponsor, map, title, start_price, end_price, main_picture
+          post_id, regist_date, category, tag_list, writer_email, content, is_sponsor, map, title, start_price, end_price, avg_price, main_picture, city, rating
         )
         VALUES (
+          #{postId},
+          now(),
           #{category},
           #{tagList},
-          #{modifiedDate},
           #{writerEmail},
           #{content},
           #{isSponsor},
@@ -53,7 +65,18 @@
           #{title},
           #{startPrice},
           #{endPrice},
-          #{mainPicture}
+          #{avgPrice},
+          #{mainPicture},
+          #{city},
+          #{rating}
+        )
+    </insert>
+    <insert id="insertCoreaPicksImage" parameterType="kr.corearoad.bean.CoreaPicksImage">
+        INSERT INTO
+        coreaPicks_img (img_id, img)
+        VALUES  (
+          #{key},
+          #{img}
         )
     </insert>
 </mapper>

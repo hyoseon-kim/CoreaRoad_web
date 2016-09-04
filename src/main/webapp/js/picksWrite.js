@@ -73,13 +73,11 @@ define([
                         postId: data.shopNo
                     });
 
-                    console.log(marker);
-
                     $('.shop_item').on('click', function (e) {
                         var shopNo = $(e.target).attr('data-shopNo');
                         var _welContentArea = $('._corearoad_content');
                         _welContentArea.html(_welWritePicksContent);
-                        writePicksContent.init($('._write_picks_title').val(), $('.category_select').val(), data.shopMap);
+                        writePicksContent.init($('._write_picks_title').val(), $('.category_select').val(), data.shopMap, data.shopAddrOld);
                     });
 
                     infoWindow.open(map2, marker);

@@ -1,23 +1,32 @@
 /**
  * Created by Naver on 2016-08-18.
  */
-define(['handlebars'],function (Handlebars) {
+define(['handlebars'
+],function (Handlebars) {
     var imageStack = [],
         imgIndex = 0,
         mainImageIndex = 0,
         tagList = [],
         title,
         selectedCategory,
-        mapLatLng;
+        mapLatLng,
+        address ;
 
-    function _init(sTitle, sSelectedCategory, sMap) {
+    function _init(sTitle, sSelectedCategory, sMap, sAddr) {
+        _initDatas();
         title = sTitle;
         selectedCategory = sSelectedCategory;
         mapLatLng = sMap;
+        address = sAddr;
         $('._write_picks_title').val(sTitle);
         $('.category_select').val(sSelectedCategory);
         _attatchEvent();
         _initRatingJS();
+    }
+
+    function _initDatas() {
+        imageStack = [];
+        tagList = [];
     }
 
     function _initRatingJS() {
@@ -82,54 +91,124 @@ define(['handlebars'],function (Handlebars) {
         $("._upload_picks").on('click', _upload);
     }
     
-    function _upload() {
-        //Title
-        console.log(title);
-        //Category
-        console.log(selectedCategory);
-        //tagList;
+    function _getRatingCount() {
+        return $('.glyphicon-star').length;
+    }
+
+    function _getTagList() {
         var tagList =  [] ;
         $('._tag_item').each(function () {
-            tagList.push($(this).html());
+            tagList.push("'" + $(this).html().split("#")[1] + "'");
         });
-        console.log(tagList);
-        //content
+        return tagList.join(',');
+    }
+    
+    function _getContentHTML() {
         $('.img_content_inner').each(function (idx) {
-            $(this).replaceWith('<image'+idx+'>');
+            $(this).replaceWith('<img class="img_content_inner" src=""  data-index="'+idx+'>"');
         });
 
-        console.log($('._post_textarea').html());
+        return $('._post_textarea').html();
+    }
 
-        //map
-        console.log(mapLatLng);
-
-        //간단한 도시명..
-
-        //price
-        var priceSum = 0;
-        $('._price').each(function (idx) {
-            var itemString = $(this).html(),
-                price = parseInt(itemString.split('/')[0]),
-                persons = parseInt(itemString.split('/')[1]);
-
-            priceSum += price/persons;
-        });
-        console.log(priceSum/$('.price').length);
-
-        //main picture
-        console.log($('._main_img').attr('data-index'));
-
+    function _getMenus(priceArr) {
         //menu
         var menus = [];
         $('._menu').each(function (idx) {
             var item = {};
             item.menu = $(this).html();
-            item.price = $('._price')[idx].html();
-            
-        })
-        
+            item.price = priceArr[idx];
+            menus.push(item);
+        });
+
+        return menus;
+    }
+
+    function _upload() {
+        $('.loading_icon').show();
+        //price
+        var priceSum = 0,
+            startPrice = 0,
+            endPrice = 0,
+            priceArr = [];
+
+        $('._price').each(function (idx) {
+            var itemString = $(this).html(),
+                price = parseInt(itemString.split('/')[0]),
+                persons = parseInt(itemString.split('/')[1]);
+
+            if(startPrice  == 0  || startPrice > (price/persons)){
+                startPrice = price/persons;
+            }
+
+            if(endPrice == 0 || endPrice < (price/persons)) {
+                endPrice = price/persons;
+            }
+
+            priceArr.push(itemString);
+            priceSum += price/persons;
+        });
+
+        $.ajax({
+            url: '/insertCoreaPicks',
+            method: 'POST',
+            data : {
+                category : selectedCategory,
+                tagList : _getTagList(),
+                content : _getContentHTML(),
+                map : mapLatLng,
+                title: title,
+                city: address.split(' ')[0] + address.split(' ')[1],
+                startPrice : startPrice,
+                endPrice : endPrice,
+                avgPrice : priceSum/$('._price').length,
+                mainPicture : $('._main_img').attr('data-index'),
+                menus: _getMenus(priceArr),
+                rating : _getRatingCount()
+            }
+        }).done(function (oData) {
+            var oResult = $.parseJSON(oData);
+            if(oData == 'fail') {
+                return false;
+            }
+            var key = oResult.randomString,
+                i,
+                nLen;
+
+            if(key) {
+                for(i = 0  , nLen = imageStack.length; i < nLen ; i++) {
+                    $.ajax({
+                        url: '/insertCoreaPicksImg',
+                        method: 'POST',
+                        async: false,
+                        data: {
+                            key : key + '_' + i,
+                            img: imageStack[i]
+                        }
+                    }).done(function (oData) {
+                        if(i == (nLen-1)) {
+                            alert('success');
+                            _openCoreaPicks();
+                            $('.loading_icon').hide();
+                        }
+
+                        if(oData !== "success") {
+                            return false;
+                        }
 
 
+                    },this);
+                }
+            } else {
+                alert('fail');
+            }
+
+        });
+    }
+
+    function _openCoreaPicks() {
+        $('._corearoad_content').html(_welCoreaPicks);
+        $('#menu_coreaPicks').click();
     }
 
     return {

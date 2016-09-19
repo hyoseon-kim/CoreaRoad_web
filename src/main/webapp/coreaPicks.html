@@ -165,12 +165,12 @@
 <div>
     <!--write button-->
     <div style="position: fixed;bottom: 0;right: 0;">
-        <img src="img/picks_write.png" width="50px" class="picks_write"/>
+        <a href="#writeCoreaPicks"><img src="img/picks_write.png" width="50px" class="picks_write"/></a>
     </div>
 </div>
 
 <script id="picks_card_template" type="text/x-handlebars-template">
-    <div class="card radius shadowDepth1" style="position: relative; display:inline-table;margin : 0.3em;min-height: 300px;" id="picks_{{postId}}">
+    <a href="/#{{postId}}"><div class="card radius shadowDepth1" style="position: relative; display:inline-table;margin : 0.3em;min-height: 300px;" id="picks_{{postId}}">
         <div class="card__image border-tlr-radius">
             <img src="{{mainPicture}}" alt="image" class="border-tlr-radius">
         </div>
@@ -203,7 +203,7 @@
             </div>
         </div>
 
-    </div>
+    </div></a>
 </script>
 
 <script>

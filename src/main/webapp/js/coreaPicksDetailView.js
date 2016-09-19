@@ -13,7 +13,8 @@ define([
         oContentArea = html.find(".post_content"),
         oMainPicture = html.find('._main_picture_carousel .main_picture'),
         oRatingArea = html.find('._rating_area'),
-        oTagListArea = html.find('._tag_list_area');
+        oTagListArea = html.find('._tag_list_area'),
+        oMapArea = html.find('.coreaPicks_detail_map');
 
     function _init(data) {
         oPicksData = data;
@@ -29,8 +30,35 @@ define([
         oMainPicture.attr('src',oPicksData.mainPicture);
         oRatingArea.html(_getRating(oPicksData.rating));
         oTagListArea.html(_getTagList(oPicksData.processedTagList));
+        _initMap(oPicksData.map);
     }
-    
+
+    function _initMap(map) {
+        var map2,
+            bounds,
+            markers = [];
+
+        bounds = new google.maps.LatLngBounds();
+        var mapOptions = {
+            mapTypeId: 'roadmap'
+        };
+        // Display a map on the page
+        map2 = new google.maps.Map(document.getElementById('coreaPicks_detail_map'), mapOptions);
+
+        var position = new google.maps.LatLng(map.split('/')[0],  map.split('/')[1]);
+        bounds.extend(position);
+
+        var infoWindow = new google.maps.InfoWindow({map: map2});
+
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map2
+        });
+
+        infoWindow.open(map2, marker);
+        markers.push(marker);
+        map2.fitBounds(bounds);
+    }
     function _getRating(rating) {
         var sHtml = [];
         for(var i =0 ;i < parseInt(rating); i++) {

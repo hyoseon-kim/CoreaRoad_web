@@ -8,6 +8,7 @@ import kr.corearoad.dao.CoreaPicksDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -26,6 +27,8 @@ public class CoreaPicksBO {
     @Autowired
     CoreaPicksDAO coreaPicksDAO;
 
+
+    @Cacheable(cacheNames = {"coreaPIcks"})
     public List<CoreaPicks> getAllCoreaPicksList() {
         List<CoreaPicks> list = Lists.newArrayList();
         try {

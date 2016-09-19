@@ -2,16 +2,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:cache="http://www.springframework.org/schema/cache"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/cache">
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
 
-    <context:component-scan base-package="kr.corearoad.*"/>
+
     <mvc:annotation-driven />
 
+    <cache:annotation-driven/>
     <import resource="context-mapper.xml"></import>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -19,8 +21,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cacheManager-ref="ehcache"/>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:configLocation="classpath:ehcache.xml"/>
     <import resource="ws-config.xml"></import>
 
-    <cache:annotation-driven/>
-
+    <context:component-scan base-package="kr.corearoad.*"/>
 </beans>

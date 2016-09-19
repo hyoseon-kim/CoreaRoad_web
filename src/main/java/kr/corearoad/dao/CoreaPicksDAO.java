@@ -31,7 +31,6 @@ public class CoreaPicksDAO implements CoreaPicksInterface{
 
     @Override
     @Transactional
-    @Cacheable("coreaPicks")
     public List selectTopCoreaPicks() throws SQLException {
         return  sqlSession.selectList("kr.corearoad.mapper.CoreaPicksInterface.selectTopCoreaPicks");
     }

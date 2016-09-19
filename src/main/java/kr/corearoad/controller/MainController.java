@@ -53,10 +53,10 @@ public class MainController {
 
 	private static Logger logger = LoggerFactory.getLogger(MainController.class);
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(HttpServletRequest req, ModelMap model) {
 		return "main";
-	}
+	}*/
 
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(HttpServletRequest req, HttpServletResponse res, ModelMap model) {

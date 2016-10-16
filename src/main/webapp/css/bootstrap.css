@@ -6247,8 +6247,8 @@ button.close {
 .carousel-inner {
   position: relative;
   width: 1600px;
-  left: 50%;
-  margin-left: -800px;
+  /*left: 50%;
+  margin-left: -800px;*/
 }
 .carousel-inner > .item {
   position: relative;

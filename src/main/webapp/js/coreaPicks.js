@@ -4,7 +4,9 @@
 define([
     'handlebars',
     'text!/writePicks.html',
-    'picksWrite'],function (Handlebars, _welWritePicks, picksWrite) {
+    'picksWrite',
+    'coreaPicksDetailView'
+],function (Handlebars, _welWritePicks, picksWrite, coreaPicksDetailView) {
 
     var aPicksData = [],
         map,
@@ -14,7 +16,7 @@ define([
 
 
     function _init() {
-        _attachEvent();
+
 
         /*card 공유 버튼*/
         $('.card__share > a').on('click', function(e){
@@ -51,6 +53,7 @@ define([
     function _renderCoreaPicksMain() {
         $.ajax('/getAllCoreaPicksList.do').done(function (data) {
             _renderWithData($.parseJSON(data));
+            _attachEvent();
         });
     }
 
@@ -127,6 +130,11 @@ define([
         $(".picks_write").on('click', function () {
             $('._corearoad_content').html(_welWritePicks);
             picksWrite.init();
+        });
+
+        $(".card").on('click', function (evt) {
+            var postId = $(evt.currentTarget).attr('id').split("picks_")[1];
+            coreaPicksDetailView.init(aPicksData[postId]);
         })
     }
 

@@ -1,14 +1,21 @@
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
-         updateCheck="false" monitoring="autodetect" dynamicConfig="false"
-         maxBytesLocalHeap="75%" name="debop4j-cache">
+<ehcache>
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="true"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"
+    />
+    <cache
+        name="coreaPIcks"
+        maxElementsInMemory="200"
+        eternal="false"
+        overflowToDisk="false"
+        timeToLiveSeconds="30" />
 
     <diskStore path="java.io.tmpdir"/>
-
-    <cache name="user"
-           eternal="true"
-           overflowToDisk="false"
-           memoryStoreEvictionPolicy="LRU"
-           statistics="false"
-    />
 </ehcache>

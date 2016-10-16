@@ -18,6 +18,14 @@ define([
     var _welContentArea = $('._corearoad_content');
     function init() {
         attachEvent();
+        window.addEventListener('hashchange', router);
+    }
+    
+    function router() {
+        var url = location.hash.slice(1) || '/';
+        if(url ==  '/') {
+            location.reload();
+        }
     }
 
     function attachEvent() {
